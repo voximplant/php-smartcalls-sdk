@@ -676,7 +676,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Campaign ID. ID can be retrieved via the **searchCampaigns** method. |
+ **id** | **int**| Campaign ID. ID can be retrieved via the **searchCampaigns** method. | [optional]
  **status** | **string**| Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. | [optional]
  **date_start** | **string**| Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
  **date_end** | **string**| Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]

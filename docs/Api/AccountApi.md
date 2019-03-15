@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 
 
-Get the unique access token which will be used in all HTTP requests. The token expires in 24 hours
+Get the unique access token which will be used in all HTTP requests. The token expires in 24 hours.
 
 ### Example
 ```php

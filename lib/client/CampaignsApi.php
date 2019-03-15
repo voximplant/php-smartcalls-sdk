@@ -2964,7 +2964,7 @@ $defaultHeaders = [];
     /**
      * Operation outboundSearchCampaignsGet
 *
-* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
 * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
 * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
@@ -2979,7 +2979,7 @@ $defaultHeaders = [];
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\SearchCampaignsResponseType
      */
-    public function outboundSearchCampaignsGet($id, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function outboundSearchCampaignsGet($id = null, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
         list($response) = $this->outboundSearchCampaignsGetWithHttpInfo($id, $status, $date_start, $date_end, $date_create, $title, $fields, $sort, $page, $per_page);
         return $response;
@@ -2988,7 +2988,7 @@ $defaultHeaders = [];
     /**
      * Operation outboundSearchCampaignsGetWithHttpInfo
 *
-* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
 * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
 * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
@@ -3003,7 +3003,7 @@ $defaultHeaders = [];
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\SearchCampaignsResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function outboundSearchCampaignsGetWithHttpInfo($id, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function outboundSearchCampaignsGetWithHttpInfo($id = null, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
         $returnType = '\Smartcalls\Model\SearchCampaignsResponseType';
         $request = $this->outboundSearchCampaignsGetRequest($id, $status, $date_start, $date_end, $date_create, $title, $fields, $sort, $page, $per_page);
@@ -3086,7 +3086,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
 * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
 * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
@@ -3100,7 +3100,7 @@ case 0:$data = ObjectSerializer::deserialize(
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outboundSearchCampaignsGetAsync($id, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function outboundSearchCampaignsGetAsync($id = null, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
         return $this->outboundSearchCampaignsGetAsyncWithHttpInfo($id, $status, $date_start, $date_end, $date_create, $title, $fields, $sort, $page, $per_page)
             ->then(
@@ -3115,7 +3115,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
 * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
 * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
@@ -3129,7 +3129,7 @@ case 0:$data = ObjectSerializer::deserialize(
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outboundSearchCampaignsGetAsyncWithHttpInfo($id, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function outboundSearchCampaignsGetAsyncWithHttpInfo($id = null, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
         $returnType = '\Smartcalls\Model\SearchCampaignsResponseType';
         $request = $this->outboundSearchCampaignsGetRequest($id, $status, $date_start, $date_end, $date_create, $title, $fields, $sort, $page, $per_page);
@@ -3174,7 +3174,7 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'outboundSearchCampaignsGet'
      *
-* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+* @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
 * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
 * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
@@ -3188,14 +3188,8 @@ $responseBody = $response->getBody();
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function outboundSearchCampaignsGetRequest($id, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    protected function outboundSearchCampaignsGetRequest($id = null, $status = null, $date_start = null, $date_end = null, $date_create = null, $title = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
-// verify the required parameter 'id' is set
-        if ($id === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling outboundSearchCampaignsGet'
-            );
-        }
 $resourcePath = '/outbound/searchCampaigns';
         $formParams = [];
         $queryParams = [];
