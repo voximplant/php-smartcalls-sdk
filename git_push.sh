@@ -22,7 +22,7 @@ if [ "$release_note" = "" ]; then
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
-# Initialize the local directory as a Git repository.
+# Initialize the local directory as a Git repository
 git init
 
 # Adds the files in the local repository and stages them for commit.
