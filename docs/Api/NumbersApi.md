@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 
-Search for the Caller ID number. The method without specifying the parameters returns last 20 Caller IDs.
+Search for the Caller ID number. The method without specifying the parameters returns last 20 Caller IDs
 
 ### Example
 ```php
