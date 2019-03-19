@@ -216,7 +216,7 @@ class GetScenarioVariablesRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets scenario_id
      *
-     * @param int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method.
+     * @param int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method.
      *
      * @return $this
      */

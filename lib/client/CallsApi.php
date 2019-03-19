@@ -360,9 +360,9 @@ $defaultHeaders = [];
     /**
      * Operation callsExportHistoryReportPost
 *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  string $from History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-* @param  string $to History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -377,9 +377,9 @@ $defaultHeaders = [];
     /**
      * Operation callsExportHistoryReportPostWithHttpInfo
 *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  string $from History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-* @param  string $to History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -468,9 +468,9 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  string $from History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-* @param  string $to History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -490,9 +490,9 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  string $from History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-* @param  string $to History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -542,9 +542,9 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'callsExportHistoryReportPost'
      *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  string $from History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-* @param  string $to History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+* @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -916,9 +916,9 @@ $defaultHeaders = [];
     /**
      * Operation callsSearchCallsGet
 *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  int $phone Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;79991112233’) (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
 * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
@@ -935,9 +935,9 @@ $defaultHeaders = [];
     /**
      * Operation callsSearchCallsGetWithHttpInfo
 *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  int $phone Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;79991112233’) (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
 * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
@@ -1028,9 +1028,9 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  int $phone Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;79991112233’) (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
 * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
@@ -1052,9 +1052,9 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  int $phone Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;79991112233’) (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
 * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *
@@ -1106,9 +1106,9 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'callsSearchCallsGet'
      *
-* @param  string $call_direction Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  int $phone Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;79991112233’) (optional)
+* @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
 * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
 *

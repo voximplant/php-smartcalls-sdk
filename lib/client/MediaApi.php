@@ -360,7 +360,7 @@ $defaultHeaders = [];
     /**
      * Operation mediaGetStreamMediaGet
 *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -375,7 +375,7 @@ $defaultHeaders = [];
     /**
      * Operation mediaGetStreamMediaGetWithHttpInfo
 *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -464,7 +464,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -484,7 +484,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -534,7 +534,7 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'mediaGetStreamMediaGet'
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -622,10 +622,10 @@ $defaultHeaders = [];
     /**
      * Operation mediaSearchMediaGet
 *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (optional)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (optional)
 * @param  string $title Media title to search. (optional)
 * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
@@ -641,10 +641,10 @@ $defaultHeaders = [];
     /**
      * Operation mediaSearchMediaGetWithHttpInfo
 *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (optional)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (optional)
 * @param  string $title Media title to search. (optional)
 * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
@@ -734,10 +734,10 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (optional)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (optional)
 * @param  string $title Media title to search. (optional)
 * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 *
      * @throws \InvalidArgumentException
@@ -758,10 +758,10 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (optional)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (optional)
 * @param  string $title Media title to search. (optional)
 * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 *
      * @throws \InvalidArgumentException
@@ -812,10 +812,10 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'mediaSearchMediaGet'
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (optional)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (optional)
 * @param  string $title Media title to search. (optional)
 * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+* @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
 *
      * @throws \InvalidArgumentException
@@ -924,7 +924,7 @@ $defaultHeaders = [];
     /**
      * Operation mediaUpdateMediaPost
 *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 * @param  string $title title (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
@@ -940,7 +940,7 @@ $defaultHeaders = [];
     /**
      * Operation mediaUpdateMediaPostWithHttpInfo
 *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 * @param  string $title (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
@@ -1030,7 +1030,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 * @param  string $title (optional)
 *
      * @throws \InvalidArgumentException
@@ -1051,7 +1051,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 * @param  string $title (optional)
 *
      * @throws \InvalidArgumentException
@@ -1102,7 +1102,7 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'mediaUpdateMediaPost'
      *
-* @param  int $id Media ID. ID can be retrieved via **searchMedia** method. (required)
+* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 * @param  string $title (optional)
 *
      * @throws \InvalidArgumentException
@@ -1205,7 +1205,7 @@ $defaultHeaders = [];
     /**
      * Operation mediaUploadMediaPost
 *
-* @param  string $upload_file Upload file only in multipart/form-data format. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1220,7 +1220,7 @@ $defaultHeaders = [];
     /**
      * Operation mediaUploadMediaPostWithHttpInfo
 *
-* @param  string $upload_file Upload file only in multipart/form-data format. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1309,7 +1309,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $upload_file Upload file only in multipart/form-data format. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1329,7 +1329,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $upload_file Upload file only in multipart/form-data format. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1379,7 +1379,7 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'mediaUploadMediaPost'
      *
-* @param  string $upload_file Upload file only in multipart/form-data format. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

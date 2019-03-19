@@ -234,7 +234,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets scenario_id
      *
-     * @param int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method.
+     * @param int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method.
      *
      * @return $this
      */
@@ -306,7 +306,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets phone_number_id
      *
-     * @param int $phone_number_id Phone number ID. Can be retrieved via the searchNumbers method.
+     * @param int $phone_number_id Phone number ID. Can be retrieved via the **searchNumbers** method.
      *
      * @return $this
      */
@@ -330,7 +330,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets caller_id
      *
-     * @param int $caller_id Phone number ID. Can be retrieved via the searchCallerIDs method.
+     * @param int $caller_id Phone number ID. Can be retrieved via the **searchCallerIDs** method.
      *
      * @return $this
      */

@@ -210,7 +210,7 @@ class StatRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets campaign_ids
      *
-     * @param string $campaign_ids Array with the campaign ID(s).  ID(s) can be retrieved via the searchCampaigns method.
+     * @param string $campaign_ids Array with the campaign ID(s).  ID(s) can be retrieved via the **searchCampaigns** method.
      *
      * @return $this
      */

@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 
 
-Get variables from scenario.
+Get variables of the specified scenario.
 
 ### Example
 ```php
@@ -219,7 +219,7 @@ $scenario_id = 56; // int | Scenario ID. ID can be retrieved via the **searchSce
 $scenario_type = 56; // int | Scenario type to search. (<b>example:</b> scenario_type = 1 — displays only outgoing call scenarios, scenario_type = 2 — shows only incoming call scenarios)
 $title = "title_example"; // string | Scenario title to search.
 $sort = "sort_example"; // string | Sorting data by field(s), add '-' to DESC sort, (<b>example:</b> ‘sort=id’ or ‘sort=-id’). <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
-$page = 56; // int | API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
+$page = 56; // int | API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
 $per_page = 56; // int | Sets the number of records per page (default value is 20, min = 1, max = 50). <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
 
 try {
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
  **scenario_type** | **int**| Scenario type to search. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) | [optional]
  **title** | **string**| Scenario title to search. | [optional]
  **sort** | **string**| Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
- **page** | **int**| API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
+ **page** | **int**| API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
  **per_page** | **int**| Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
 
 ### Return type

@@ -94,8 +94,8 @@ $apiInstance = new Smartcalls\client\NumbersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the searchScenarios method.
-$phone_number_id = "phone_number_id_example"; // string | Phone number ID. ID can be retrieved via the searchNumbers method.
+$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the **searchScenarios** method.
+$phone_number_id = "phone_number_id_example"; // string | Phone number ID. ID can be retrieved via the **searchNumbers** method.
 
 try {
     $result = $apiInstance->phoneBindNumberToScenarioPost($scenario_id, $phone_number_id);
@@ -110,8 +110,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scenario_id** | **int**| Scenario ID. ID can be retrieved via the searchScenarios method. | [optional]
- **phone_number_id** | **string**| Phone number ID. ID can be retrieved via the searchNumbers method. | [optional]
+ **scenario_id** | **int**| Scenario ID. ID can be retrieved via the **searchScenarios** method. | [optional]
+ **phone_number_id** | **string**| Phone number ID. ID can be retrieved via the **searchNumbers** method. | [optional]
 
 ### Return type
 
@@ -212,8 +212,8 @@ $apiInstance = new Smartcalls\client\NumbersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the searchScenarios method.
-$phone_number_id = "phone_number_id_example"; // string | Phone number ID. ID can be retrieved via the searchNumbers method.
+$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the **searchScenarios** method.
+$phone_number_id = "phone_number_id_example"; // string | Phone number ID. ID can be retrieved via the **searchNumbers** method.
 
 try {
     $result = $apiInstance->phoneUnbindNumberFromScenarioPost($scenario_id, $phone_number_id);
@@ -228,8 +228,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scenario_id** | **int**| Scenario ID. ID can be retrieved via the searchScenarios method. | [optional]
- **phone_number_id** | **string**| Phone number ID. ID can be retrieved via the searchNumbers method. | [optional]
+ **scenario_id** | **int**| Scenario ID. ID can be retrieved via the **searchScenarios** method. | [optional]
+ **phone_number_id** | **string**| Phone number ID. ID can be retrieved via the **searchNumbers** method. | [optional]
 
 ### Return type
 

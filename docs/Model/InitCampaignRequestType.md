@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **max_attempts** | **int** | Maximum amount of calls on one phone number. | [optional] 
 **interval** | **int** | The time between attempts to call on one phone number. | [optional] 
 **max_lines** | **int** | Maximum simultaneously performing calls. | [optional] 
-**scenario_id** | **int** | Scenario ID. ID can be retrieved via the &lt;b&gt; searchScenarios &lt;/b&gt; method. | [optional] 
+**scenario_id** | **int** | Scenario ID. ID can be retrieved via the **searchScenarios** method. | [optional] 
 **phone_number_id** | **int** | Phone number ID. Can be retrieved via the **searchNumbers** method. | [optional] 
 **caller_id** | **int** | Caller ID. Can be retrieved via the **searchCallerIDs** method. | [optional] 
 **time_start** | **string** | Time when API will start calling customers. Specify it along with the date_start parameter. | [optional] 

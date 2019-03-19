@@ -363,8 +363,8 @@ $defaultHeaders = [];
     /**
      * Operation phoneBindNumberToScenarioPost
 *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -379,8 +379,8 @@ $defaultHeaders = [];
     /**
      * Operation phoneBindNumberToScenarioPostWithHttpInfo
 *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -469,8 +469,8 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -490,8 +490,8 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -541,8 +541,8 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'phoneBindNumberToScenarioPost'
      *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -913,8 +913,8 @@ $defaultHeaders = [];
     /**
      * Operation phoneUnbindNumberFromScenarioPost
 *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -929,8 +929,8 @@ $defaultHeaders = [];
     /**
      * Operation phoneUnbindNumberFromScenarioPostWithHttpInfo
 *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1019,8 +1019,8 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1040,8 +1040,8 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1091,8 +1091,8 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'phoneUnbindNumberFromScenarioPost'
      *
-* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
-* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

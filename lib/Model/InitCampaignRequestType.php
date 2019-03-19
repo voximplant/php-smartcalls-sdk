@@ -372,7 +372,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets scenario_id
      *
-     * @param int $scenario_id Scenario ID. ID can be retrieved via the <b> searchScenarios </b> method.
+     * @param int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method.
      *
      * @return $this
      */

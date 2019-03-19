@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 
 
-Start the call history processing. To check if the processing is over, use the getHistoryReportStatus method; use the downloadHistoryReport method to get the download link.
+Start call history processing. To check if the processing is over, use the <b>getHistoryReportStatus</b> method; use the <b>downloadHistoryReport</b> method to get a download link.
 
 ### Example
 ```php
@@ -91,9 +91,9 @@ $apiInstance = new Smartcalls\client\CallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$call_direction = "call_direction_example"; // string | Call direction, (<b>example:</b> ‘call_direction=outgoing’ or ‘call_direction=incoming’ or ‘call_direction=all’)
-$from = "from_example"; // string | History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
-$to = "to_example"; // string | History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
+$call_direction = "call_direction_example"; // string | Call direction (<b>example:</b> ‘call_direction=outgoing’ or ‘call_direction=incoming’ or ‘call_direction=all’)
+$from = "from_example"; // string | Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
+$to = "to_example"; // string | End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
 
 try {
     $result = $apiInstance->callsExportHistoryReportPost($call_direction, $from, $to);
@@ -108,9 +108,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **call_direction** | **string**| Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) | [optional]
- **from** | **string**| History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
- **to** | **string**| History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
+ **call_direction** | **string**| Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) | [optional]
+ **from** | **string**| Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
+ **to** | **string**| End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
 
 ### Return type
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 
 
-Get info about call history processing. If the response parameter \"processed\" is True, the call history can be downloaded via the downloadHistoryReport method.
+Get info about call history processing. If the response parameter \"processed\" is True, the call history can be downloaded via the <b>downloadHistoryReport</b> method.
 
 ### Example
 ```php
@@ -209,9 +209,9 @@ $apiInstance = new Smartcalls\client\CallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$call_direction = "call_direction_example"; // string | Call direction, (<b>example:</b> ‘call_direction=outgoing’ or ‘call_direction=incoming’ or ‘call_direction=all’)
-$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the searchScenarios method.
-$phone = 56; // int | Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (<b>example:</b> ‘phone=79991112233’)
+$call_direction = "call_direction_example"; // string | Call direction (<b>example:</b> ‘call_direction=outgoing’ or ‘call_direction=incoming’ or ‘call_direction=all’)
+$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the **searchScenarios** method.
+$phone = 56; // int | Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (<b>example:</b> ‘phone=15417543010)
 $datetime_start = "datetime_start_example"; // string | Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
 $datetime_end = "datetime_end_example"; // string | Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
 
@@ -228,9 +228,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **call_direction** | **string**| Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) | [optional]
- **scenario_id** | **int**| Scenario ID. ID can be retrieved via the searchScenarios method. | [optional]
- **phone** | **int**| Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;79991112233’) | [optional]
+ **call_direction** | **string**| Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) | [optional]
+ **scenario_id** | **int**| Scenario ID. ID can be retrieved via the **searchScenarios** method. | [optional]
+ **phone** | **int**| Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) | [optional]
  **datetime_start** | **string**| Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
  **datetime_end** | **string**| Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 
-Delete specified media item. The media item can't be deleted if it's used in an active campaign.
+Delete the specified media item. The media item can't be deleted if it's used in an active campaign.
 
 ### Example
 ```php
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 
 
-Get media as stream. The method starts to transfer file to the customer's backend/application.
+Get media as a stream. The method starts to transfer file to the customer's backend/application.
 
 ### Example
 ```php
@@ -84,7 +84,7 @@ $apiInstance = new Smartcalls\client\MediaApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 56; // int | Media ID. ID can be retrieved via **searchMedia** method.
+$id = 56; // int | Media ID. ID can be retrieved via the **searchMedia** method.
 
 try {
     $result = $apiInstance->mediaGetStreamMediaGet($id);
@@ -99,7 +99,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Media ID. ID can be retrieved via **searchMedia** method. |
+ **id** | **int**| Media ID. ID can be retrieved via the **searchMedia** method. |
 
 ### Return type
 
@@ -121,7 +121,7 @@ No authorization required
 
 
 
-Get info about specified media item: the name of related file and its ID.
+Get info about the specified media item: the name of related file and its ID.
 
 ### Example
 ```php
@@ -141,10 +141,10 @@ $apiInstance = new Smartcalls\client\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Media ID. ID can be retrieved via **searchMedia** method.
+$id = 56; // int | Media ID. ID can be retrieved via the **searchMedia** method.
 $title = "title_example"; // string | Media title to search.
 $sort = "sort_example"; // string | Sorting data by field(s), add '-' to DESC sort, (<b>example:</b> ‘sort=id’ or ‘sort=-id’). <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
-$page = 56; // int | API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
+$page = 56; // int | API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
 $per_page = 56; // int | Sets the number of records per page (default value is 20, min = 1, max = 50). <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
 
 try {
@@ -160,10 +160,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Media ID. ID can be retrieved via **searchMedia** method. | [optional]
+ **id** | **int**| Media ID. ID can be retrieved via the **searchMedia** method. | [optional]
  **title** | **string**| Media title to search. | [optional]
  **sort** | **string**| Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
- **page** | **int**| API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
+ **page** | **int**| API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
  **per_page** | **int**| Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
 
 ### Return type
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 
 
-Update specified media item.
+Update the specified media item.
 
 ### Example
 ```php
@@ -206,7 +206,7 @@ $apiInstance = new Smartcalls\client\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Media ID. ID can be retrieved via **searchMedia** method.
+$id = 56; // int | Media ID. ID can be retrieved via the **searchMedia** method.
 $title = "title_example"; // string | 
 
 try {
@@ -222,7 +222,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Media ID. ID can be retrieved via **searchMedia** method. |
+ **id** | **int**| Media ID. ID can be retrieved via the **searchMedia** method. |
  **title** | **string**|  | [optional]
 
 ### Return type
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 
 
-Upload new media file.
+Upload a new media file.
 
 ### Example
 ```php
@@ -265,7 +265,7 @@ $apiInstance = new Smartcalls\client\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$upload_file = "upload_file_example"; // string | Upload file only in multipart/form-data format. Supported format is MP3. Maximum file size is 10 Mb.
+$upload_file = "upload_file_example"; // string | Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb.
 
 try {
     $result = $apiInstance->mediaUploadMediaPost($upload_file);
@@ -280,7 +280,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **upload_file** | **string**| Upload file only in multipart/form-data format. Supported format is MP3. Maximum file size is 10 Mb. |
+ **upload_file** | **string**| Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. |
 
 ### Return type
 
