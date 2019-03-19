@@ -4,7 +4,7 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**attemptDownloadStatReportPost**](CampaignsApi.md#attemptDownloadStatReportPost) | **POST** /attempt/downloadStatReport | 
+[**attemptDownloadStatReportGet**](CampaignsApi.md#attemptDownloadStatReportGet) | **GET** /attempt/downloadStatReport | 
 [**attemptExportStatReportPost**](CampaignsApi.md#attemptExportStatReportPost) | **POST** /attempt/exportStatReport | 
 [**attemptGetStatReportStatusPost**](CampaignsApi.md#attemptGetStatReportStatusPost) | **POST** /attempt/getStatReportStatus | 
 [**attemptSearchAttemptsGet**](CampaignsApi.md#attemptSearchAttemptsGet) | **GET** /attempt/searchAttempts | 
@@ -17,8 +17,8 @@ Method | HTTP request | Description
 [**outboundSearchCampaignsGet**](CampaignsApi.md#outboundSearchCampaignsGet) | **GET** /outbound/searchCampaigns | 
 [**outboundStatPost**](CampaignsApi.md#outboundStatPost) | **POST** /outbound/stat | 
 
-# **attemptDownloadStatReportPost**
-> \Smartcalls\Model\DownloadStatReportResponseType attemptDownloadStatReportPost($report_id)
+# **attemptDownloadStatReportGet**
+> \Smartcalls\Model\DownloadStatReportResponseType attemptDownloadStatReportGet($report_id)
 
 
 
@@ -45,10 +45,10 @@ $apiInstance = new Smartcalls\client\CampaignsApi(
 $report_id = 56; // int | Report ID. ID can be retrieved via the **exportStatReport** method.
 
 try {
-    $result = $apiInstance->attemptDownloadStatReportPost($report_id);
+    $result = $apiInstance->attemptDownloadStatReportGet($report_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignsApi->attemptDownloadStatReportPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignsApi->attemptDownloadStatReportGet: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -727,7 +727,7 @@ $apiInstance = new Smartcalls\client\CampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_ids = array(56); // int[] | Array with the campaign ID(s). Example: [123,321]. ID(s) can be retrieved via the **searchCampaigns** method.
+$campaign_ids = "campaign_ids_example"; // string | 
 
 try {
     $result = $apiInstance->outboundStatPost($campaign_ids);
@@ -742,7 +742,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_ids** | [**int[]**](../Model/int.md)| Array with the campaign ID(s). Example: [123,321]. ID(s) can be retrieved via the **searchCampaigns** method. | [optional]
+ **campaign_ids** | **string**|  | [optional]
 
 ### Return type
 
@@ -754,7 +754,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

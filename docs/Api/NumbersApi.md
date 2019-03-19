@@ -5,7 +5,9 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**calleridSearchCallerIDsGet**](NumbersApi.md#calleridSearchCallerIDsGet) | **GET** /callerid/searchCallerIDs | 
+[**phoneBindNumberToScenarioPost**](NumbersApi.md#phoneBindNumberToScenarioPost) | **POST** /phone/bindNumberToScenario | 
 [**phoneSearchNumbersGet**](NumbersApi.md#phoneSearchNumbersGet) | **GET** /phone/searchNumbers | 
+[**phoneUnbindNumberFromScenarioPost**](NumbersApi.md#phoneUnbindNumberFromScenarioPost) | **POST** /phone/unbindNumberFromScenario | 
 [**phoneUpdateNumberPost**](NumbersApi.md#phoneUpdateNumberPost) | **POST** /phone/updateNumber | 
 
 # **calleridSearchCallerIDsGet**
@@ -67,6 +69,65 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **phoneBindNumberToScenarioPost**
+> \Smartcalls\Model\BindNumberResponseType phoneBindNumberToScenarioPost($scenario_id, $phone_number_id)
+
+
+
+Bind a number to the scenario for incoming calls.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: AccessTokenAuth
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');// Configure API key authorization: Domain
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
+
+$apiInstance = new Smartcalls\client\NumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the searchScenarios method.
+$phone_number_id = "phone_number_id_example"; // string | Phone number ID. ID can be retrieved via the searchNumbers method.
+
+try {
+    $result = $apiInstance->phoneBindNumberToScenarioPost($scenario_id, $phone_number_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NumbersApi->phoneBindNumberToScenarioPost: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scenario_id** | **int**| Scenario ID. ID can be retrieved via the searchScenarios method. | [optional]
+ **phone_number_id** | **string**| Phone number ID. ID can be retrieved via the searchNumbers method. | [optional]
+
+### Return type
+
+[**\Smartcalls\Model\BindNumberResponseType**](../Model/BindNumberResponseType.md)
+
+### Authorization
+
+[AccessTokenAuth](../../README.md#AccessTokenAuth), [Domain](../../README.md#Domain)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **phoneSearchNumbersGet**
 > \Smartcalls\Model\SearchNumbersResponseType phoneSearchNumbersGet($id, $sort)
 
@@ -114,6 +175,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Smartcalls\Model\SearchNumbersResponseType**](../Model/SearchNumbersResponseType.md)
+
+### Authorization
+
+[AccessTokenAuth](../../README.md#AccessTokenAuth), [Domain](../../README.md#Domain)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **phoneUnbindNumberFromScenarioPost**
+> \Smartcalls\Model\UnbindNumberResponseType phoneUnbindNumberFromScenarioPost($scenario_id, $phone_number_id)
+
+
+
+Unbind a number from the scenario for incoming calls.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: AccessTokenAuth
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');// Configure API key authorization: Domain
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
+
+$apiInstance = new Smartcalls\client\NumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the searchScenarios method.
+$phone_number_id = "phone_number_id_example"; // string | Phone number ID. ID can be retrieved via the searchNumbers method.
+
+try {
+    $result = $apiInstance->phoneUnbindNumberFromScenarioPost($scenario_id, $phone_number_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NumbersApi->phoneUnbindNumberFromScenarioPost: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scenario_id** | **int**| Scenario ID. ID can be retrieved via the searchScenarios method. | [optional]
+ **phone_number_id** | **string**| Phone number ID. ID can be retrieved via the searchNumbers method. | [optional]
+
+### Return type
+
+[**\Smartcalls\Model\UnbindNumberResponseType**](../Model/UnbindNumberResponseType.md)
 
 ### Authorization
 

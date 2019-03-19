@@ -93,7 +93,11 @@ Class | Method | HTTP request | Description
 *AccountApi* | [**passwordChangeByTokenPost**](docs/Api/AccountApi.md#passwordchangebytokenpost) | **POST** /password/changeByToken | 
 *AccountApi* | [**passwordRecoveryByEmailPost**](docs/Api/AccountApi.md#passwordrecoverybyemailpost) | **POST** /password/recoveryByEmail | 
 *AccountApi* | [**settingSearchSettingsGet**](docs/Api/AccountApi.md#settingsearchsettingsget) | **GET** /setting/searchSettings | 
-*CampaignsApi* | [**attemptDownloadStatReportPost**](docs/Api/CampaignsApi.md#attemptdownloadstatreportpost) | **POST** /attempt/downloadStatReport | 
+*CallsApi* | [**callsDownloadHistoryReportPost**](docs/Api/CallsApi.md#callsdownloadhistoryreportpost) | **POST** /calls/downloadHistoryReport | 
+*CallsApi* | [**callsExportHistoryReportPost**](docs/Api/CallsApi.md#callsexporthistoryreportpost) | **POST** /calls/exportHistoryReport | 
+*CallsApi* | [**callsGetHistoryReportStatusPost**](docs/Api/CallsApi.md#callsgethistoryreportstatuspost) | **POST** /calls/getHistoryReportStatus | 
+*CallsApi* | [**callsSearchCallsGet**](docs/Api/CallsApi.md#callssearchcallsget) | **GET** /calls/searchCalls | 
+*CampaignsApi* | [**attemptDownloadStatReportGet**](docs/Api/CampaignsApi.md#attemptdownloadstatreportget) | **GET** /attempt/downloadStatReport | 
 *CampaignsApi* | [**attemptExportStatReportPost**](docs/Api/CampaignsApi.md#attemptexportstatreportpost) | **POST** /attempt/exportStatReport | 
 *CampaignsApi* | [**attemptGetStatReportStatusPost**](docs/Api/CampaignsApi.md#attemptgetstatreportstatuspost) | **POST** /attempt/getStatReportStatus | 
 *CampaignsApi* | [**attemptSearchAttemptsGet**](docs/Api/CampaignsApi.md#attemptsearchattemptsget) | **GET** /attempt/searchAttempts | 
@@ -113,7 +117,9 @@ Class | Method | HTTP request | Description
 *MediaApi* | [**mediaUpdateMediaPost**](docs/Api/MediaApi.md#mediaupdatemediapost) | **POST** /media/updateMedia | 
 *MediaApi* | [**mediaUploadMediaPost**](docs/Api/MediaApi.md#mediauploadmediapost) | **POST** /media/uploadMedia | 
 *NumbersApi* | [**calleridSearchCallerIDsGet**](docs/Api/NumbersApi.md#calleridsearchcalleridsget) | **GET** /callerid/searchCallerIDs | 
+*NumbersApi* | [**phoneBindNumberToScenarioPost**](docs/Api/NumbersApi.md#phonebindnumbertoscenariopost) | **POST** /phone/bindNumberToScenario | 
 *NumbersApi* | [**phoneSearchNumbersGet**](docs/Api/NumbersApi.md#phonesearchnumbersget) | **GET** /phone/searchNumbers | 
+*NumbersApi* | [**phoneUnbindNumberFromScenarioPost**](docs/Api/NumbersApi.md#phoneunbindnumberfromscenariopost) | **POST** /phone/unbindNumberFromScenario | 
 *NumbersApi* | [**phoneUpdateNumberPost**](docs/Api/NumbersApi.md#phoneupdatenumberpost) | **POST** /phone/updateNumber | 
 *ScenariosApi* | [**scenarioDeleteScenarioPost**](docs/Api/ScenariosApi.md#scenariodeletescenariopost) | **POST** /scenario/deleteScenario | 
 *ScenariosApi* | [**scenarioGetScenarioVariablesPost**](docs/Api/ScenariosApi.md#scenariogetscenariovariablespost) | **POST** /scenario/getScenarioVariables | 
@@ -131,8 +137,10 @@ Class | Method | HTTP request | Description
  - [AppendToCampaignResponseType](docs/Model/AppendToCampaignResponseType.md)
  - [AppendToCampaignResponseTypeResult](docs/Model/AppendToCampaignResponseTypeResult.md)
  - [AttemptType](docs/Model/AttemptType.md)
+ - [BindNumberResponseType](docs/Model/BindNumberResponseType.md)
  - [Body](docs/Model/Body.md)
  - [CallerIDType](docs/Model/CallerIDType.md)
+ - [CallsType](docs/Model/CallsType.md)
  - [CampaignStatResponseType](docs/Model/CampaignStatResponseType.md)
  - [CampaignStatType](docs/Model/CampaignStatType.md)
  - [CampaignType](docs/Model/CampaignType.md)
@@ -141,14 +149,17 @@ Class | Method | HTTP request | Description
  - [DeleteCampaignResponseType](docs/Model/DeleteCampaignResponseType.md)
  - [DeleteMediaResponseType](docs/Model/DeleteMediaResponseType.md)
  - [DeleteScenarioResponseType](docs/Model/DeleteScenarioResponseType.md)
+ - [DownloadHistoryReportResponseType](docs/Model/DownloadHistoryReportResponseType.md)
  - [DownloadStatReportResponseType](docs/Model/DownloadStatReportResponseType.md)
  - [ErrorResultType](docs/Model/ErrorResultType.md)
  - [ErrorType](docs/Model/ErrorType.md)
+ - [ExportHistoryReportResponseType](docs/Model/ExportHistoryReportResponseType.md)
  - [ExportStatReportResponseType](docs/Model/ExportStatReportResponseType.md)
  - [ExportStatReportResponseTypeResult](docs/Model/ExportStatReportResponseTypeResult.md)
  - [GetAccessTokenResponseType](docs/Model/GetAccessTokenResponseType.md)
  - [GetAccountInfoResponseType](docs/Model/GetAccountInfoResponseType.md)
  - [GetCallListTemplateResponseType](docs/Model/GetCallListTemplateResponseType.md)
+ - [GetHistoryReportStatusResponseType](docs/Model/GetHistoryReportStatusResponseType.md)
  - [GetListTimezonesResponseType](docs/Model/GetListTimezonesResponseType.md)
  - [GetNotificationsResponseType](docs/Model/GetNotificationsResponseType.md)
  - [GetScenarioVariablesRequestType](docs/Model/GetScenarioVariablesRequestType.md)
@@ -174,6 +185,7 @@ Class | Method | HTTP request | Description
  - [ScenarioType](docs/Model/ScenarioType.md)
  - [SearchAttemptsResponseType](docs/Model/SearchAttemptsResponseType.md)
  - [SearchCallerIDsResponseType](docs/Model/SearchCallerIDsResponseType.md)
+ - [SearchCallsResponseType](docs/Model/SearchCallsResponseType.md)
  - [SearchCampaignsResponseType](docs/Model/SearchCampaignsResponseType.md)
  - [SearchMediaResponseType](docs/Model/SearchMediaResponseType.md)
  - [SearchNumbersResponseType](docs/Model/SearchNumbersResponseType.md)
@@ -181,9 +193,11 @@ Class | Method | HTTP request | Description
  - [SearchSettingsResponseType](docs/Model/SearchSettingsResponseType.md)
  - [SettingType](docs/Model/SettingType.md)
  - [SettingsType](docs/Model/SettingsType.md)
+ - [StatRequestType](docs/Model/StatRequestType.md)
  - [TestNumberType](docs/Model/TestNumberType.md)
  - [TimezoneByPhoneType](docs/Model/TimezoneByPhoneType.md)
  - [TimezoneType](docs/Model/TimezoneType.md)
+ - [UnbindNumberResponseType](docs/Model/UnbindNumberResponseType.md)
  - [UpdateMediaRequestType](docs/Model/UpdateMediaRequestType.md)
  - [UpdateMediaResponseType](docs/Model/UpdateMediaResponseType.md)
  - [UpdateNumberRequestType](docs/Model/UpdateNumberRequestType.md)

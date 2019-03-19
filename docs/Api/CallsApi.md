@@ -1,20 +1,20 @@
-# Smartcalls\ScenariosApi
+# Smartcalls\CallsApi
 
 All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**scenarioDeleteScenarioPost**](ScenariosApi.md#scenarioDeleteScenarioPost) | **POST** /scenario/deleteScenario | 
-[**scenarioGetScenarioVariablesPost**](ScenariosApi.md#scenarioGetScenarioVariablesPost) | **POST** /scenario/getScenarioVariables | 
-[**scenarioRunScenarioPost**](ScenariosApi.md#scenarioRunScenarioPost) | **POST** /scenario/runScenario | 
-[**scenarioSearchScenariosGet**](ScenariosApi.md#scenarioSearchScenariosGet) | **GET** /scenario/searchScenarios | 
+[**callsDownloadHistoryReportPost**](CallsApi.md#callsDownloadHistoryReportPost) | **POST** /calls/downloadHistoryReport | 
+[**callsExportHistoryReportPost**](CallsApi.md#callsExportHistoryReportPost) | **POST** /calls/exportHistoryReport | 
+[**callsGetHistoryReportStatusPost**](CallsApi.md#callsGetHistoryReportStatusPost) | **POST** /calls/getHistoryReportStatus | 
+[**callsSearchCallsGet**](CallsApi.md#callsSearchCallsGet) | **GET** /calls/searchCalls | 
 
-# **scenarioDeleteScenarioPost**
-> \Smartcalls\Model\DeleteScenarioResponseType scenarioDeleteScenarioPost($scenario_id)
+# **callsDownloadHistoryReportPost**
+> \Smartcalls\Model\DownloadHistoryReportResponseType callsDownloadHistoryReportPost($report_id)
 
 
 
-Delete the specified scenario. The scenario can't be deleted if it's used in an active campaign.
+Get the download link to the call history file (.XSLS)
 
 ### Example
 ```php
@@ -28,19 +28,19 @@ $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
 
-$apiInstance = new Smartcalls\client\ScenariosApi(
+$apiInstance = new Smartcalls\client\CallsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the **searchScenarios** method.
+$report_id = 56; // int | Report ID. ID can be retrieved via the **exportHistoryReport** method.
 
 try {
-    $result = $apiInstance->scenarioDeleteScenarioPost($scenario_id);
+    $result = $apiInstance->callsDownloadHistoryReportPost($report_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ScenariosApi->scenarioDeleteScenarioPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CallsApi->callsDownloadHistoryReportPost: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -49,11 +49,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scenario_id** | **int**| Scenario ID. ID can be retrieved via the **searchScenarios** method. | [optional]
+ **report_id** | **int**| Report ID. ID can be retrieved via the **exportHistoryReport** method. |
 
 ### Return type
 
-[**\Smartcalls\Model\DeleteScenarioResponseType**](../Model/DeleteScenarioResponseType.md)
+[**\Smartcalls\Model\DownloadHistoryReportResponseType**](../Model/DownloadHistoryReportResponseType.md)
 
 ### Authorization
 
@@ -66,12 +66,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **scenarioGetScenarioVariablesPost**
-> \Smartcalls\Model\GetScenarioVariablesResponseType scenarioGetScenarioVariablesPost($scenario_id, $required_only)
+# **callsExportHistoryReportPost**
+> \Smartcalls\Model\ExportHistoryReportResponseType callsExportHistoryReportPost($call_direction, $from, $to)
 
 
 
-Get variables from scenario.
+Start the call history processing. To check if the processing is over, use the getHistoryReportStatus method; use the downloadHistoryReport method to get the download link.
 
 ### Example
 ```php
@@ -85,20 +85,21 @@ $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
 
-$apiInstance = new Smartcalls\client\ScenariosApi(
+$apiInstance = new Smartcalls\client\CallsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$scenario_id = 56; // int | 
-$required_only = true; // bool | 
+$call_direction = "call_direction_example"; // string | Call direction, (<b>example:</b> ‘call_direction=outgoing’ or ‘call_direction=incoming’ or ‘call_direction=all’)
+$from = "from_example"; // string | History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
+$to = "to_example"; // string | History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
 
 try {
-    $result = $apiInstance->scenarioGetScenarioVariablesPost($scenario_id, $required_only);
+    $result = $apiInstance->callsExportHistoryReportPost($call_direction, $from, $to);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ScenariosApi->scenarioGetScenarioVariablesPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CallsApi->callsExportHistoryReportPost: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -107,12 +108,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scenario_id** | **int**|  | [optional]
- **required_only** | **bool**|  | [optional]
+ **call_direction** | **string**| Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) | [optional]
+ **from** | **string**| History start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
+ **to** | **string**| History end date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
 
 ### Return type
 
-[**\Smartcalls\Model\GetScenarioVariablesResponseType**](../Model/GetScenarioVariablesResponseType.md)
+[**\Smartcalls\Model\ExportHistoryReportResponseType**](../Model/ExportHistoryReportResponseType.md)
 
 ### Authorization
 
@@ -120,17 +122,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **scenarioRunScenarioPost**
-> \Smartcalls\Model\RunScenarioResponseType scenarioRunScenarioPost($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+# **callsGetHistoryReportStatusPost**
+> \Smartcalls\Model\GetHistoryReportStatusResponseType callsGetHistoryReportStatusPost($report_id)
 
 
 
-Run the specified scenario.
+Get info about call history processing. If the response parameter \"processed\" is True, the call history can be downloaded via the downloadHistoryReport method.
 
 ### Example
 ```php
@@ -144,23 +146,19 @@ $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
 
-$apiInstance = new Smartcalls\client\ScenariosApi(
+$apiInstance = new Smartcalls\client\CallsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$scenario_id = 56; // int | 
-$phone = 56; // int | 
-$variables = "variables_example"; // string | 
-$phone_number_id = 56; // int | 
-$caller_id = 56; // int | 
+$report_id = 56; // int | Report ID. ID can be retrieved via the **exportHistoryReport** method.
 
 try {
-    $result = $apiInstance->scenarioRunScenarioPost($scenario_id, $phone, $variables, $phone_number_id, $caller_id);
+    $result = $apiInstance->callsGetHistoryReportStatusPost($report_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ScenariosApi->scenarioRunScenarioPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CallsApi->callsGetHistoryReportStatusPost: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -169,15 +167,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scenario_id** | **int**|  | [optional]
- **phone** | **int**|  | [optional]
- **variables** | **string**|  | [optional]
- **phone_number_id** | **int**|  | [optional]
- **caller_id** | **int**|  | [optional]
+ **report_id** | **int**| Report ID. ID can be retrieved via the **exportHistoryReport** method. |
 
 ### Return type
 
-[**\Smartcalls\Model\RunScenarioResponseType**](../Model/RunScenarioResponseType.md)
+[**\Smartcalls\Model\GetHistoryReportStatusResponseType**](../Model/GetHistoryReportStatusResponseType.md)
 
 ### Authorization
 
@@ -185,17 +179,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **scenarioSearchScenariosGet**
-> \Smartcalls\Model\SearchScenariosResponseType scenarioSearchScenariosGet($scenario_id, $scenario_type, $title, $sort, $page, $per_page)
+# **callsSearchCallsGet**
+> \Smartcalls\Model\SearchCallsResponseType callsSearchCallsGet($call_direction, $scenario_id, $phone, $datetime_start, $datetime_end)
 
 
 
-Search for the scenarios. The method without specifying the parameters returns last 20 created scenarios.
+Search for the calls. The method without specifying the parameters returns last 20 calls.
 
 ### Example
 ```php
@@ -209,24 +203,23 @@ $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
 
-$apiInstance = new Smartcalls\client\ScenariosApi(
+$apiInstance = new Smartcalls\client\CallsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the **searchScenarios** method.
-$scenario_type = 56; // int | Scenario type to search. (<b>example:</b> scenario_type = 1 — displays only outgoing call scenarios, scenario_type = 2 — shows only incoming call scenarios)
-$title = "title_example"; // string | Scenario title to search.
-$sort = "sort_example"; // string | Sorting data by field(s), add '-' to DESC sort, (<b>example:</b> ‘sort=id’ or ‘sort=-id’). <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
-$page = 56; // int | API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
-$per_page = 56; // int | Sets the number of records per page (default value is 20, min = 1, max = 50). <br /><b>IMPORTANT: the parameter can be used only in GET requests.</b>
+$call_direction = "call_direction_example"; // string | Call direction, (<b>example:</b> ‘call_direction=outgoing’ or ‘call_direction=incoming’ or ‘call_direction=all’)
+$scenario_id = 56; // int | Scenario ID. ID can be retrieved via the searchScenarios method.
+$phone = 56; // int | Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (<b>example:</b> ‘phone=79991112233’)
+$datetime_start = "datetime_start_example"; // string | Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
+$datetime_end = "datetime_end_example"; // string | Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’
 
 try {
-    $result = $apiInstance->scenarioSearchScenariosGet($scenario_id, $scenario_type, $title, $sort, $page, $per_page);
+    $result = $apiInstance->callsSearchCallsGet($call_direction, $scenario_id, $phone, $datetime_start, $datetime_end);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ScenariosApi->scenarioSearchScenariosGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CallsApi->callsSearchCallsGet: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -235,16 +228,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scenario_id** | **int**| Scenario ID. ID can be retrieved via the **searchScenarios** method. | [optional]
- **scenario_type** | **int**| Scenario type to search. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) | [optional]
- **title** | **string**| Scenario title to search. | [optional]
- **sort** | **string**| Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
- **page** | **int**| API methods return 20 records (one page) by default. The parameter specifies which page will be in response: first one, second one etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
- **per_page** | **int**| Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; | [optional]
+ **call_direction** | **string**| Call direction, (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) | [optional]
+ **scenario_id** | **int**| Scenario ID. ID can be retrieved via the searchScenarios method. | [optional]
+ **phone** | **int**| Phone number. The search will be carried out on a specific phone number. Minimum number of characters to search - 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;79991112233’) | [optional]
+ **datetime_start** | **string**| Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
+ **datetime_end** | **string**| Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ | [optional]
 
 ### Return type
 
-[**\Smartcalls\Model\SearchScenariosResponseType**](../Model/SearchScenariosResponseType.md)
+[**\Smartcalls\Model\SearchCallsResponseType**](../Model/SearchCallsResponseType.md)
 
 ### Authorization
 

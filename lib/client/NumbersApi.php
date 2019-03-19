@@ -361,6 +361,281 @@ $defaultHeaders = [];
     }
 
     /**
+     * Operation phoneBindNumberToScenarioPost
+*
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \Smartcalls\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Smartcalls\Model\BindNumberResponseType
+     */
+    public function phoneBindNumberToScenarioPost($scenario_id = null, $phone_number_id = null)
+    {
+        list($response) = $this->phoneBindNumberToScenarioPostWithHttpInfo($scenario_id, $phone_number_id);
+        return $response;
+    }
+
+    /**
+     * Operation phoneBindNumberToScenarioPostWithHttpInfo
+*
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \Smartcalls\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Smartcalls\Model\BindNumberResponseType, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function phoneBindNumberToScenarioPostWithHttpInfo($scenario_id = null, $phone_number_id = null)
+    {
+        $returnType = '\Smartcalls\Model\BindNumberResponseType';
+        $request = $this->phoneBindNumberToScenarioPostRequest($scenario_id, $phone_number_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+$responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+
+        } catch (ApiException $e) {
+            $returnType = '';
+            $content = $e->getResponseBody();
+            if ($returnType !== '\SplFileObject') {
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+            switch ($e->getCode()) {
+case 200:$data = ObjectSerializer::deserialize(
+                        $content,
+                        '\Smartcalls\Model\BindNumberResponseType',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+case 0:$data = ObjectSerializer::deserialize(
+                        $content,
+                        '\Smartcalls\Model\ErrorType',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+}
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation phoneBindNumberToScenarioPostAsync
+     *
+     * 
+     *
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function phoneBindNumberToScenarioPostAsync($scenario_id = null, $phone_number_id = null)
+    {
+        return $this->phoneBindNumberToScenarioPostAsyncWithHttpInfo($scenario_id, $phone_number_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation phoneBindNumberToScenarioPostAsyncWithHttpInfo
+     *
+     * 
+     *
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function phoneBindNumberToScenarioPostAsyncWithHttpInfo($scenario_id = null, $phone_number_id = null)
+    {
+        $returnType = '\Smartcalls\Model\BindNumberResponseType';
+        $request = $this->phoneBindNumberToScenarioPostRequest($scenario_id, $phone_number_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+$responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'phoneBindNumberToScenarioPost'
+     *
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function phoneBindNumberToScenarioPostRequest($scenario_id = null, $phone_number_id = null)
+    {
+$resourcePath = '/phone/bindNumberToScenario';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+// query params
+if ($scenario_id !== null) {
+            $queryParams['scenario_id'] = ObjectSerializer::toQueryValue($scenario_id);
+        }
+// query params
+if ($phone_number_id !== null) {
+            $queryParams['phone_number_id'] = ObjectSerializer::toQueryValue($phone_number_id);
+        }
+// body params
+        $_tempBody = null;
+if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+// this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
+        if ($apiKey !== null) {
+            $queryParams['access_token'] = $apiKey;
+        }
+// this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('domain');
+        if ($apiKey !== null) {
+            $queryParams['domain'] = $apiKey;
+        }
+$defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation phoneSearchNumbersGet
 *
 * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
@@ -629,6 +904,281 @@ $defaultHeaders = [];
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation phoneUnbindNumberFromScenarioPost
+*
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \Smartcalls\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Smartcalls\Model\UnbindNumberResponseType
+     */
+    public function phoneUnbindNumberFromScenarioPost($scenario_id = null, $phone_number_id = null)
+    {
+        list($response) = $this->phoneUnbindNumberFromScenarioPostWithHttpInfo($scenario_id, $phone_number_id);
+        return $response;
+    }
+
+    /**
+     * Operation phoneUnbindNumberFromScenarioPostWithHttpInfo
+*
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \Smartcalls\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Smartcalls\Model\UnbindNumberResponseType, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function phoneUnbindNumberFromScenarioPostWithHttpInfo($scenario_id = null, $phone_number_id = null)
+    {
+        $returnType = '\Smartcalls\Model\UnbindNumberResponseType';
+        $request = $this->phoneUnbindNumberFromScenarioPostRequest($scenario_id, $phone_number_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+$responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+
+        } catch (ApiException $e) {
+            $returnType = '';
+            $content = $e->getResponseBody();
+            if ($returnType !== '\SplFileObject') {
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+            switch ($e->getCode()) {
+case 200:$data = ObjectSerializer::deserialize(
+                        $content,
+                        '\Smartcalls\Model\UnbindNumberResponseType',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+case 0:$data = ObjectSerializer::deserialize(
+                        $content,
+                        '\Smartcalls\Model\ErrorType',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+}
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation phoneUnbindNumberFromScenarioPostAsync
+     *
+     * 
+     *
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function phoneUnbindNumberFromScenarioPostAsync($scenario_id = null, $phone_number_id = null)
+    {
+        return $this->phoneUnbindNumberFromScenarioPostAsyncWithHttpInfo($scenario_id, $phone_number_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation phoneUnbindNumberFromScenarioPostAsyncWithHttpInfo
+     *
+     * 
+     *
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function phoneUnbindNumberFromScenarioPostAsyncWithHttpInfo($scenario_id = null, $phone_number_id = null)
+    {
+        $returnType = '\Smartcalls\Model\UnbindNumberResponseType';
+        $request = $this->phoneUnbindNumberFromScenarioPostRequest($scenario_id, $phone_number_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+$responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'phoneUnbindNumberFromScenarioPost'
+     *
+* @param  int $scenario_id Scenario ID. ID can be retrieved via the searchScenarios method. (optional)
+* @param  string $phone_number_id Phone number ID. ID can be retrieved via the searchNumbers method. (optional)
+*
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function phoneUnbindNumberFromScenarioPostRequest($scenario_id = null, $phone_number_id = null)
+    {
+$resourcePath = '/phone/unbindNumberFromScenario';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+// query params
+if ($scenario_id !== null) {
+            $queryParams['scenario_id'] = ObjectSerializer::toQueryValue($scenario_id);
+        }
+// query params
+if ($phone_number_id !== null) {
+            $queryParams['phone_number_id'] = ObjectSerializer::toQueryValue($phone_number_id);
+        }
+// body params
+        $_tempBody = null;
+if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+// this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
+        if ($apiKey !== null) {
+            $queryParams['access_token'] = $apiKey;
+        }
+// this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('domain');
+        if ($apiKey !== null) {
+            $queryParams['domain'] = $apiKey;
+        }
+$defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

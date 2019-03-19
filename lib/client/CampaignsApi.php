@@ -86,7 +86,7 @@ class CampaignsApi
         return $this->config;
     }
     /**
-     * Operation attemptDownloadStatReportPost
+     * Operation attemptDownloadStatReportGet
 *
 * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
 *
@@ -94,14 +94,14 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\DownloadStatReportResponseType
      */
-    public function attemptDownloadStatReportPost($report_id)
+    public function attemptDownloadStatReportGet($report_id)
     {
-        list($response) = $this->attemptDownloadStatReportPostWithHttpInfo($report_id);
+        list($response) = $this->attemptDownloadStatReportGetWithHttpInfo($report_id);
         return $response;
     }
 
     /**
-     * Operation attemptDownloadStatReportPostWithHttpInfo
+     * Operation attemptDownloadStatReportGetWithHttpInfo
 *
 * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
 *
@@ -109,10 +109,10 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\DownloadStatReportResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function attemptDownloadStatReportPostWithHttpInfo($report_id)
+    public function attemptDownloadStatReportGetWithHttpInfo($report_id)
     {
         $returnType = '\Smartcalls\Model\DownloadStatReportResponseType';
-        $request = $this->attemptDownloadStatReportPostRequest($report_id);
+        $request = $this->attemptDownloadStatReportGetRequest($report_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -188,7 +188,7 @@ case 0:$data = ObjectSerializer::deserialize(
     }
 
     /**
-     * Operation attemptDownloadStatReportPostAsync
+     * Operation attemptDownloadStatReportGetAsync
      *
      * 
      *
@@ -197,9 +197,9 @@ case 0:$data = ObjectSerializer::deserialize(
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attemptDownloadStatReportPostAsync($report_id)
+    public function attemptDownloadStatReportGetAsync($report_id)
     {
-        return $this->attemptDownloadStatReportPostAsyncWithHttpInfo($report_id)
+        return $this->attemptDownloadStatReportGetAsyncWithHttpInfo($report_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -208,7 +208,7 @@ case 0:$data = ObjectSerializer::deserialize(
     }
 
     /**
-     * Operation attemptDownloadStatReportPostAsyncWithHttpInfo
+     * Operation attemptDownloadStatReportGetAsyncWithHttpInfo
      *
      * 
      *
@@ -217,10 +217,10 @@ case 0:$data = ObjectSerializer::deserialize(
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attemptDownloadStatReportPostAsyncWithHttpInfo($report_id)
+    public function attemptDownloadStatReportGetAsyncWithHttpInfo($report_id)
     {
         $returnType = '\Smartcalls\Model\DownloadStatReportResponseType';
-        $request = $this->attemptDownloadStatReportPostRequest($report_id);
+        $request = $this->attemptDownloadStatReportGetRequest($report_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -260,19 +260,19 @@ $responseBody = $response->getBody();
     }
 
     /**
-     * Create request for operation 'attemptDownloadStatReportPost'
+     * Create request for operation 'attemptDownloadStatReportGet'
      *
 * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function attemptDownloadStatReportPostRequest($report_id)
+    protected function attemptDownloadStatReportGetRequest($report_id)
     {
 // verify the required parameter 'report_id' is set
         if ($report_id === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $report_id when calling attemptDownloadStatReportPost'
+                'Missing the required parameter $report_id when calling attemptDownloadStatReportGet'
             );
         }
 $resourcePath = '/attempt/downloadStatReport';
@@ -350,7 +350,7 @@ $defaultHeaders = [];
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -3311,7 +3311,7 @@ $defaultHeaders = [];
     /**
      * Operation outboundStatPost
 *
-* @param  int[] $campaign_ids Array with the campaign ID(s). Example: [123,321]. ID(s) can be retrieved via the **searchCampaigns** method. (optional)
+* @param  string $campaign_ids campaign_ids (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3326,7 +3326,7 @@ $defaultHeaders = [];
     /**
      * Operation outboundStatPostWithHttpInfo
 *
-* @param  int[] $campaign_ids Array with the campaign ID(s). Example: [123,321]. ID(s) can be retrieved via the **searchCampaigns** method. (optional)
+* @param  string $campaign_ids (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3415,7 +3415,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int[] $campaign_ids Array with the campaign ID(s). Example: [123,321]. ID(s) can be retrieved via the **searchCampaigns** method. (optional)
+* @param  string $campaign_ids (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3435,7 +3435,7 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int[] $campaign_ids Array with the campaign ID(s). Example: [123,321]. ID(s) can be retrieved via the **searchCampaigns** method. (optional)
+* @param  string $campaign_ids (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3485,7 +3485,7 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'outboundStatPost'
      *
-* @param  int[] $campaign_ids Array with the campaign ID(s). Example: [123,321]. ID(s) can be retrieved via the **searchCampaigns** method. (optional)
+* @param  string $campaign_ids (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3499,12 +3499,9 @@ $resourcePath = '/outbound/stat';
         $httpBody = '';
         $multipart = false;
 
-// query params
-if (is_array($campaign_ids)) {
-            $campaign_ids = ObjectSerializer::serializeCollection($campaign_ids, 'csv', true);
-        }
-if ($campaign_ids !== null) {
-            $queryParams['campaign_ids'] = ObjectSerializer::toQueryValue($campaign_ids);
+// form params
+        if ($campaign_ids !== null) {
+            $formParams['campaign_ids'] = ObjectSerializer::toFormValue($campaign_ids);
         }
 // body params
         $_tempBody = null;
@@ -3515,7 +3512,7 @@ if ($multipart) {
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['application/x-www-form-urlencoded']
             );
         }
 
