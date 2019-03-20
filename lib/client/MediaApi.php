@@ -1205,31 +1205,31 @@ $defaultHeaders = [];
     /**
      * Operation mediaUploadMediaPost
 *
-* @param  string $upload_file upload_file (optional)
+* @param  string $file file (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\UploadMediaResponseType
      */
-    public function mediaUploadMediaPost($upload_file = null)
+    public function mediaUploadMediaPost($file = null)
     {
-        list($response) = $this->mediaUploadMediaPostWithHttpInfo($upload_file);
+        list($response) = $this->mediaUploadMediaPostWithHttpInfo($file);
         return $response;
     }
 
     /**
      * Operation mediaUploadMediaPostWithHttpInfo
 *
-* @param  string $upload_file (optional)
+* @param  string $file (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\UploadMediaResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function mediaUploadMediaPostWithHttpInfo($upload_file = null)
+    public function mediaUploadMediaPostWithHttpInfo($file = null)
     {
         $returnType = '\Smartcalls\Model\UploadMediaResponseType';
-        $request = $this->mediaUploadMediaPostRequest($upload_file);
+        $request = $this->mediaUploadMediaPostRequest($file);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1309,14 +1309,14 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $upload_file (optional)
+* @param  string $file (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mediaUploadMediaPostAsync($upload_file = null)
+    public function mediaUploadMediaPostAsync($file = null)
     {
-        return $this->mediaUploadMediaPostAsyncWithHttpInfo($upload_file)
+        return $this->mediaUploadMediaPostAsyncWithHttpInfo($file)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1329,15 +1329,15 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $upload_file (optional)
+* @param  string $file (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mediaUploadMediaPostAsyncWithHttpInfo($upload_file = null)
+    public function mediaUploadMediaPostAsyncWithHttpInfo($file = null)
     {
         $returnType = '\Smartcalls\Model\UploadMediaResponseType';
-        $request = $this->mediaUploadMediaPostRequest($upload_file);
+        $request = $this->mediaUploadMediaPostRequest($file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1379,12 +1379,12 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'mediaUploadMediaPost'
      *
-* @param  string $upload_file (optional)
+* @param  string $file (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function mediaUploadMediaPostRequest($upload_file = null)
+    protected function mediaUploadMediaPostRequest($file = null)
     {
 $resourcePath = '/media/uploadMedia';
         $formParams = [];
@@ -1394,8 +1394,8 @@ $resourcePath = '/media/uploadMedia';
         $multipart = false;
 
 // form params
-        if ($upload_file !== null) {
-            $formParams['Upload[file]'] = ObjectSerializer::toFormValue($upload_file);
+        if ($file !== null) {
+            $formParams['file'] = ObjectSerializer::toFormValue($file);
         }
 // body params
         $_tempBody = null;

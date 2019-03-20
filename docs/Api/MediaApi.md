@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **mediaUploadMediaPost**
-> \Smartcalls\Model\UploadMediaResponseType mediaUploadMediaPost($upload_file)
+> \Smartcalls\Model\UploadMediaResponseType mediaUploadMediaPost($file)
 
 
 
@@ -265,10 +265,10 @@ $apiInstance = new Smartcalls\client\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$upload_file = "upload_file_example"; // string | 
+$file = "file_example"; // string | 
 
 try {
-    $result = $apiInstance->mediaUploadMediaPost($upload_file);
+    $result = $apiInstance->mediaUploadMediaPost($file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MediaApi->mediaUploadMediaPost: ', $e->getMessage(), PHP_EOL;
@@ -280,7 +280,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **upload_file** | **string**|  | [optional]
+ **file** | **string**|  | [optional]
 
 ### Return type
 

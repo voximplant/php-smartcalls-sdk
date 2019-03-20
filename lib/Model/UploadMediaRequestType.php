@@ -56,7 +56,7 @@ class UploadMediaRequestType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'upload_file' => 'string'    ];
+        'file' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -64,7 +64,7 @@ class UploadMediaRequestType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'upload_file' => 'binary'    ];
+        'file' => 'binary'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -93,7 +93,7 @@ class UploadMediaRequestType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'upload_file' => 'Upload[file]'    ];
+        'file' => 'file'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,7 +101,7 @@ class UploadMediaRequestType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'upload_file' => 'setUploadFile'    ];
+        'file' => 'setFile'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -109,7 +109,7 @@ class UploadMediaRequestType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'upload_file' => 'getUploadFile'    ];
+        'file' => 'getFile'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -169,7 +169,7 @@ class UploadMediaRequestType implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['upload_file'] = isset($data['upload_file']) ? $data['upload_file'] : null;
+        $this->container['file'] = isset($data['file']) ? $data['file'] : null;
     }
 
     /**
@@ -198,25 +198,25 @@ class UploadMediaRequestType implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets upload_file
+     * Gets file
      *
      * @return string
      */
-    public function getUploadFile()
+    public function getFile()
     {
-        return $this->container['upload_file'];
+        return $this->container['file'];
     }
 
     /**
-     * Sets upload_file
+     * Sets file
      *
-     * @param string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb.
+     * @param string $file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb.
      *
      * @return $this
      */
-    public function setUploadFile($upload_file)
+    public function setFile($file)
     {
-        $this->container['upload_file'] = $upload_file;
+        $this->container['file'] = $file;
 
         return $this;
     }
