@@ -265,7 +265,7 @@ $apiInstance = new Smartcalls\client\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$upload_file = "upload_file_example"; // string | Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb.
+$upload_file = "upload_file_example"; // string | 
 
 try {
     $result = $apiInstance->mediaUploadMediaPost($upload_file);
@@ -280,7 +280,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **upload_file** | **string**| Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. |
+ **upload_file** | **string**|  | [optional]
 
 ### Return type
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

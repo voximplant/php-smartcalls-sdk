@@ -202,7 +202,9 @@ Class | Method | HTTP request | Description
  - [UpdateMediaResponseType](docs/Model/UpdateMediaResponseType.md)
  - [UpdateNumberRequestType](docs/Model/UpdateNumberRequestType.md)
  - [UpdateNumberResponseType](docs/Model/UpdateNumberResponseType.md)
+ - [UploadMediaRequestType](docs/Model/UploadMediaRequestType.md)
  - [UploadMediaResponseType](docs/Model/UploadMediaResponseType.md)
+ - [UploadMediaResultType](docs/Model/UploadMediaResultType.md)
  - [VariablesType](docs/Model/VariablesType.md)
 
 ## Documentation For Authorization

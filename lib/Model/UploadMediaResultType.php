@@ -1,6 +1,6 @@
 <?php
 /**
- * UploadMediaResponseType
+ * UploadMediaResultType
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Smartcalls\ObjectSerializer;
 
 /**
- * UploadMediaResponseType Class Doc Comment
+ * UploadMediaResultType Class Doc Comment
  *
  * @category Class
  * @package  Smartcalls
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UploadMediaResponseType implements ModelInterface, ArrayAccess
+class UploadMediaResultType implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UploadMediaResponseType';
+    protected static $swaggerModelName = 'UploadMediaResultType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,10 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'success' => 'bool',
-'result' => '\Smartcalls\Model\UploadMediaResultType'    ];
+        'title' => 'string',
+'file_id' => 'int',
+'domain_id' => 'int',
+'id' => 'int'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +67,10 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'success' => null,
-'result' => null    ];
+        'title' => null,
+'file_id' => 'int32',
+'domain_id' => 'int32',
+'id' => 'int32'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +99,10 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-'result' => 'result'    ];
+        'title' => 'title',
+'file_id' => 'file_id',
+'domain_id' => 'domain_id',
+'id' => 'id'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +110,10 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-'result' => 'setResult'    ];
+        'title' => 'setTitle',
+'file_id' => 'setFileId',
+'domain_id' => 'setDomainId',
+'id' => 'setId'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +121,10 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-'result' => 'getResult'    ];
+        'title' => 'getTitle',
+'file_id' => 'getFileId',
+'domain_id' => 'getDomainId',
+'id' => 'getId'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +184,10 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
-        $this->container['result'] = isset($data['result']) ? $data['result'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['file_id'] = isset($data['file_id']) ? $data['file_id'] : null;
+        $this->container['domain_id'] = isset($data['domain_id']) ? $data['domain_id'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -204,49 +216,97 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets success
+     * Gets title
      *
-     * @return bool
+     * @return string
      */
-    public function getSuccess()
+    public function getTitle()
     {
-        return $this->container['success'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets success
+     * Sets title
      *
-     * @param bool $success success
+     * @param string $title title
      *
      * @return $this
      */
-    public function setSuccess($success)
+    public function setTitle($title)
     {
-        $this->container['success'] = $success;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets result
+     * Gets file_id
      *
-     * @return \Smartcalls\Model\UploadMediaResultType
+     * @return int
      */
-    public function getResult()
+    public function getFileId()
     {
-        return $this->container['result'];
+        return $this->container['file_id'];
     }
 
     /**
-     * Sets result
+     * Sets file_id
      *
-     * @param \Smartcalls\Model\UploadMediaResultType $result result
+     * @param int $file_id file_id
      *
      * @return $this
      */
-    public function setResult($result)
+    public function setFileId($file_id)
     {
-        $this->container['result'] = $result;
+        $this->container['file_id'] = $file_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets domain_id
+     *
+     * @return int
+     */
+    public function getDomainId()
+    {
+        return $this->container['domain_id'];
+    }
+
+    /**
+     * Sets domain_id
+     *
+     * @param int $domain_id domain_id
+     *
+     * @return $this
+     */
+    public function setDomainId($domain_id)
+    {
+        $this->container['domain_id'] = $domain_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

@@ -1205,13 +1205,13 @@ $defaultHeaders = [];
     /**
      * Operation mediaUploadMediaPost
 *
-* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file upload_file (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\UploadMediaResponseType
      */
-    public function mediaUploadMediaPost($upload_file)
+    public function mediaUploadMediaPost($upload_file = null)
     {
         list($response) = $this->mediaUploadMediaPostWithHttpInfo($upload_file);
         return $response;
@@ -1220,13 +1220,13 @@ $defaultHeaders = [];
     /**
      * Operation mediaUploadMediaPostWithHttpInfo
 *
-* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file (optional)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\UploadMediaResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function mediaUploadMediaPostWithHttpInfo($upload_file)
+    public function mediaUploadMediaPostWithHttpInfo($upload_file = null)
     {
         $returnType = '\Smartcalls\Model\UploadMediaResponseType';
         $request = $this->mediaUploadMediaPostRequest($upload_file);
@@ -1309,12 +1309,12 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mediaUploadMediaPostAsync($upload_file)
+    public function mediaUploadMediaPostAsync($upload_file = null)
     {
         return $this->mediaUploadMediaPostAsyncWithHttpInfo($upload_file)
             ->then(
@@ -1329,12 +1329,12 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mediaUploadMediaPostAsyncWithHttpInfo($upload_file)
+    public function mediaUploadMediaPostAsyncWithHttpInfo($upload_file = null)
     {
         $returnType = '\Smartcalls\Model\UploadMediaResponseType';
         $request = $this->mediaUploadMediaPostRequest($upload_file);
@@ -1379,19 +1379,13 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'mediaUploadMediaPost'
      *
-* @param  string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb. (required)
+* @param  string $upload_file (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function mediaUploadMediaPostRequest($upload_file)
+    protected function mediaUploadMediaPostRequest($upload_file = null)
     {
-// verify the required parameter 'upload_file' is set
-        if ($upload_file === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $upload_file when calling mediaUploadMediaPost'
-            );
-        }
 $resourcePath = '/media/uploadMedia';
         $formParams = [];
         $queryParams = [];
@@ -1399,9 +1393,9 @@ $resourcePath = '/media/uploadMedia';
         $httpBody = '';
         $multipart = false;
 
-// query params
-if ($upload_file !== null) {
-            $queryParams['Upload[file]'] = ObjectSerializer::toQueryValue($upload_file);
+// form params
+        if ($upload_file !== null) {
+            $formParams['Upload[file]'] = ObjectSerializer::toFormValue($upload_file);
         }
 // body params
         $_tempBody = null;
@@ -1412,7 +1406,7 @@ if ($multipart) {
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['multipart/form-data']
             );
         }
 

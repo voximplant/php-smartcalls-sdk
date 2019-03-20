@@ -1,6 +1,6 @@
 <?php
 /**
- * UploadMediaResponseType
+ * UploadMediaRequestType
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Smartcalls\ObjectSerializer;
 
 /**
- * UploadMediaResponseType Class Doc Comment
+ * UploadMediaRequestType Class Doc Comment
  *
  * @category Class
  * @package  Smartcalls
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UploadMediaResponseType implements ModelInterface, ArrayAccess
+class UploadMediaRequestType implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UploadMediaResponseType';
+    protected static $swaggerModelName = 'UploadMediaRequestType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'success' => 'bool',
-'result' => '\Smartcalls\Model\UploadMediaResultType'    ];
+        'upload_file' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +64,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'success' => null,
-'result' => null    ];
+        'upload_file' => 'binary'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +93,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-'result' => 'result'    ];
+        'upload_file' => 'Upload[file]'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +101,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-'result' => 'setResult'    ];
+        'upload_file' => 'setUploadFile'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +109,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-'result' => 'getResult'    ];
+        'upload_file' => 'getUploadFile'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +169,7 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
-        $this->container['result'] = isset($data['result']) ? $data['result'] : null;
+        $this->container['upload_file'] = isset($data['upload_file']) ? $data['upload_file'] : null;
     }
 
     /**
@@ -204,49 +198,25 @@ class UploadMediaResponseType implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets success
+     * Gets upload_file
      *
-     * @return bool
+     * @return string
      */
-    public function getSuccess()
+    public function getUploadFile()
     {
-        return $this->container['success'];
+        return $this->container['upload_file'];
     }
 
     /**
-     * Sets success
+     * Sets upload_file
      *
-     * @param bool $success success
+     * @param string $upload_file Upload file only in the multipart/form-data form. Supported format is MP3. Maximum file size is 10 Mb.
      *
      * @return $this
      */
-    public function setSuccess($success)
+    public function setUploadFile($upload_file)
     {
-        $this->container['success'] = $success;
-
-        return $this;
-    }
-
-    /**
-     * Gets result
-     *
-     * @return \Smartcalls\Model\UploadMediaResultType
-     */
-    public function getResult()
-    {
-        return $this->container['result'];
-    }
-
-    /**
-     * Sets result
-     *
-     * @param \Smartcalls\Model\UploadMediaResultType $result result
-     *
-     * @return $this
-     */
-    public function setResult($result)
-    {
-        $this->container['result'] = $result;
+        $this->container['upload_file'] = $upload_file;
 
         return $this;
     }
