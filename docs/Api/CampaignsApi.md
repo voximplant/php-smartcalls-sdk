@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 
 
-Append contacts to existing campaign.
+Append contacts to existing campaign. It is possible to add a maximum of 100 entries in one request.
 
 ### Example
 ```php
