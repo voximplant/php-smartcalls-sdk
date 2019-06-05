@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **mediaGetStreamMediaGet**
-> \Smartcalls\Model\GetStreamMediaResponseType mediaGetStreamMediaGet($id)
+> \Smartcalls\Model\GetStreamMediaResponseType mediaGetStreamMediaGet($file_id)
 
 
 
@@ -84,10 +84,10 @@ $apiInstance = new Smartcalls\client\MediaApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 56; // int | Media ID. ID can be retrieved via the **searchMedia** method.
+$file_id = 56; // int | Media ID. ID can be retrieved via the **searchMedia** method.
 
 try {
-    $result = $apiInstance->mediaGetStreamMediaGet($id);
+    $result = $apiInstance->mediaGetStreamMediaGet($file_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MediaApi->mediaGetStreamMediaGet: ', $e->getMessage(), PHP_EOL;
@@ -99,7 +99,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Media ID. ID can be retrieved via the **searchMedia** method. |
+ **file_id** | **int**| Media ID. ID can be retrieved via the **searchMedia** method. |
 
 ### Return type
 

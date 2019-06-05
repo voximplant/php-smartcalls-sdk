@@ -360,31 +360,31 @@ $defaultHeaders = [];
     /**
      * Operation mediaGetStreamMediaGet
 *
-* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
+* @param  int $file_id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\GetStreamMediaResponseType
      */
-    public function mediaGetStreamMediaGet($id)
+    public function mediaGetStreamMediaGet($file_id)
     {
-        list($response) = $this->mediaGetStreamMediaGetWithHttpInfo($id);
+        list($response) = $this->mediaGetStreamMediaGetWithHttpInfo($file_id);
         return $response;
     }
 
     /**
      * Operation mediaGetStreamMediaGetWithHttpInfo
 *
-* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
+* @param  int $file_id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\GetStreamMediaResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function mediaGetStreamMediaGetWithHttpInfo($id)
+    public function mediaGetStreamMediaGetWithHttpInfo($file_id)
     {
         $returnType = '\Smartcalls\Model\GetStreamMediaResponseType';
-        $request = $this->mediaGetStreamMediaGetRequest($id);
+        $request = $this->mediaGetStreamMediaGetRequest($file_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -464,14 +464,14 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
+* @param  int $file_id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mediaGetStreamMediaGetAsync($id)
+    public function mediaGetStreamMediaGetAsync($file_id)
     {
-        return $this->mediaGetStreamMediaGetAsyncWithHttpInfo($id)
+        return $this->mediaGetStreamMediaGetAsyncWithHttpInfo($file_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -484,15 +484,15 @@ case 0:$data = ObjectSerializer::deserialize(
      *
      * 
      *
-* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
+* @param  int $file_id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mediaGetStreamMediaGetAsyncWithHttpInfo($id)
+    public function mediaGetStreamMediaGetAsyncWithHttpInfo($file_id)
     {
         $returnType = '\Smartcalls\Model\GetStreamMediaResponseType';
-        $request = $this->mediaGetStreamMediaGetRequest($id);
+        $request = $this->mediaGetStreamMediaGetRequest($file_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -534,17 +534,17 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'mediaGetStreamMediaGet'
      *
-* @param  int $id Media ID. ID can be retrieved via the **searchMedia** method. (required)
+* @param  int $file_id Media ID. ID can be retrieved via the **searchMedia** method. (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function mediaGetStreamMediaGetRequest($id)
+    protected function mediaGetStreamMediaGetRequest($file_id)
     {
-// verify the required parameter 'id' is set
-        if ($id === null) {
+// verify the required parameter 'file_id' is set
+        if ($file_id === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling mediaGetStreamMediaGet'
+                'Missing the required parameter $file_id when calling mediaGetStreamMediaGet'
             );
         }
 $resourcePath = '/media/getStreamMedia';
@@ -555,8 +555,8 @@ $resourcePath = '/media/getStreamMedia';
         $multipart = false;
 
 // query params
-if ($id !== null) {
-            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+if ($file_id !== null) {
+            $queryParams['file_id'] = ObjectSerializer::toQueryValue($file_id);
         }
 // body params
         $_tempBody = null;
