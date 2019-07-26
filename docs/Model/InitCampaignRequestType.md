@@ -16,5 +16,5 @@ Name | Type | Description | Notes
 **date_end** | **string** | Date when calling will end. Specify it along with the time_end parameter. | [optional] 
 **permanent** | **bool** | Date when calling will end. Specify it along with the time_end parameter. Allow adding contacts to the active campaign? If **true**, you can add contacts up to the date_end and time_end. If **false**, the campaign will stop when calling ends or at the specified date_end and time_end. | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

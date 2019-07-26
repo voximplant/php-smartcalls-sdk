@@ -4,10 +4,10 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**callsDownloadHistoryReportPost**](CallsApi.md#callsDownloadHistoryReportPost) | **POST** /calls/downloadHistoryReport | 
-[**callsExportHistoryReportPost**](CallsApi.md#callsExportHistoryReportPost) | **POST** /calls/exportHistoryReport | 
-[**callsGetHistoryReportStatusPost**](CallsApi.md#callsGetHistoryReportStatusPost) | **POST** /calls/getHistoryReportStatus | 
-[**callsSearchCallsGet**](CallsApi.md#callsSearchCallsGet) | **GET** /calls/searchCalls | 
+[**callsDownloadHistoryReportPost**](CallsApi.md#callsdownloadhistoryreportpost) | **POST** /calls/downloadHistoryReport | 
+[**callsExportHistoryReportPost**](CallsApi.md#callsexporthistoryreportpost) | **POST** /calls/exportHistoryReport | 
+[**callsGetHistoryReportStatusPost**](CallsApi.md#callsgethistoryreportstatuspost) | **POST** /calls/getHistoryReportStatus | 
+[**callsSearchCallsGet**](CallsApi.md#callssearchcallsget) | **GET** /calls/searchCalls | 
 
 # **callsDownloadHistoryReportPost**
 > \Smartcalls\Model\DownloadHistoryReportResponseType callsDownloadHistoryReportPost($report_id)

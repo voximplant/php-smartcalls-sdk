@@ -4,8 +4,8 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**helperGetListTimezonesGet**](HelperApi.md#helperGetListTimezonesGet) | **GET** /helper/getListTimezones | 
-[**helperGetTimezonesByNumberPost**](HelperApi.md#helperGetTimezonesByNumberPost) | **POST** /helper/getTimezonesByNumber | 
+[**helperGetListTimezonesGet**](HelperApi.md#helpergetlisttimezonesget) | **GET** /helper/getListTimezones | 
+[**helperGetTimezonesByNumberPost**](HelperApi.md#helpergettimezonesbynumberpost) | **POST** /helper/getTimezonesByNumber | 
 
 # **helperGetListTimezonesGet**
 > \Smartcalls\Model\GetListTimezonesResponseType helperGetListTimezonesGet()

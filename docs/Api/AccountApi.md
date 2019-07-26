@@ -4,12 +4,12 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**accountGetAccountInfoGet**](AccountApi.md#accountGetAccountInfoGet) | **GET** /account/getAccountInfo | 
-[**authGetAccessTokenGet**](AccountApi.md#authGetAccessTokenGet) | **GET** /auth/getAccessToken | 
-[**notificationGetNotificationsGet**](AccountApi.md#notificationGetNotificationsGet) | **GET** /notification/getNotifications | 
-[**passwordChangeByTokenPost**](AccountApi.md#passwordChangeByTokenPost) | **POST** /password/changeByToken | 
-[**passwordRecoveryByEmailPost**](AccountApi.md#passwordRecoveryByEmailPost) | **POST** /password/recoveryByEmail | 
-[**settingSearchSettingsGet**](AccountApi.md#settingSearchSettingsGet) | **GET** /setting/searchSettings | 
+[**accountGetAccountInfoGet**](AccountApi.md#accountgetaccountinfoget) | **GET** /account/getAccountInfo | 
+[**authGetAccessTokenGet**](AccountApi.md#authgetaccesstokenget) | **GET** /auth/getAccessToken | 
+[**notificationGetNotificationsGet**](AccountApi.md#notificationgetnotificationsget) | **GET** /notification/getNotifications | 
+[**passwordChangeByTokenPost**](AccountApi.md#passwordchangebytokenpost) | **POST** /password/changeByToken | 
+[**passwordRecoveryByEmailPost**](AccountApi.md#passwordrecoverybyemailpost) | **POST** /password/recoveryByEmail | 
+[**settingSearchSettingsGet**](AccountApi.md#settingsearchsettingsget) | **GET** /setting/searchSettings | 
 
 # **accountGetAccountInfoGet**
 > \Smartcalls\Model\GetAccountInfoResponseType accountGetAccountInfoGet()
@@ -261,7 +261,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **string**|  | [optional]
+ **email** | **string**|  |
 
 ### Return type
 

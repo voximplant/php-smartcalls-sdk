@@ -4,11 +4,11 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**mediaDeleteMediaPost**](MediaApi.md#mediaDeleteMediaPost) | **POST** /media/deleteMedia | 
-[**mediaGetStreamMediaGet**](MediaApi.md#mediaGetStreamMediaGet) | **GET** /media/getStreamMedia | 
-[**mediaSearchMediaGet**](MediaApi.md#mediaSearchMediaGet) | **GET** /media/searchMedia | 
-[**mediaUpdateMediaPost**](MediaApi.md#mediaUpdateMediaPost) | **POST** /media/updateMedia | 
-[**mediaUploadMediaPost**](MediaApi.md#mediaUploadMediaPost) | **POST** /media/uploadMedia | 
+[**mediaDeleteMediaPost**](MediaApi.md#mediadeletemediapost) | **POST** /media/deleteMedia | 
+[**mediaGetStreamMediaGet**](MediaApi.md#mediagetstreammediaget) | **GET** /media/getStreamMedia | 
+[**mediaSearchMediaGet**](MediaApi.md#mediasearchmediaget) | **GET** /media/searchMedia | 
+[**mediaUpdateMediaPost**](MediaApi.md#mediaupdatemediapost) | **POST** /media/updateMedia | 
+[**mediaUploadMediaPost**](MediaApi.md#mediauploadmediapost) | **POST** /media/uploadMedia | 
 
 # **mediaDeleteMediaPost**
 > \Smartcalls\Model\DeleteMediaResponseType mediaDeleteMediaPost($id)
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **mediaUpdateMediaPost**
-> \Smartcalls\Model\UpdateMediaResponseType mediaUpdateMediaPost($id, $title)
+> \Smartcalls\Model\UpdateMediaResponseType mediaUpdateMediaPost($title, $id)
 
 
 
@@ -206,11 +206,11 @@ $apiInstance = new Smartcalls\client\MediaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Media ID. ID can be retrieved via the **searchMedia** method.
 $title = "title_example"; // string | 
+$id = 56; // int | Media ID. ID can be retrieved via the **searchMedia** method.
 
 try {
-    $result = $apiInstance->mediaUpdateMediaPost($id, $title);
+    $result = $apiInstance->mediaUpdateMediaPost($title, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MediaApi->mediaUpdateMediaPost: ', $e->getMessage(), PHP_EOL;
@@ -222,8 +222,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **title** | **string**|  |
  **id** | **int**| Media ID. ID can be retrieved via the **searchMedia** method. |
- **title** | **string**|  | [optional]
 
 ### Return type
 
@@ -280,7 +280,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **string**|  | [optional]
+ **file** | **string****string**|  |
 
 ### Return type
 

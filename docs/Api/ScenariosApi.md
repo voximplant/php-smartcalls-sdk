@@ -4,10 +4,10 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**scenarioDeleteScenarioPost**](ScenariosApi.md#scenarioDeleteScenarioPost) | **POST** /scenario/deleteScenario | 
-[**scenarioGetScenarioVariablesPost**](ScenariosApi.md#scenarioGetScenarioVariablesPost) | **POST** /scenario/getScenarioVariables | 
-[**scenarioRunScenarioPost**](ScenariosApi.md#scenarioRunScenarioPost) | **POST** /scenario/runScenario | 
-[**scenarioSearchScenariosGet**](ScenariosApi.md#scenarioSearchScenariosGet) | **GET** /scenario/searchScenarios | 
+[**scenarioDeleteScenarioPost**](ScenariosApi.md#scenariodeletescenariopost) | **POST** /scenario/deleteScenario | 
+[**scenarioGetScenarioVariablesPost**](ScenariosApi.md#scenariogetscenariovariablespost) | **POST** /scenario/getScenarioVariables | 
+[**scenarioRunScenarioPost**](ScenariosApi.md#scenariorunscenariopost) | **POST** /scenario/runScenario | 
+[**scenarioSearchScenariosGet**](ScenariosApi.md#scenariosearchscenariosget) | **GET** /scenario/searchScenarios | 
 
 # **scenarioDeleteScenarioPost**
 > \Smartcalls\Model\DeleteScenarioResponseType scenarioDeleteScenarioPost($scenario_id)
@@ -169,11 +169,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scenario_id** | **int**|  | [optional]
- **phone** | **int**|  | [optional]
- **variables** | **string**|  | [optional]
- **phone_number_id** | **int**|  | [optional]
- **caller_id** | **int**|  | [optional]
+ **scenario_id** | **int**|  |
+ **phone** | **int**|  |
+ **variables** | **string**|  |
+ **phone_number_id** | **int**|  |
+ **caller_id** | **int**|  |
 
 ### Return type
 

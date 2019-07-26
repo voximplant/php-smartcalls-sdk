@@ -4,18 +4,18 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**attemptDownloadStatReportGet**](CampaignsApi.md#attemptDownloadStatReportGet) | **GET** /attempt/downloadStatReport | 
-[**attemptExportStatReportPost**](CampaignsApi.md#attemptExportStatReportPost) | **POST** /attempt/exportStatReport | 
-[**attemptGetStatReportStatusPost**](CampaignsApi.md#attemptGetStatReportStatusPost) | **POST** /attempt/getStatReportStatus | 
-[**attemptSearchAttemptsGet**](CampaignsApi.md#attemptSearchAttemptsGet) | **GET** /attempt/searchAttempts | 
-[**outboundAppendToCampaignPost**](CampaignsApi.md#outboundAppendToCampaignPost) | **POST** /outbound/appendToCampaign | 
-[**outboundDeleteCampaignPost**](CampaignsApi.md#outboundDeleteCampaignPost) | **POST** /outbound/deleteCampaign | 
-[**outboundGetCallListTemplatePost**](CampaignsApi.md#outboundGetCallListTemplatePost) | **POST** /outbound/getCallListTemplate | 
-[**outboundInitCampaignPost**](CampaignsApi.md#outboundInitCampaignPost) | **POST** /outbound/initCampaign | 
-[**outboundPauseCampaignPost**](CampaignsApi.md#outboundPauseCampaignPost) | **POST** /outbound/pauseCampaign | 
-[**outboundResumeCampaignPost**](CampaignsApi.md#outboundResumeCampaignPost) | **POST** /outbound/resumeCampaign | 
-[**outboundSearchCampaignsGet**](CampaignsApi.md#outboundSearchCampaignsGet) | **GET** /outbound/searchCampaigns | 
-[**outboundStatPost**](CampaignsApi.md#outboundStatPost) | **POST** /outbound/stat | 
+[**attemptDownloadStatReportGet**](CampaignsApi.md#attemptdownloadstatreportget) | **GET** /attempt/downloadStatReport | 
+[**attemptExportStatReportPost**](CampaignsApi.md#attemptexportstatreportpost) | **POST** /attempt/exportStatReport | 
+[**attemptGetStatReportStatusPost**](CampaignsApi.md#attemptgetstatreportstatuspost) | **POST** /attempt/getStatReportStatus | 
+[**attemptSearchAttemptsGet**](CampaignsApi.md#attemptsearchattemptsget) | **GET** /attempt/searchAttempts | 
+[**outboundAppendToCampaignPost**](CampaignsApi.md#outboundappendtocampaignpost) | **POST** /outbound/appendToCampaign | 
+[**outboundDeleteCampaignPost**](CampaignsApi.md#outbounddeletecampaignpost) | **POST** /outbound/deleteCampaign | 
+[**outboundGetCallListTemplatePost**](CampaignsApi.md#outboundgetcalllisttemplatepost) | **POST** /outbound/getCallListTemplate | 
+[**outboundInitCampaignPost**](CampaignsApi.md#outboundinitcampaignpost) | **POST** /outbound/initCampaign | 
+[**outboundPauseCampaignPost**](CampaignsApi.md#outboundpausecampaignpost) | **POST** /outbound/pauseCampaign | 
+[**outboundResumeCampaignPost**](CampaignsApi.md#outboundresumecampaignpost) | **POST** /outbound/resumeCampaign | 
+[**outboundSearchCampaignsGet**](CampaignsApi.md#outboundsearchcampaignsget) | **GET** /outbound/searchCampaigns | 
+[**outboundStatPost**](CampaignsApi.md#outboundstatpost) | **POST** /outbound/stat | 
 
 # **attemptDownloadStatReportGet**
 > \Smartcalls\Model\DownloadStatReportResponseType attemptDownloadStatReportGet($report_id)
@@ -485,18 +485,18 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **title** | **string**|  | [optional]
- **max_attempts** | **int**|  | [optional]
- **interval** | **int**|  | [optional]
- **max_lines** | **int**|  | [optional]
- **scenario_id** | **int**|  | [optional]
- **phone_number_id** | **int**|  | [optional]
- **caller_id** | **int**|  | [optional]
- **time_start** | **string**|  | [optional]
- **time_end** | **string**|  | [optional]
- **date_start** | **string**|  | [optional]
- **date_end** | **string**|  | [optional]
- **permanent** | **bool**|  | [optional]
+ **title** | **string**|  |
+ **max_attempts** | **int**|  |
+ **interval** | **int**|  |
+ **max_lines** | **int**|  |
+ **scenario_id** | **int**|  |
+ **phone_number_id** | **int**|  |
+ **caller_id** | **int**|  |
+ **time_start** | **string**|  |
+ **time_end** | **string**|  |
+ **date_start** | **string**|  |
+ **date_end** | **string**|  |
+ **permanent** | **bool**|  |
 
 ### Return type
 
@@ -742,7 +742,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_ids** | **string**|  | [optional]
+ **campaign_ids** | **string**|  |
 
 ### Return type
 

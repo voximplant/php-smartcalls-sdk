@@ -78,6 +78,107 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->accountGetAccountInfoGet: ', $e->getMessage(), PHP_EOL;
 }
+
+$apiInstance = new Smartcalls\client\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$domain = "domain_example"; // string | The 1st part of your account name.
+$username = "username_example"; // string | User name that was created during registration a new account.
+$password = "password_example"; // string | Password that was sent on user’s email.
+
+try {
+    $result = $apiInstance->authGetAccessTokenGet($domain, $username, $password);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->authGetAccessTokenGet: ', $e->getMessage(), PHP_EOL;
+}
+
+// Configure API key authorization: AccessTokenAuth
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure API key authorization: Domain
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
+
+$apiInstance = new Smartcalls\client\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->notificationGetNotificationsGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->notificationGetNotificationsGet: ', $e->getMessage(), PHP_EOL;
+}
+
+$apiInstance = new Smartcalls\client\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$token = "token_example"; // string | A unique token which can be retrieved via the **RecoveryByEmail** method. Maximum length is 255.
+$new_password = "new_password_example"; // string | New password to set. Minimum length is 6 characters, only latin characters are allowed.
+
+try {
+    $result = $apiInstance->passwordChangeByTokenPost($token, $new_password);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->passwordChangeByTokenPost: ', $e->getMessage(), PHP_EOL;
+}
+
+// Configure API key authorization: AccessTokenAuth
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure API key authorization: Domain
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
+
+$apiInstance = new Smartcalls\client\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$email = "email_example"; // string | 
+
+try {
+    $result = $apiInstance->passwordRecoveryByEmailPost($email);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->passwordRecoveryByEmailPost: ', $e->getMessage(), PHP_EOL;
+}
+
+// Configure API key authorization: AccessTokenAuth
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('access_token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('access_token', 'Bearer');
+// Configure API key authorization: Domain
+$config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKey('domain', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Smartcalls\Configuration::getDefaultConfiguration()->setApiKeyPrefix('domain', 'Bearer');
+
+$apiInstance = new Smartcalls\client\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->settingSearchSettingsGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->settingSearchSettingsGet: ', $e->getMessage(), PHP_EOL;
+}
 ?>
 ```
 
@@ -224,5 +325,6 @@ Class | Method | HTTP request | Description
 
 
 ## Author
+
 
 

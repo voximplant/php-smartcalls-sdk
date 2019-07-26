@@ -4,11 +4,11 @@ All URIs are relative to *https://smartcalls.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**calleridSearchCallerIDsGet**](NumbersApi.md#calleridSearchCallerIDsGet) | **GET** /callerid/searchCallerIDs | 
-[**phoneBindNumberToScenarioPost**](NumbersApi.md#phoneBindNumberToScenarioPost) | **POST** /phone/bindNumberToScenario | 
-[**phoneSearchNumbersGet**](NumbersApi.md#phoneSearchNumbersGet) | **GET** /phone/searchNumbers | 
-[**phoneUnbindNumberFromScenarioPost**](NumbersApi.md#phoneUnbindNumberFromScenarioPost) | **POST** /phone/unbindNumberFromScenario | 
-[**phoneUpdateNumberPost**](NumbersApi.md#phoneUpdateNumberPost) | **POST** /phone/updateNumber | 
+[**calleridSearchCallerIDsGet**](NumbersApi.md#calleridsearchcalleridsget) | **GET** /callerid/searchCallerIDs | 
+[**phoneBindNumberToScenarioPost**](NumbersApi.md#phonebindnumbertoscenariopost) | **POST** /phone/bindNumberToScenario | 
+[**phoneSearchNumbersGet**](NumbersApi.md#phonesearchnumbersget) | **GET** /phone/searchNumbers | 
+[**phoneUnbindNumberFromScenarioPost**](NumbersApi.md#phoneunbindnumberfromscenariopost) | **POST** /phone/unbindNumberFromScenario | 
+[**phoneUpdateNumberPost**](NumbersApi.md#phoneupdatenumberpost) | **POST** /phone/updateNumber | 
 
 # **calleridSearchCallerIDsGet**
 > \Smartcalls\Model\SearchCallerIDsResponseType calleridSearchCallerIDsGet($id, $sort)
@@ -287,7 +287,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **redirect_number** | **string**|  | [optional]
+ **redirect_number** | **string**|  |
  **id** | **int**| Phone number ID. ID can be retrieved via the **searchNumbers** method. | [optional]
 
 ### Return type
