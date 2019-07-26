@@ -229,7 +229,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AccessTokenType](docs/Model/AccessTokenType.md)
  - [AccountType](docs/Model/AccountType.md)
  - [AccountTypeDomain](docs/Model/AccountTypeDomain.md)
  - [AccountTypeDomainPartner](docs/Model/AccountTypeDomainPartner.md)

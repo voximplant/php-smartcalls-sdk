@@ -57,7 +57,7 @@ class GetAccessTokenResponseType implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'success' => 'bool',
-'result' => '\Smartcalls\Model\AccessTokenType'    ];
+'result' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -229,7 +229,7 @@ class GetAccessTokenResponseType implements ModelInterface, ArrayAccess
     /**
      * Gets result
      *
-     * @return \Smartcalls\Model\AccessTokenType
+     * @return string
      */
     public function getResult()
     {
@@ -239,7 +239,7 @@ class GetAccessTokenResponseType implements ModelInterface, ArrayAccess
     /**
      * Sets result
      *
-     * @param \Smartcalls\Model\AccessTokenType $result result
+     * @param string $result result
      *
      * @return $this
      */
