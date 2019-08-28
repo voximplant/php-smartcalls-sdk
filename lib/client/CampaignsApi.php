@@ -1249,8 +1249,8 @@ class CampaignsApi
     /**
      * Operation outboundAppendToCampaignPost
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $rows Format is JSON string. Example of JSON string to specify the data to append: &lt;br /&gt;&lt;pre&gt;[{\&quot;phone\&quot;: \&quot;+79101234567\&quot;, \&quot;UTC\&quot;: \&quot;Europe/Moscow\&quot;, \&quot;custom_field\&quot;: \&quot;custom_value\&quot;}, ...]&lt;/pre&gt; (optional)
+     * @param  int $campaign_id campaign_id (optional)
+     * @param  string $rows rows (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1265,8 +1265,8 @@ class CampaignsApi
     /**
      * Operation outboundAppendToCampaignPostWithHttpInfo
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $rows Format is JSON string. Example of JSON string to specify the data to append: &lt;br /&gt;&lt;pre&gt;[{\&quot;phone\&quot;: \&quot;+79101234567\&quot;, \&quot;UTC\&quot;: \&quot;Europe/Moscow\&quot;, \&quot;custom_field\&quot;: \&quot;custom_value\&quot;}, ...]&lt;/pre&gt; (optional)
+     * @param  int $campaign_id (optional)
+     * @param  string $rows (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1349,8 +1349,8 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $rows Format is JSON string. Example of JSON string to specify the data to append: &lt;br /&gt;&lt;pre&gt;[{\&quot;phone\&quot;: \&quot;+79101234567\&quot;, \&quot;UTC\&quot;: \&quot;Europe/Moscow\&quot;, \&quot;custom_field\&quot;: \&quot;custom_value\&quot;}, ...]&lt;/pre&gt; (optional)
+     * @param  int $campaign_id (optional)
+     * @param  string $rows (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1370,8 +1370,8 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $rows Format is JSON string. Example of JSON string to specify the data to append: &lt;br /&gt;&lt;pre&gt;[{\&quot;phone\&quot;: \&quot;+79101234567\&quot;, \&quot;UTC\&quot;: \&quot;Europe/Moscow\&quot;, \&quot;custom_field\&quot;: \&quot;custom_value\&quot;}, ...]&lt;/pre&gt; (optional)
+     * @param  int $campaign_id (optional)
+     * @param  string $rows (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1421,8 +1421,8 @@ class CampaignsApi
     /**
      * Create request for operation 'outboundAppendToCampaignPost'
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $rows Format is JSON string. Example of JSON string to specify the data to append: &lt;br /&gt;&lt;pre&gt;[{\&quot;phone\&quot;: \&quot;+79101234567\&quot;, \&quot;UTC\&quot;: \&quot;Europe/Moscow\&quot;, \&quot;custom_field\&quot;: \&quot;custom_value\&quot;}, ...]&lt;/pre&gt; (optional)
+     * @param  int $campaign_id (optional)
+     * @param  string $rows (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1437,16 +1437,16 @@ class CampaignsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+
+
+        // form params
         if ($campaign_id !== null) {
-            $queryParams['campaign_id'] = ObjectSerializer::toQueryValue($campaign_id);
+            $formParams['campaign_id'] = ObjectSerializer::toFormValue($campaign_id);
         }
-        // query params
+        // form params
         if ($rows !== null) {
-            $queryParams['rows'] = ObjectSerializer::toQueryValue($rows);
+            $formParams['rows'] = ObjectSerializer::toFormValue($rows);
         }
-
-
         // body params
         $_tempBody = null;
 
@@ -1457,7 +1457,7 @@ class CampaignsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['application/x-www-form-urlencoded']
             );
         }
 

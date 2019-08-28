@@ -286,8 +286,8 @@ $apiInstance = new Smartcalls\client\CampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | Campaign ID. ID can be retrieved via the **searchCampaigns** method.
-$rows = "rows_example"; // string | Format is JSON string. Example of JSON string to specify the data to append: <br /><pre>[{\"phone\": \"+79101234567\", \"UTC\": \"Europe/Moscow\", \"custom_field\": \"custom_value\"}, ...]</pre>
+$campaign_id = 56; // int | 
+$rows = "rows_example"; // string | 
 
 try {
     $result = $apiInstance->outboundAppendToCampaignPost($campaign_id, $rows);
@@ -302,8 +302,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**| Campaign ID. ID can be retrieved via the **searchCampaigns** method. | [optional]
- **rows** | **string**| Format is JSON string. Example of JSON string to specify the data to append: &lt;br /&gt;&lt;pre&gt;[{\&quot;phone\&quot;: \&quot;+79101234567\&quot;, \&quot;UTC\&quot;: \&quot;Europe/Moscow\&quot;, \&quot;custom_field\&quot;: \&quot;custom_value\&quot;}, ...]&lt;/pre&gt; | [optional]
+ **campaign_id** | **int**|  | [optional]
+ **rows** | **string**|  | [optional]
 
 ### Return type
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

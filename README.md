@@ -239,6 +239,7 @@ Class | Method | HTTP request | Description
  - [AttemptType](docs/Model/AttemptType.md)
  - [BindNumberResponseType](docs/Model/BindNumberResponseType.md)
  - [Body](docs/Model/Body.md)
+ - [Body1](docs/Model/Body1.md)
  - [CallerIDType](docs/Model/CallerIDType.md)
  - [CallsType](docs/Model/CallsType.md)
  - [CampaignStatResponseType](docs/Model/CampaignStatResponseType.md)
