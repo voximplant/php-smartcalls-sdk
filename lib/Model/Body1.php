@@ -239,7 +239,7 @@ class Body1 implements ModelInterface, ArrayAccess
     /**
      * Sets rows
      *
-     * @param string $rows Format is JSON string. Example of JSON string to specify the data to append: <br /><pre>[{\"phone\": \"+79101234567\", \"UTC\": \"Europe/Moscow\", \"custom_field\": \"custom_value\"}, ...]</pre>
+     * @param string $rows Format is JSON string. Example of JSON string to specify the data to append.
      *
      * @return $this
      */
