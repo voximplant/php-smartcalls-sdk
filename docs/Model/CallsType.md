@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **call_result_code** | **int** |  | [optional] 
 **duration** | **int** |  | [optional] 
 **record_url** | **string** |  | [optional] 
-**call_cost** | [**BigDecimal**](BigDecimal.md) |  | [optional] 
+**call_cost** | **float** |  | [optional] 
 **call_data** | **string** |  | [optional] 
 **call_resources** | **string** |  | [optional] 
 **call_calls** | **string** |  | [optional] 

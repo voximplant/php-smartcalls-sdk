@@ -67,7 +67,7 @@ class CallsType implements ModelInterface, ArrayAccess
 'call_result_code' => 'int',
 'duration' => 'int',
 'record_url' => 'string',
-'call_cost' => 'BigDecimal',
+'call_cost' => 'float',
 'call_data' => 'string',
 'call_resources' => 'string',
 'call_calls' => 'string',
@@ -559,7 +559,7 @@ class CallsType implements ModelInterface, ArrayAccess
     /**
      * Gets call_cost
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getCallCost()
     {
@@ -569,7 +569,7 @@ class CallsType implements ModelInterface, ArrayAccess
     /**
      * Sets call_cost
      *
-     * @param BigDecimal $call_cost call_cost
+     * @param float $call_cost call_cost
      *
      * @return $this
      */
