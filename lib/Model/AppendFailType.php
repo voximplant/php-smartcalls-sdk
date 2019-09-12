@@ -1,6 +1,6 @@
 <?php
 /**
- * AppendToCampaignResponseTypeResult
+ * AppendFailType
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Smartcalls\ObjectSerializer;
 
 /**
- * AppendToCampaignResponseTypeResult Class Doc Comment
+ * AppendFailType Class Doc Comment
  *
  * @category Class
  * @package  Smartcalls
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
+class AppendFailType implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AppendToCampaignResponseType_result';
+    protected static $swaggerModelName = 'AppendFailType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,12 +56,10 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'result' => 'bool',
-'list_id' => 'int',
-'count' => 'int',
-'success_count' => 'int',
-'errors_count' => 'int',
-'fail_list' => '\Smartcalls\Model\AppendFailType[]'    ];
+        'phone' => 'string',
+'utc' => 'string',
+'custom_field' => 'string',
+'errors' => 'string[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -69,12 +67,10 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'result' => null,
-'list_id' => null,
-'count' => null,
-'success_count' => null,
-'errors_count' => null,
-'fail_list' => null    ];
+        'phone' => null,
+'utc' => null,
+'custom_field' => null,
+'errors' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -103,12 +99,10 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'result' => 'result',
-'list_id' => 'list_id',
-'count' => 'count',
-'success_count' => 'success_count',
-'errors_count' => 'errors_count',
-'fail_list' => 'fail_list'    ];
+        'phone' => 'phone',
+'utc' => 'UTC',
+'custom_field' => 'custom_field',
+'errors' => 'errors'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -116,12 +110,10 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'result' => 'setResult',
-'list_id' => 'setListId',
-'count' => 'setCount',
-'success_count' => 'setSuccessCount',
-'errors_count' => 'setErrorsCount',
-'fail_list' => 'setFailList'    ];
+        'phone' => 'setPhone',
+'utc' => 'setUtc',
+'custom_field' => 'setCustomField',
+'errors' => 'setErrors'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -129,12 +121,10 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'result' => 'getResult',
-'list_id' => 'getListId',
-'count' => 'getCount',
-'success_count' => 'getSuccessCount',
-'errors_count' => 'getErrorsCount',
-'fail_list' => 'getFailList'    ];
+        'phone' => 'getPhone',
+'utc' => 'getUtc',
+'custom_field' => 'getCustomField',
+'errors' => 'getErrors'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -194,12 +184,10 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['result'] = isset($data['result']) ? $data['result'] : null;
-        $this->container['list_id'] = isset($data['list_id']) ? $data['list_id'] : null;
-        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
-        $this->container['success_count'] = isset($data['success_count']) ? $data['success_count'] : null;
-        $this->container['errors_count'] = isset($data['errors_count']) ? $data['errors_count'] : null;
-        $this->container['fail_list'] = isset($data['fail_list']) ? $data['fail_list'] : null;
+        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
+        $this->container['utc'] = isset($data['utc']) ? $data['utc'] : null;
+        $this->container['custom_field'] = isset($data['custom_field']) ? $data['custom_field'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
     }
 
     /**
@@ -227,145 +215,97 @@ class AppendToCampaignResponseTypeResult implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets result
+     * Gets phone
      *
-     * @return bool
+     * @return string
      */
-    public function getResult()
+    public function getPhone()
     {
-        return $this->container['result'];
+        return $this->container['phone'];
     }
 
     /**
-     * Sets result
+     * Sets phone
      *
-     * @param bool $result result
+     * @param string $phone phone
      *
      * @return $this
      */
-    public function setResult($result)
+    public function setPhone($phone)
     {
-        $this->container['result'] = $result;
+        $this->container['phone'] = $phone;
 
         return $this;
     }
 
     /**
-     * Gets list_id
+     * Gets utc
      *
-     * @return int
+     * @return string
      */
-    public function getListId()
+    public function getUtc()
     {
-        return $this->container['list_id'];
+        return $this->container['utc'];
     }
 
     /**
-     * Sets list_id
+     * Sets utc
      *
-     * @param int $list_id list_id
+     * @param string $utc utc
      *
      * @return $this
      */
-    public function setListId($list_id)
+    public function setUtc($utc)
     {
-        $this->container['list_id'] = $list_id;
+        $this->container['utc'] = $utc;
 
         return $this;
     }
 
     /**
-     * Gets count
+     * Gets custom_field
      *
-     * @return int
+     * @return string
      */
-    public function getCount()
+    public function getCustomField()
     {
-        return $this->container['count'];
+        return $this->container['custom_field'];
     }
 
     /**
-     * Sets count
+     * Sets custom_field
      *
-     * @param int $count count
+     * @param string $custom_field custom_field
      *
      * @return $this
      */
-    public function setCount($count)
+    public function setCustomField($custom_field)
     {
-        $this->container['count'] = $count;
+        $this->container['custom_field'] = $custom_field;
 
         return $this;
     }
 
     /**
-     * Gets success_count
+     * Gets errors
      *
-     * @return int
+     * @return string[]
      */
-    public function getSuccessCount()
+    public function getErrors()
     {
-        return $this->container['success_count'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets success_count
+     * Sets errors
      *
-     * @param int $success_count success_count
+     * @param string[] $errors errors
      *
      * @return $this
      */
-    public function setSuccessCount($success_count)
+    public function setErrors($errors)
     {
-        $this->container['success_count'] = $success_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors_count
-     *
-     * @return int
-     */
-    public function getErrorsCount()
-    {
-        return $this->container['errors_count'];
-    }
-
-    /**
-     * Sets errors_count
-     *
-     * @param int $errors_count errors_count
-     *
-     * @return $this
-     */
-    public function setErrorsCount($errors_count)
-    {
-        $this->container['errors_count'] = $errors_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets fail_list
-     *
-     * @return \Smartcalls\Model\AppendFailType[]
-     */
-    public function getFailList()
-    {
-        return $this->container['fail_list'];
-    }
-
-    /**
-     * Sets fail_list
-     *
-     * @param \Smartcalls\Model\AppendFailType[] $fail_list fail_list
-     *
-     * @return $this
-     */
-    public function setFailList($fail_list)
-    {
-        $this->container['fail_list'] = $fail_list;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

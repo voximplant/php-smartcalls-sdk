@@ -234,6 +234,7 @@ Class | Method | HTTP request | Description
  - [AccountTypeDomainPartner](docs/Model/AccountTypeDomainPartner.md)
  - [AccountTypeProfile](docs/Model/AccountTypeProfile.md)
  - [AccountTypeUser](docs/Model/AccountTypeUser.md)
+ - [AppendFailType](docs/Model/AppendFailType.md)
  - [AppendToCampaignResponseType](docs/Model/AppendToCampaignResponseType.md)
  - [AppendToCampaignResponseTypeResult](docs/Model/AppendToCampaignResponseTypeResult.md)
  - [AttemptType](docs/Model/AttemptType.md)
