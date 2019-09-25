@@ -707,7 +707,7 @@ Name | Type | Description  | Notes
 
 
 
-Get the statistics of the specified campaign(s).
+Get the statistics of the specified campaign(s). Campaign_ids is json array with the campaign ID(s).  ID(s) can be retrieved via the **searchCampaigns** method (**example**: <code>[1,2,3]</code>).
 
 ### Example
 ```php
