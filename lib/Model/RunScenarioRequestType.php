@@ -281,7 +281,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets variables
      *
-     * @param string $variables Format is JSON string. Example of JSON string to specify the data to  {\"UTC\": \"Europe/Moscow\", ...}
+     * @param string $variables Format is JSON string. Example of JSON string to specify the data to  {\"custom_field_1\": \"custom_value_1\"}, {\"custom_field_2\": \"custom_value_2\", ...}
      *
      * @return $this
      */

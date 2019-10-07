@@ -62,7 +62,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'int',
 'scenario_id' => 'int',
 'phone_number_id' => 'int',
-'caller_id' => 'int',
+'callerid_id' => 'int',
 'time_start' => 'string',
 'time_end' => 'string',
 'date_start' => 'string',
@@ -81,7 +81,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => null,
 'scenario_id' => null,
 'phone_number_id' => null,
-'caller_id' => null,
+'callerid_id' => null,
 'time_start' => null,
 'time_end' => null,
 'date_start' => null,
@@ -121,7 +121,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'max_lines',
 'scenario_id' => 'scenario_id',
 'phone_number_id' => 'phone_number_id',
-'caller_id' => 'caller_id',
+'callerid_id' => 'callerid_id',
 'time_start' => 'time_start',
 'time_end' => 'time_end',
 'date_start' => 'date_start',
@@ -140,7 +140,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'setMaxLines',
 'scenario_id' => 'setScenarioId',
 'phone_number_id' => 'setPhoneNumberId',
-'caller_id' => 'setCallerId',
+'callerid_id' => 'setCalleridId',
 'time_start' => 'setTimeStart',
 'time_end' => 'setTimeEnd',
 'date_start' => 'setDateStart',
@@ -159,7 +159,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'getMaxLines',
 'scenario_id' => 'getScenarioId',
 'phone_number_id' => 'getPhoneNumberId',
-'caller_id' => 'getCallerId',
+'callerid_id' => 'getCalleridId',
 'time_start' => 'getTimeStart',
 'time_end' => 'getTimeEnd',
 'date_start' => 'getDateStart',
@@ -230,7 +230,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
         $this->container['max_lines'] = isset($data['max_lines']) ? $data['max_lines'] : null;
         $this->container['scenario_id'] = isset($data['scenario_id']) ? $data['scenario_id'] : null;
         $this->container['phone_number_id'] = isset($data['phone_number_id']) ? $data['phone_number_id'] : null;
-        $this->container['caller_id'] = isset($data['caller_id']) ? $data['caller_id'] : null;
+        $this->container['callerid_id'] = isset($data['callerid_id']) ? $data['callerid_id'] : null;
         $this->container['time_start'] = isset($data['time_start']) ? $data['time_start'] : null;
         $this->container['time_end'] = isset($data['time_end']) ? $data['time_end'] : null;
         $this->container['date_start'] = isset($data['date_start']) ? $data['date_start'] : null;
@@ -407,25 +407,25 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets caller_id
+     * Gets callerid_id
      *
      * @return int
      */
-    public function getCallerId()
+    public function getCalleridId()
     {
-        return $this->container['caller_id'];
+        return $this->container['callerid_id'];
     }
 
     /**
-     * Sets caller_id
+     * Sets callerid_id
      *
-     * @param int $caller_id Caller ID. Can be retrieved via the **searchCallerIDs** method.
+     * @param int $callerid_id Caller ID. Can be retrieved via the **searchCallerIDs** method.
      *
      * @return $this
      */
-    public function setCallerId($caller_id)
+    public function setCalleridId($callerid_id)
     {
-        $this->container['caller_id'] = $caller_id;
+        $this->container['callerid_id'] = $callerid_id;
 
         return $this;
     }

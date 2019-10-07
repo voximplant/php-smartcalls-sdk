@@ -2074,7 +2074,7 @@ class CampaignsApi
      * @param  int $max_lines max_lines (required)
      * @param  int $scenario_id scenario_id (required)
      * @param  int $phone_number_id phone_number_id (required)
-     * @param  int $caller_id caller_id (required)
+     * @param  int $callerid_id callerid_id (required)
      * @param  string $time_start time_start (required)
      * @param  string $time_end time_end (required)
      * @param  string $date_start date_start (required)
@@ -2085,9 +2085,9 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\InitCampaignResponseType
      */
-    public function outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
     {
-        list($response) = $this->outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent);
+        list($response) = $this->outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent);
         return $response;
     }
 
@@ -2100,7 +2100,7 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  int $callerid_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
@@ -2111,10 +2111,10 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\InitCampaignResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
     {
         $returnType = '\Smartcalls\Model\InitCampaignResponseType';
-        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent);
+        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2194,7 +2194,7 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  int $callerid_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
@@ -2204,9 +2204,9 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outboundInitCampaignPostAsync($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPostAsync($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
     {
-        return $this->outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+        return $this->outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2225,7 +2225,7 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  int $callerid_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
@@ -2235,10 +2235,10 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
     {
         $returnType = '\Smartcalls\Model\InitCampaignResponseType';
-        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent);
+        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2286,7 +2286,7 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  int $callerid_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
@@ -2296,7 +2296,7 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    protected function outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
     {
         // verify the required parameter 'title' is set
         if ($title === null || (is_array($title) && count($title) === 0)) {
@@ -2334,10 +2334,10 @@ class CampaignsApi
                 'Missing the required parameter $phone_number_id when calling outboundInitCampaignPost'
             );
         }
-        // verify the required parameter 'caller_id' is set
-        if ($caller_id === null || (is_array($caller_id) && count($caller_id) === 0)) {
+        // verify the required parameter 'callerid_id' is set
+        if ($callerid_id === null || (is_array($callerid_id) && count($callerid_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $caller_id when calling outboundInitCampaignPost'
+                'Missing the required parameter $callerid_id when calling outboundInitCampaignPost'
             );
         }
         // verify the required parameter 'time_start' is set
@@ -2405,8 +2405,8 @@ class CampaignsApi
             $formParams['phone_number_id'] = ObjectSerializer::toFormValue($phone_number_id);
         }
         // form params
-        if ($caller_id !== null) {
-            $formParams['caller_id'] = ObjectSerializer::toFormValue($caller_id);
+        if ($callerid_id !== null) {
+            $formParams['callerid_id'] = ObjectSerializer::toFormValue($callerid_id);
         }
         // form params
         if ($time_start !== null) {

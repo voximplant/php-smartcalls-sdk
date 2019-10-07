@@ -435,7 +435,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **outboundInitCampaignPost**
-> \Smartcalls\Model\InitCampaignResponseType outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+> \Smartcalls\Model\InitCampaignResponseType outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
 
 
 
@@ -465,7 +465,7 @@ $interval = 56; // int |
 $max_lines = 56; // int | 
 $scenario_id = 56; // int | 
 $phone_number_id = 56; // int | 
-$caller_id = 56; // int | 
+$callerid_id = 56; // int | 
 $time_start = "time_start_example"; // string | 
 $time_end = "time_end_example"; // string | 
 $date_start = "date_start_example"; // string | 
@@ -473,7 +473,7 @@ $date_end = "date_end_example"; // string |
 $permanent = true; // bool | 
 
 try {
-    $result = $apiInstance->outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent);
+    $result = $apiInstance->outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->outboundInitCampaignPost: ', $e->getMessage(), PHP_EOL;
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
  **max_lines** | **int**|  |
  **scenario_id** | **int**|  |
  **phone_number_id** | **int**|  |
- **caller_id** | **int**|  |
+ **callerid_id** | **int**|  |
  **time_start** | **string**|  |
  **time_end** | **string**|  |
  **date_start** | **string**|  |

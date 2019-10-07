@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **max_lines** | **int** | Maximum simultaneously performing calls. | [optional] 
 **scenario_id** | **int** | Scenario ID. ID can be retrieved via the **searchScenarios** method. | [optional] 
 **phone_number_id** | **int** | Phone number ID. Can be retrieved via the **searchNumbers** method. | [optional] 
-**caller_id** | **int** | Caller ID. Can be retrieved via the **searchCallerIDs** method. | [optional] 
+**callerid_id** | **int** | Caller ID. Can be retrieved via the **searchCallerIDs** method. | [optional] 
 **time_start** | **string** | Time when API will start calling customers. Specify it along with the date_start parameter. | [optional] 
 **time_end** | **string** | Time when calling will end.Specify it along with the date_end parameter. | [optional] 
 **date_start** | **string** | Date when API will start calling customers. Specify it along with the time_start parameter. | [optional] 
