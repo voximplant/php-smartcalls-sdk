@@ -10,9 +10,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -84,272 +84,6 @@ class ScenariosApi
     public function getConfig()
     {
         return $this->config;
-    }
-
-    /**
-     * Operation scenarioDeleteScenarioPost
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\DeleteScenarioResponseType
-     */
-    public function scenarioDeleteScenarioPost($scenario_id = null)
-    {
-        list($response) = $this->scenarioDeleteScenarioPostWithHttpInfo($scenario_id);
-        return $response;
-    }
-
-    /**
-     * Operation scenarioDeleteScenarioPostWithHttpInfo
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\DeleteScenarioResponseType, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function scenarioDeleteScenarioPostWithHttpInfo($scenario_id = null)
-    {
-        $returnType = '\Smartcalls\Model\DeleteScenarioResponseType';
-        $request = $this->scenarioDeleteScenarioPostRequest($scenario_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\DeleteScenarioResponseType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 0:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\ErrorType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation scenarioDeleteScenarioPostAsync
-     *
-     * 
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function scenarioDeleteScenarioPostAsync($scenario_id = null)
-    {
-        return $this->scenarioDeleteScenarioPostAsyncWithHttpInfo($scenario_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation scenarioDeleteScenarioPostAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function scenarioDeleteScenarioPostAsyncWithHttpInfo($scenario_id = null)
-    {
-        $returnType = '\Smartcalls\Model\DeleteScenarioResponseType';
-        $request = $this->scenarioDeleteScenarioPostRequest($scenario_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'scenarioDeleteScenarioPost'
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function scenarioDeleteScenarioPostRequest($scenario_id = null)
-    {
-
-        $resourcePath = '/scenario/deleteScenario';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($scenario_id !== null) {
-            $queryParams['scenario_id'] = ObjectSerializer::toQueryValue($scenario_id);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
     }
 
     /**
@@ -596,16 +330,6 @@ class ScenariosApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -928,16 +652,6 @@ class ScenariosApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -962,41 +676,47 @@ class ScenariosApi
     /**
      * Operation scenarioSearchScenariosGet
      *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $scenario_type Scenario type to search. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
-     * @param  string $title Scenario title to search. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $folder_id ID of the scenario&#x27;s folder (optional)
+     * @param  int $scenario_type Scenario type to search for. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
+     * @param  string $title Scenario title to search for (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_phones Set &#x27;1&#x27; to include phone numbers in the search results (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\SearchScenariosResponseType
      */
-    public function scenarioSearchScenariosGet($scenario_id = null, $scenario_type = null, $title = null, $sort = null, $page = null, $per_page = null)
+    public function scenarioSearchScenariosGet($id = null, $folder_id = null, $scenario_type = null, $title = null, $with_campaigns = null, $with_phones = null, $sort = null, $page = null, $per_page = null)
     {
-        list($response) = $this->scenarioSearchScenariosGetWithHttpInfo($scenario_id, $scenario_type, $title, $sort, $page, $per_page);
+        list($response) = $this->scenarioSearchScenariosGetWithHttpInfo($id, $folder_id, $scenario_type, $title, $with_campaigns, $with_phones, $sort, $page, $per_page);
         return $response;
     }
 
     /**
      * Operation scenarioSearchScenariosGetWithHttpInfo
      *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $scenario_type Scenario type to search. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
-     * @param  string $title Scenario title to search. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $folder_id ID of the scenario&#x27;s folder (optional)
+     * @param  int $scenario_type Scenario type to search for. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
+     * @param  string $title Scenario title to search for (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_phones Set &#x27;1&#x27; to include phone numbers in the search results (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\SearchScenariosResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scenarioSearchScenariosGetWithHttpInfo($scenario_id = null, $scenario_type = null, $title = null, $sort = null, $page = null, $per_page = null)
+    public function scenarioSearchScenariosGetWithHttpInfo($id = null, $folder_id = null, $scenario_type = null, $title = null, $with_campaigns = null, $with_phones = null, $sort = null, $page = null, $per_page = null)
     {
         $returnType = '\Smartcalls\Model\SearchScenariosResponseType';
-        $request = $this->scenarioSearchScenariosGetRequest($scenario_id, $scenario_type, $title, $sort, $page, $per_page);
+        $request = $this->scenarioSearchScenariosGetRequest($id, $folder_id, $scenario_type, $title, $with_campaigns, $with_phones, $sort, $page, $per_page);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1070,19 +790,22 @@ class ScenariosApi
      *
      * 
      *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $scenario_type Scenario type to search. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
-     * @param  string $title Scenario title to search. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $folder_id ID of the scenario&#x27;s folder (optional)
+     * @param  int $scenario_type Scenario type to search for. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
+     * @param  string $title Scenario title to search for (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_phones Set &#x27;1&#x27; to include phone numbers in the search results (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scenarioSearchScenariosGetAsync($scenario_id = null, $scenario_type = null, $title = null, $sort = null, $page = null, $per_page = null)
+    public function scenarioSearchScenariosGetAsync($id = null, $folder_id = null, $scenario_type = null, $title = null, $with_campaigns = null, $with_phones = null, $sort = null, $page = null, $per_page = null)
     {
-        return $this->scenarioSearchScenariosGetAsyncWithHttpInfo($scenario_id, $scenario_type, $title, $sort, $page, $per_page)
+        return $this->scenarioSearchScenariosGetAsyncWithHttpInfo($id, $folder_id, $scenario_type, $title, $with_campaigns, $with_phones, $sort, $page, $per_page)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1095,20 +818,23 @@ class ScenariosApi
      *
      * 
      *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $scenario_type Scenario type to search. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
-     * @param  string $title Scenario title to search. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $folder_id ID of the scenario&#x27;s folder (optional)
+     * @param  int $scenario_type Scenario type to search for. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
+     * @param  string $title Scenario title to search for (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_phones Set &#x27;1&#x27; to include phone numbers in the search results (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scenarioSearchScenariosGetAsyncWithHttpInfo($scenario_id = null, $scenario_type = null, $title = null, $sort = null, $page = null, $per_page = null)
+    public function scenarioSearchScenariosGetAsyncWithHttpInfo($id = null, $folder_id = null, $scenario_type = null, $title = null, $with_campaigns = null, $with_phones = null, $sort = null, $page = null, $per_page = null)
     {
         $returnType = '\Smartcalls\Model\SearchScenariosResponseType';
-        $request = $this->scenarioSearchScenariosGetRequest($scenario_id, $scenario_type, $title, $sort, $page, $per_page);
+        $request = $this->scenarioSearchScenariosGetRequest($id, $folder_id, $scenario_type, $title, $with_campaigns, $with_phones, $sort, $page, $per_page);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1150,17 +876,20 @@ class ScenariosApi
     /**
      * Create request for operation 'scenarioSearchScenariosGet'
      *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $scenario_type Scenario type to search. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
-     * @param  string $title Scenario title to search. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $folder_id ID of the scenario&#x27;s folder (optional)
+     * @param  int $scenario_type Scenario type to search for. (&lt;b&gt;example:&lt;/b&gt; scenario_type &#x3D; 1 — displays only outgoing call scenarios, scenario_type &#x3D; 2 — shows only incoming call scenarios) (optional)
+     * @param  string $title Scenario title to search for (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_phones Set &#x27;1&#x27; to include phone numbers in the search results (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scenarioSearchScenariosGetRequest($scenario_id = null, $scenario_type = null, $title = null, $sort = null, $page = null, $per_page = null)
+    protected function scenarioSearchScenariosGetRequest($id = null, $folder_id = null, $scenario_type = null, $title = null, $with_campaigns = null, $with_phones = null, $sort = null, $page = null, $per_page = null)
     {
 
         $resourcePath = '/scenario/searchScenarios';
@@ -1171,8 +900,12 @@ class ScenariosApi
         $multipart = false;
 
         // query params
-        if ($scenario_id !== null) {
-            $queryParams['scenario_id'] = ObjectSerializer::toQueryValue($scenario_id);
+        if ($id !== null) {
+            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
+        // query params
+        if ($folder_id !== null) {
+            $queryParams['folder_id'] = ObjectSerializer::toQueryValue($folder_id);
         }
         // query params
         if ($scenario_type !== null) {
@@ -1181,6 +914,14 @@ class ScenariosApi
         // query params
         if ($title !== null) {
             $queryParams['title'] = ObjectSerializer::toQueryValue($title);
+        }
+        // query params
+        if ($with_campaigns !== null) {
+            $queryParams['with_campaigns'] = ObjectSerializer::toQueryValue($with_campaigns);
+        }
+        // query params
+        if ($with_phones !== null) {
+            $queryParams['with_phones'] = ObjectSerializer::toQueryValue($with_phones);
         }
         // query params
         if ($sort !== null) {
@@ -1239,16 +980,6 @@ class ScenariosApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

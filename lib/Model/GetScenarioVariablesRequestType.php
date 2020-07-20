@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -48,7 +48,7 @@ class GetScenarioVariablesRequestType implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'getScenarioVariablesRequestType';
+    protected static $swaggerModelName = 'GetScenarioVariablesRequestType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -215,7 +215,7 @@ class GetScenarioVariablesRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets scenario_id
      *
-     * @param int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method.
+     * @param int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method.
      *
      * @return $this
      */
@@ -239,7 +239,7 @@ class GetScenarioVariablesRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets required_only
      *
-     * @param bool $required_only Getting only the required parameters to run the scenario.
+     * @param bool $required_only Set 'true' to get only the required parameters to run the scenario.
      *
      * @return $this
      */

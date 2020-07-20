@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
-**callerid_number** | **int** |  | [optional] 
+**callerid_number** | **string** |  | [optional] 
 **active** | **bool** |  | [optional] 
 **verified_until** | **string** |  | [optional] 
 **domain_id** | **int** |  | [optional] 

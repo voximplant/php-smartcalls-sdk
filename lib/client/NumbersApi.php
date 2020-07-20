@@ -10,9 +10,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -89,33 +89,37 @@ class NumbersApi
     /**
      * Operation calleridSearchCallerIDsGet
      *
-     * @param  int $id Caller ID. ID can be retrieved via the **searchCallersIDs** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Caller ID. The ID can be retrieved via the **searchCallersIDs** method (optional)
+     * @param  string $caller_number Number of the caller (optional)
+     * @param  int $active Set &#x27;1&#x27; if the caller is active (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\SearchCallerIDsResponseType
      */
-    public function calleridSearchCallerIDsGet($id = null, $sort = null)
+    public function calleridSearchCallerIDsGet($id = null, $caller_number = null, $active = null, $sort = null)
     {
-        list($response) = $this->calleridSearchCallerIDsGetWithHttpInfo($id, $sort);
+        list($response) = $this->calleridSearchCallerIDsGetWithHttpInfo($id, $caller_number, $active, $sort);
         return $response;
     }
 
     /**
      * Operation calleridSearchCallerIDsGetWithHttpInfo
      *
-     * @param  int $id Caller ID. ID can be retrieved via the **searchCallersIDs** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Caller ID. The ID can be retrieved via the **searchCallersIDs** method (optional)
+     * @param  string $caller_number Number of the caller (optional)
+     * @param  int $active Set &#x27;1&#x27; if the caller is active (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\SearchCallerIDsResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function calleridSearchCallerIDsGetWithHttpInfo($id = null, $sort = null)
+    public function calleridSearchCallerIDsGetWithHttpInfo($id = null, $caller_number = null, $active = null, $sort = null)
     {
         $returnType = '\Smartcalls\Model\SearchCallerIDsResponseType';
-        $request = $this->calleridSearchCallerIDsGetRequest($id, $sort);
+        $request = $this->calleridSearchCallerIDsGetRequest($id, $caller_number, $active, $sort);
 
         try {
             $options = $this->createHttpClientOption();
@@ -189,15 +193,17 @@ class NumbersApi
      *
      * 
      *
-     * @param  int $id Caller ID. ID can be retrieved via the **searchCallersIDs** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Caller ID. The ID can be retrieved via the **searchCallersIDs** method (optional)
+     * @param  string $caller_number Number of the caller (optional)
+     * @param  int $active Set &#x27;1&#x27; if the caller is active (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function calleridSearchCallerIDsGetAsync($id = null, $sort = null)
+    public function calleridSearchCallerIDsGetAsync($id = null, $caller_number = null, $active = null, $sort = null)
     {
-        return $this->calleridSearchCallerIDsGetAsyncWithHttpInfo($id, $sort)
+        return $this->calleridSearchCallerIDsGetAsyncWithHttpInfo($id, $caller_number, $active, $sort)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -210,16 +216,18 @@ class NumbersApi
      *
      * 
      *
-     * @param  int $id Caller ID. ID can be retrieved via the **searchCallersIDs** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Caller ID. The ID can be retrieved via the **searchCallersIDs** method (optional)
+     * @param  string $caller_number Number of the caller (optional)
+     * @param  int $active Set &#x27;1&#x27; if the caller is active (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function calleridSearchCallerIDsGetAsyncWithHttpInfo($id = null, $sort = null)
+    public function calleridSearchCallerIDsGetAsyncWithHttpInfo($id = null, $caller_number = null, $active = null, $sort = null)
     {
         $returnType = '\Smartcalls\Model\SearchCallerIDsResponseType';
-        $request = $this->calleridSearchCallerIDsGetRequest($id, $sort);
+        $request = $this->calleridSearchCallerIDsGetRequest($id, $caller_number, $active, $sort);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -261,13 +269,15 @@ class NumbersApi
     /**
      * Create request for operation 'calleridSearchCallerIDsGet'
      *
-     * @param  int $id Caller ID. ID can be retrieved via the **searchCallersIDs** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Caller ID. The ID can be retrieved via the **searchCallersIDs** method (optional)
+     * @param  string $caller_number Number of the caller (optional)
+     * @param  int $active Set &#x27;1&#x27; if the caller is active (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function calleridSearchCallerIDsGetRequest($id = null, $sort = null)
+    protected function calleridSearchCallerIDsGetRequest($id = null, $caller_number = null, $active = null, $sort = null)
     {
 
         $resourcePath = '/callerid/searchCallerIDs';
@@ -280,6 +290,14 @@ class NumbersApi
         // query params
         if ($id !== null) {
             $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
+        // query params
+        if ($caller_number !== null) {
+            $queryParams['caller_number'] = ObjectSerializer::toQueryValue($caller_number);
+        }
+        // query params
+        if ($active !== null) {
+            $queryParams['active'] = ObjectSerializer::toQueryValue($active);
         }
         // query params
         if ($sort !== null) {
@@ -330,16 +348,6 @@ class NumbersApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -362,310 +370,45 @@ class NumbersApi
     }
 
     /**
-     * Operation phoneBindNumberToScenarioPost
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\BindNumberResponseType
-     */
-    public function phoneBindNumberToScenarioPost($scenario_id = null, $phone_number_id = null)
-    {
-        list($response) = $this->phoneBindNumberToScenarioPostWithHttpInfo($scenario_id, $phone_number_id);
-        return $response;
-    }
-
-    /**
-     * Operation phoneBindNumberToScenarioPostWithHttpInfo
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\BindNumberResponseType, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function phoneBindNumberToScenarioPostWithHttpInfo($scenario_id = null, $phone_number_id = null)
-    {
-        $returnType = '\Smartcalls\Model\BindNumberResponseType';
-        $request = $this->phoneBindNumberToScenarioPostRequest($scenario_id, $phone_number_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\BindNumberResponseType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 0:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\ErrorType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation phoneBindNumberToScenarioPostAsync
-     *
-     * 
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function phoneBindNumberToScenarioPostAsync($scenario_id = null, $phone_number_id = null)
-    {
-        return $this->phoneBindNumberToScenarioPostAsyncWithHttpInfo($scenario_id, $phone_number_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation phoneBindNumberToScenarioPostAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function phoneBindNumberToScenarioPostAsyncWithHttpInfo($scenario_id = null, $phone_number_id = null)
-    {
-        $returnType = '\Smartcalls\Model\BindNumberResponseType';
-        $request = $this->phoneBindNumberToScenarioPostRequest($scenario_id, $phone_number_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'phoneBindNumberToScenarioPost'
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function phoneBindNumberToScenarioPostRequest($scenario_id = null, $phone_number_id = null)
-    {
-
-        $resourcePath = '/phone/bindNumberToScenario';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($scenario_id !== null) {
-            $queryParams['scenario_id'] = ObjectSerializer::toQueryValue($scenario_id);
-        }
-        // query params
-        if ($phone_number_id !== null) {
-            $queryParams['phone_number_id'] = ObjectSerializer::toQueryValue($phone_number_id);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation phoneSearchNumbersGet
      *
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Phone number ID. The ID can be retrieved via the **searchNumbers** method (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_scenarios Set &#x27;1&#x27; to include scenarios in the search results (optional)
+     * @param  int $can_be_used Set &#x27;1&#x27; if the phone number can be used (optional)
+     * @param  string $phone_number Phone number to search for. (optional)
+     * @param  string $phone_country_code Phone country code (2 symbols) (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\SearchNumbersResponseType
      */
-    public function phoneSearchNumbersGet($id = null, $sort = null)
+    public function phoneSearchNumbersGet($id = null, $with_campaigns = null, $with_scenarios = null, $can_be_used = null, $phone_number = null, $phone_country_code = null, $sort = null)
     {
-        list($response) = $this->phoneSearchNumbersGetWithHttpInfo($id, $sort);
+        list($response) = $this->phoneSearchNumbersGetWithHttpInfo($id, $with_campaigns, $with_scenarios, $can_be_used, $phone_number, $phone_country_code, $sort);
         return $response;
     }
 
     /**
      * Operation phoneSearchNumbersGetWithHttpInfo
      *
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Phone number ID. The ID can be retrieved via the **searchNumbers** method (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_scenarios Set &#x27;1&#x27; to include scenarios in the search results (optional)
+     * @param  int $can_be_used Set &#x27;1&#x27; if the phone number can be used (optional)
+     * @param  string $phone_number Phone number to search for. (optional)
+     * @param  string $phone_country_code Phone country code (2 symbols) (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\SearchNumbersResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function phoneSearchNumbersGetWithHttpInfo($id = null, $sort = null)
+    public function phoneSearchNumbersGetWithHttpInfo($id = null, $with_campaigns = null, $with_scenarios = null, $can_be_used = null, $phone_number = null, $phone_country_code = null, $sort = null)
     {
         $returnType = '\Smartcalls\Model\SearchNumbersResponseType';
-        $request = $this->phoneSearchNumbersGetRequest($id, $sort);
+        $request = $this->phoneSearchNumbersGetRequest($id, $with_campaigns, $with_scenarios, $can_be_used, $phone_number, $phone_country_code, $sort);
 
         try {
             $options = $this->createHttpClientOption();
@@ -739,15 +482,20 @@ class NumbersApi
      *
      * 
      *
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Phone number ID. The ID can be retrieved via the **searchNumbers** method (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_scenarios Set &#x27;1&#x27; to include scenarios in the search results (optional)
+     * @param  int $can_be_used Set &#x27;1&#x27; if the phone number can be used (optional)
+     * @param  string $phone_number Phone number to search for. (optional)
+     * @param  string $phone_country_code Phone country code (2 symbols) (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function phoneSearchNumbersGetAsync($id = null, $sort = null)
+    public function phoneSearchNumbersGetAsync($id = null, $with_campaigns = null, $with_scenarios = null, $can_be_used = null, $phone_number = null, $phone_country_code = null, $sort = null)
     {
-        return $this->phoneSearchNumbersGetAsyncWithHttpInfo($id, $sort)
+        return $this->phoneSearchNumbersGetAsyncWithHttpInfo($id, $with_campaigns, $with_scenarios, $can_be_used, $phone_number, $phone_country_code, $sort)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -760,16 +508,21 @@ class NumbersApi
      *
      * 
      *
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Phone number ID. The ID can be retrieved via the **searchNumbers** method (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_scenarios Set &#x27;1&#x27; to include scenarios in the search results (optional)
+     * @param  int $can_be_used Set &#x27;1&#x27; if the phone number can be used (optional)
+     * @param  string $phone_number Phone number to search for. (optional)
+     * @param  string $phone_country_code Phone country code (2 symbols) (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function phoneSearchNumbersGetAsyncWithHttpInfo($id = null, $sort = null)
+    public function phoneSearchNumbersGetAsyncWithHttpInfo($id = null, $with_campaigns = null, $with_scenarios = null, $can_be_used = null, $phone_number = null, $phone_country_code = null, $sort = null)
     {
         $returnType = '\Smartcalls\Model\SearchNumbersResponseType';
-        $request = $this->phoneSearchNumbersGetRequest($id, $sort);
+        $request = $this->phoneSearchNumbersGetRequest($id, $with_campaigns, $with_scenarios, $can_be_used, $phone_number, $phone_country_code, $sort);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -811,13 +564,18 @@ class NumbersApi
     /**
      * Create request for operation 'phoneSearchNumbersGet'
      *
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Phone number ID. The ID can be retrieved via the **searchNumbers** method (optional)
+     * @param  int $with_campaigns Set &#x27;1&#x27; to include campaigns in the search results (optional)
+     * @param  int $with_scenarios Set &#x27;1&#x27; to include scenarios in the search results (optional)
+     * @param  int $can_be_used Set &#x27;1&#x27; if the phone number can be used (optional)
+     * @param  string $phone_number Phone number to search for. (optional)
+     * @param  string $phone_country_code Phone country code (2 symbols) (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’, etc). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function phoneSearchNumbersGetRequest($id = null, $sort = null)
+    protected function phoneSearchNumbersGetRequest($id = null, $with_campaigns = null, $with_scenarios = null, $can_be_used = null, $phone_number = null, $phone_country_code = null, $sort = null)
     {
 
         $resourcePath = '/phone/searchNumbers';
@@ -830,6 +588,26 @@ class NumbersApi
         // query params
         if ($id !== null) {
             $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
+        // query params
+        if ($with_campaigns !== null) {
+            $queryParams['with_campaigns'] = ObjectSerializer::toQueryValue($with_campaigns);
+        }
+        // query params
+        if ($with_scenarios !== null) {
+            $queryParams['with_scenarios'] = ObjectSerializer::toQueryValue($with_scenarios);
+        }
+        // query params
+        if ($can_be_used !== null) {
+            $queryParams['can_be_used'] = ObjectSerializer::toQueryValue($can_be_used);
+        }
+        // query params
+        if ($phone_number !== null) {
+            $queryParams['phone_number'] = ObjectSerializer::toQueryValue($phone_number);
+        }
+        // query params
+        if ($phone_country_code !== null) {
+            $queryParams['phone_country_code'] = ObjectSerializer::toQueryValue($phone_country_code);
         }
         // query params
         if ($sort !== null) {
@@ -880,16 +658,6 @@ class NumbersApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -905,562 +673,6 @@ class NumbersApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation phoneUnbindNumberFromScenarioPost
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\UnbindNumberResponseType
-     */
-    public function phoneUnbindNumberFromScenarioPost($scenario_id = null, $phone_number_id = null)
-    {
-        list($response) = $this->phoneUnbindNumberFromScenarioPostWithHttpInfo($scenario_id, $phone_number_id);
-        return $response;
-    }
-
-    /**
-     * Operation phoneUnbindNumberFromScenarioPostWithHttpInfo
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\UnbindNumberResponseType, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function phoneUnbindNumberFromScenarioPostWithHttpInfo($scenario_id = null, $phone_number_id = null)
-    {
-        $returnType = '\Smartcalls\Model\UnbindNumberResponseType';
-        $request = $this->phoneUnbindNumberFromScenarioPostRequest($scenario_id, $phone_number_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\UnbindNumberResponseType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 0:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\ErrorType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation phoneUnbindNumberFromScenarioPostAsync
-     *
-     * 
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function phoneUnbindNumberFromScenarioPostAsync($scenario_id = null, $phone_number_id = null)
-    {
-        return $this->phoneUnbindNumberFromScenarioPostAsyncWithHttpInfo($scenario_id, $phone_number_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation phoneUnbindNumberFromScenarioPostAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function phoneUnbindNumberFromScenarioPostAsyncWithHttpInfo($scenario_id = null, $phone_number_id = null)
-    {
-        $returnType = '\Smartcalls\Model\UnbindNumberResponseType';
-        $request = $this->phoneUnbindNumberFromScenarioPostRequest($scenario_id, $phone_number_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'phoneUnbindNumberFromScenarioPost'
-     *
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  string $phone_number_id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function phoneUnbindNumberFromScenarioPostRequest($scenario_id = null, $phone_number_id = null)
-    {
-
-        $resourcePath = '/phone/unbindNumberFromScenario';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($scenario_id !== null) {
-            $queryParams['scenario_id'] = ObjectSerializer::toQueryValue($scenario_id);
-        }
-        // query params
-        if ($phone_number_id !== null) {
-            $queryParams['phone_number_id'] = ObjectSerializer::toQueryValue($phone_number_id);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation phoneUpdateNumberPost
-     *
-     * @param  string $redirect_number redirect_number (required)
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\UpdateNumberResponseType
-     */
-    public function phoneUpdateNumberPost($redirect_number, $id = null)
-    {
-        list($response) = $this->phoneUpdateNumberPostWithHttpInfo($redirect_number, $id);
-        return $response;
-    }
-
-    /**
-     * Operation phoneUpdateNumberPostWithHttpInfo
-     *
-     * @param  string $redirect_number (required)
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\UpdateNumberResponseType, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function phoneUpdateNumberPostWithHttpInfo($redirect_number, $id = null)
-    {
-        $returnType = '\Smartcalls\Model\UpdateNumberResponseType';
-        $request = $this->phoneUpdateNumberPostRequest($redirect_number, $id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\UpdateNumberResponseType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 0:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\ErrorType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation phoneUpdateNumberPostAsync
-     *
-     * 
-     *
-     * @param  string $redirect_number (required)
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function phoneUpdateNumberPostAsync($redirect_number, $id = null)
-    {
-        return $this->phoneUpdateNumberPostAsyncWithHttpInfo($redirect_number, $id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation phoneUpdateNumberPostAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  string $redirect_number (required)
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function phoneUpdateNumberPostAsyncWithHttpInfo($redirect_number, $id = null)
-    {
-        $returnType = '\Smartcalls\Model\UpdateNumberResponseType';
-        $request = $this->phoneUpdateNumberPostRequest($redirect_number, $id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'phoneUpdateNumberPost'
-     *
-     * @param  string $redirect_number (required)
-     * @param  int $id Phone number ID. ID can be retrieved via the **searchNumbers** method. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function phoneUpdateNumberPostRequest($redirect_number, $id = null)
-    {
-        // verify the required parameter 'redirect_number' is set
-        if ($redirect_number === null || (is_array($redirect_number) && count($redirect_number) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $redirect_number when calling phoneUpdateNumberPost'
-            );
-        }
-
-        $resourcePath = '/phone/updateNumber';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($id !== null) {
-            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
-        }
-
-
-        // form params
-        if ($redirect_number !== null) {
-            $formParams['redirect_number'] = ObjectSerializer::toFormValue($redirect_number);
-        }
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/x-www-form-urlencoded']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

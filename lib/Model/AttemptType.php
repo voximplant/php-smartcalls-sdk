@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -70,7 +70,10 @@ class AttemptType implements ModelInterface, ArrayAccess
 'recalc' => 'bool',
 'campaign_id' => 'int',
 'call_result_code' => 'int',
-'call_resources' => 'string'    ];
+'call_resources' => 'string',
+'call_calls' => 'string',
+'call_records' => 'string',
+'processing' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -92,7 +95,10 @@ class AttemptType implements ModelInterface, ArrayAccess
 'recalc' => null,
 'campaign_id' => null,
 'call_result_code' => null,
-'call_resources' => null    ];
+'call_resources' => null,
+'call_calls' => null,
+'call_records' => null,
+'processing' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -135,7 +141,10 @@ class AttemptType implements ModelInterface, ArrayAccess
 'recalc' => 'recalc',
 'campaign_id' => 'campaign_id',
 'call_result_code' => 'call_result_code',
-'call_resources' => 'call_resources'    ];
+'call_resources' => 'call_resources',
+'call_calls' => 'call_calls',
+'call_records' => 'call_records',
+'processing' => 'processing'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -157,7 +166,10 @@ class AttemptType implements ModelInterface, ArrayAccess
 'recalc' => 'setRecalc',
 'campaign_id' => 'setCampaignId',
 'call_result_code' => 'setCallResultCode',
-'call_resources' => 'setCallResources'    ];
+'call_resources' => 'setCallResources',
+'call_calls' => 'setCallCalls',
+'call_records' => 'setCallRecords',
+'processing' => 'setProcessing'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -179,7 +191,10 @@ class AttemptType implements ModelInterface, ArrayAccess
 'recalc' => 'getRecalc',
 'campaign_id' => 'getCampaignId',
 'call_result_code' => 'getCallResultCode',
-'call_resources' => 'getCallResources'    ];
+'call_resources' => 'getCallResources',
+'call_calls' => 'getCallCalls',
+'call_records' => 'getCallRecords',
+'processing' => 'getProcessing'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -254,6 +269,9 @@ class AttemptType implements ModelInterface, ArrayAccess
         $this->container['campaign_id'] = isset($data['campaign_id']) ? $data['campaign_id'] : null;
         $this->container['call_result_code'] = isset($data['call_result_code']) ? $data['call_result_code'] : null;
         $this->container['call_resources'] = isset($data['call_resources']) ? $data['call_resources'] : null;
+        $this->container['call_calls'] = isset($data['call_calls']) ? $data['call_calls'] : null;
+        $this->container['call_records'] = isset($data['call_records']) ? $data['call_records'] : null;
+        $this->container['processing'] = isset($data['processing']) ? $data['processing'] : null;
     }
 
     /**
@@ -636,6 +654,78 @@ class AttemptType implements ModelInterface, ArrayAccess
     public function setCallResources($call_resources)
     {
         $this->container['call_resources'] = $call_resources;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_calls
+     *
+     * @return string
+     */
+    public function getCallCalls()
+    {
+        return $this->container['call_calls'];
+    }
+
+    /**
+     * Sets call_calls
+     *
+     * @param string $call_calls call_calls
+     *
+     * @return $this
+     */
+    public function setCallCalls($call_calls)
+    {
+        $this->container['call_calls'] = $call_calls;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_records
+     *
+     * @return string
+     */
+    public function getCallRecords()
+    {
+        return $this->container['call_records'];
+    }
+
+    /**
+     * Sets call_records
+     *
+     * @param string $call_records call_records
+     *
+     * @return $this
+     */
+    public function setCallRecords($call_records)
+    {
+        $this->container['call_records'] = $call_records;
+
+        return $this;
+    }
+
+    /**
+     * Gets processing
+     *
+     * @return bool
+     */
+    public function getProcessing()
+    {
+        return $this->container['processing'];
+    }
+
+    /**
+     * Sets processing
+     *
+     * @param bool $processing processing
+     *
+     * @return $this
+     */
+    public function setProcessing($processing)
+    {
+        $this->container['processing'] = $processing;
 
         return $this;
     }

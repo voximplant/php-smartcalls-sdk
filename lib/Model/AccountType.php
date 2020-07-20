@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -56,9 +56,9 @@ class AccountType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'domain' => '\Smartcalls\Model\AccountTypeDomain',
-'user' => '\Smartcalls\Model\AccountTypeUser',
-'profile' => '\Smartcalls\Model\AccountTypeProfile'    ];
+        'domain' => '\Smartcalls\Model\AccountDomainType',
+'user' => '\Smartcalls\Model\AccountUserType',
+'profile' => '\Smartcalls\Model\AccountProfileType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -211,7 +211,7 @@ class AccountType implements ModelInterface, ArrayAccess
     /**
      * Gets domain
      *
-     * @return \Smartcalls\Model\AccountTypeDomain
+     * @return \Smartcalls\Model\AccountDomainType
      */
     public function getDomain()
     {
@@ -221,7 +221,7 @@ class AccountType implements ModelInterface, ArrayAccess
     /**
      * Sets domain
      *
-     * @param \Smartcalls\Model\AccountTypeDomain $domain domain
+     * @param \Smartcalls\Model\AccountDomainType $domain domain
      *
      * @return $this
      */
@@ -235,7 +235,7 @@ class AccountType implements ModelInterface, ArrayAccess
     /**
      * Gets user
      *
-     * @return \Smartcalls\Model\AccountTypeUser
+     * @return \Smartcalls\Model\AccountUserType
      */
     public function getUser()
     {
@@ -245,7 +245,7 @@ class AccountType implements ModelInterface, ArrayAccess
     /**
      * Sets user
      *
-     * @param \Smartcalls\Model\AccountTypeUser $user user
+     * @param \Smartcalls\Model\AccountUserType $user user
      *
      * @return $this
      */
@@ -259,7 +259,7 @@ class AccountType implements ModelInterface, ArrayAccess
     /**
      * Gets profile
      *
-     * @return \Smartcalls\Model\AccountTypeProfile
+     * @return \Smartcalls\Model\AccountProfileType
      */
     public function getProfile()
     {
@@ -269,7 +269,7 @@ class AccountType implements ModelInterface, ArrayAccess
     /**
      * Sets profile
      *
-     * @param \Smartcalls\Model\AccountTypeProfile $profile profile
+     * @param \Smartcalls\Model\AccountProfileType $profile profile
      *
      * @return $this
      */

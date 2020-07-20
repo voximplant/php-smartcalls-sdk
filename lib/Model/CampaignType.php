@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -63,6 +63,7 @@ class CampaignType implements ModelInterface, ArrayAccess
 'date_end' => 'string',
 'date_create' => 'string',
 'date_update' => 'string',
+'working_days' => 'int[]',
 'time_start' => 'string',
 'time_end' => 'string',
 'status' => 'string',
@@ -74,7 +75,9 @@ class CampaignType implements ModelInterface, ArrayAccess
 'scenario_id' => 'int',
 'call_list_id' => 'int',
 'phone_number_id' => 'int',
-'permanent' => 'bool'    ];
+'callerid_id' => 'int',
+'permanent' => 'bool',
+'last_lunch_status' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -89,6 +92,7 @@ class CampaignType implements ModelInterface, ArrayAccess
 'date_end' => null,
 'date_create' => null,
 'date_update' => null,
+'working_days' => null,
 'time_start' => null,
 'time_end' => null,
 'status' => null,
@@ -100,7 +104,9 @@ class CampaignType implements ModelInterface, ArrayAccess
 'scenario_id' => null,
 'call_list_id' => null,
 'phone_number_id' => null,
-'permanent' => null    ];
+'callerid_id' => null,
+'permanent' => null,
+'last_lunch_status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -136,6 +142,7 @@ class CampaignType implements ModelInterface, ArrayAccess
 'date_end' => 'date_end',
 'date_create' => 'date_create',
 'date_update' => 'date_update',
+'working_days' => 'working_days',
 'time_start' => 'time_start',
 'time_end' => 'time_end',
 'status' => 'status',
@@ -147,7 +154,9 @@ class CampaignType implements ModelInterface, ArrayAccess
 'scenario_id' => 'scenario_id',
 'call_list_id' => 'call_list_id',
 'phone_number_id' => 'phone_number_id',
-'permanent' => 'permanent'    ];
+'callerid_id' => 'callerid_id',
+'permanent' => 'permanent',
+'last_lunch_status' => 'last_lunch_status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -162,6 +171,7 @@ class CampaignType implements ModelInterface, ArrayAccess
 'date_end' => 'setDateEnd',
 'date_create' => 'setDateCreate',
 'date_update' => 'setDateUpdate',
+'working_days' => 'setWorkingDays',
 'time_start' => 'setTimeStart',
 'time_end' => 'setTimeEnd',
 'status' => 'setStatus',
@@ -173,7 +183,9 @@ class CampaignType implements ModelInterface, ArrayAccess
 'scenario_id' => 'setScenarioId',
 'call_list_id' => 'setCallListId',
 'phone_number_id' => 'setPhoneNumberId',
-'permanent' => 'setPermanent'    ];
+'callerid_id' => 'setCalleridId',
+'permanent' => 'setPermanent',
+'last_lunch_status' => 'setLastLunchStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -188,6 +200,7 @@ class CampaignType implements ModelInterface, ArrayAccess
 'date_end' => 'getDateEnd',
 'date_create' => 'getDateCreate',
 'date_update' => 'getDateUpdate',
+'working_days' => 'getWorkingDays',
 'time_start' => 'getTimeStart',
 'time_end' => 'getTimeEnd',
 'status' => 'getStatus',
@@ -199,7 +212,9 @@ class CampaignType implements ModelInterface, ArrayAccess
 'scenario_id' => 'getScenarioId',
 'call_list_id' => 'getCallListId',
 'phone_number_id' => 'getPhoneNumberId',
-'permanent' => 'getPermanent'    ];
+'callerid_id' => 'getCalleridId',
+'permanent' => 'getPermanent',
+'last_lunch_status' => 'getLastLunchStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -266,6 +281,7 @@ class CampaignType implements ModelInterface, ArrayAccess
         $this->container['date_end'] = isset($data['date_end']) ? $data['date_end'] : null;
         $this->container['date_create'] = isset($data['date_create']) ? $data['date_create'] : null;
         $this->container['date_update'] = isset($data['date_update']) ? $data['date_update'] : null;
+        $this->container['working_days'] = isset($data['working_days']) ? $data['working_days'] : null;
         $this->container['time_start'] = isset($data['time_start']) ? $data['time_start'] : null;
         $this->container['time_end'] = isset($data['time_end']) ? $data['time_end'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
@@ -277,7 +293,9 @@ class CampaignType implements ModelInterface, ArrayAccess
         $this->container['scenario_id'] = isset($data['scenario_id']) ? $data['scenario_id'] : null;
         $this->container['call_list_id'] = isset($data['call_list_id']) ? $data['call_list_id'] : null;
         $this->container['phone_number_id'] = isset($data['phone_number_id']) ? $data['phone_number_id'] : null;
+        $this->container['callerid_id'] = isset($data['callerid_id']) ? $data['callerid_id'] : null;
         $this->container['permanent'] = isset($data['permanent']) ? $data['permanent'] : null;
+        $this->container['last_lunch_status'] = isset($data['last_lunch_status']) ? $data['last_lunch_status'] : null;
     }
 
     /**
@@ -468,6 +486,30 @@ class CampaignType implements ModelInterface, ArrayAccess
     public function setDateUpdate($date_update)
     {
         $this->container['date_update'] = $date_update;
+
+        return $this;
+    }
+
+    /**
+     * Gets working_days
+     *
+     * @return int[]
+     */
+    public function getWorkingDays()
+    {
+        return $this->container['working_days'];
+    }
+
+    /**
+     * Sets working_days
+     *
+     * @param int[] $working_days working_days
+     *
+     * @return $this
+     */
+    public function setWorkingDays($working_days)
+    {
+        $this->container['working_days'] = $working_days;
 
         return $this;
     }
@@ -737,6 +779,30 @@ class CampaignType implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets callerid_id
+     *
+     * @return int
+     */
+    public function getCalleridId()
+    {
+        return $this->container['callerid_id'];
+    }
+
+    /**
+     * Sets callerid_id
+     *
+     * @param int $callerid_id callerid_id
+     *
+     * @return $this
+     */
+    public function setCalleridId($callerid_id)
+    {
+        $this->container['callerid_id'] = $callerid_id;
+
+        return $this;
+    }
+
+    /**
      * Gets permanent
      *
      * @return bool
@@ -756,6 +822,30 @@ class CampaignType implements ModelInterface, ArrayAccess
     public function setPermanent($permanent)
     {
         $this->container['permanent'] = $permanent;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_lunch_status
+     *
+     * @return string
+     */
+    public function getLastLunchStatus()
+    {
+        return $this->container['last_lunch_status'];
+    }
+
+    /**
+     * Sets last_lunch_status
+     *
+     * @param string $last_lunch_status last_lunch_status
+     *
+     * @return $this
+     */
+    public function setLastLunchStatus($last_lunch_status)
+    {
+        $this->container['last_lunch_status'] = $last_lunch_status;
 
         return $this;
     }

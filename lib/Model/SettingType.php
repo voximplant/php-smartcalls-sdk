@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -60,7 +60,7 @@ class SettingType implements ModelInterface, ArrayAccess
 'value' => 'string',
 'description' => 'string',
 'category_id' => 'int',
-'edited_on' => 'string',
+'edited_on' => 'int',
 'locked' => 'bool',
 'can_deleted' => 'bool'    ];
 
@@ -331,7 +331,7 @@ class SettingType implements ModelInterface, ArrayAccess
     /**
      * Gets edited_on
      *
-     * @return string
+     * @return int
      */
     public function getEditedOn()
     {
@@ -341,7 +341,7 @@ class SettingType implements ModelInterface, ArrayAccess
     /**
      * Sets edited_on
      *
-     * @param string $edited_on edited_on
+     * @param int $edited_on edited_on
      *
      * @return $this
      */

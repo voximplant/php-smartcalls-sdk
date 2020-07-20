@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **value** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 
 **category_id** | **int** |  | [optional] 
-**edited_on** | **string** |  | [optional] 
+**edited_on** | **int** |  | [optional] 
 **locked** | **bool** |  | [optional] 
 **can_deleted** | **bool** |  | [optional] 
 

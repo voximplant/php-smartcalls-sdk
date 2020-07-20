@@ -10,9 +10,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -89,11 +89,11 @@ class CallsApi
     /**
      * Operation callsDownloadHistoryReportPost
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\DownloadHistoryReportResponseType
+     * @return string
      */
     public function callsDownloadHistoryReportPost($report_id)
     {
@@ -104,15 +104,15 @@ class CallsApi
     /**
      * Operation callsDownloadHistoryReportPostWithHttpInfo
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\DownloadHistoryReportResponseType, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function callsDownloadHistoryReportPostWithHttpInfo($report_id)
     {
-        $returnType = '\Smartcalls\Model\DownloadHistoryReportResponseType';
+        $returnType = 'string';
         $request = $this->callsDownloadHistoryReportPostRequest($report_id);
 
         try {
@@ -164,7 +164,7 @@ class CallsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Smartcalls\Model\DownloadHistoryReportResponseType',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -187,7 +187,7 @@ class CallsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -207,14 +207,14 @@ class CallsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function callsDownloadHistoryReportPostAsyncWithHttpInfo($report_id)
     {
-        $returnType = '\Smartcalls\Model\DownloadHistoryReportResponseType';
+        $returnType = 'string';
         $request = $this->callsDownloadHistoryReportPostRequest($report_id);
 
         return $this->client
@@ -257,7 +257,7 @@ class CallsApi
     /**
      * Create request for operation 'callsDownloadHistoryReportPost'
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -289,11 +289,11 @@ class CallsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/json'],
                 []
             );
         }
@@ -327,16 +327,6 @@ class CallsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -362,6 +352,7 @@ class CallsApi
      * Operation callsExportHistoryReportPost
      *
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method. (optional)
      * @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      * @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
@@ -369,9 +360,9 @@ class CallsApi
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\ExportHistoryReportResponseType
      */
-    public function callsExportHistoryReportPost($call_direction = null, $from = null, $to = null)
+    public function callsExportHistoryReportPost($call_direction = null, $scenario_id = null, $from = null, $to = null)
     {
-        list($response) = $this->callsExportHistoryReportPostWithHttpInfo($call_direction, $from, $to);
+        list($response) = $this->callsExportHistoryReportPostWithHttpInfo($call_direction, $scenario_id, $from, $to);
         return $response;
     }
 
@@ -379,6 +370,7 @@ class CallsApi
      * Operation callsExportHistoryReportPostWithHttpInfo
      *
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method. (optional)
      * @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      * @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
@@ -386,10 +378,10 @@ class CallsApi
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\ExportHistoryReportResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callsExportHistoryReportPostWithHttpInfo($call_direction = null, $from = null, $to = null)
+    public function callsExportHistoryReportPostWithHttpInfo($call_direction = null, $scenario_id = null, $from = null, $to = null)
     {
         $returnType = '\Smartcalls\Model\ExportHistoryReportResponseType';
-        $request = $this->callsExportHistoryReportPostRequest($call_direction, $from, $to);
+        $request = $this->callsExportHistoryReportPostRequest($call_direction, $scenario_id, $from, $to);
 
         try {
             $options = $this->createHttpClientOption();
@@ -464,15 +456,16 @@ class CallsApi
      * 
      *
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method. (optional)
      * @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      * @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callsExportHistoryReportPostAsync($call_direction = null, $from = null, $to = null)
+    public function callsExportHistoryReportPostAsync($call_direction = null, $scenario_id = null, $from = null, $to = null)
     {
-        return $this->callsExportHistoryReportPostAsyncWithHttpInfo($call_direction, $from, $to)
+        return $this->callsExportHistoryReportPostAsyncWithHttpInfo($call_direction, $scenario_id, $from, $to)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -486,16 +479,17 @@ class CallsApi
      * 
      *
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method. (optional)
      * @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      * @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callsExportHistoryReportPostAsyncWithHttpInfo($call_direction = null, $from = null, $to = null)
+    public function callsExportHistoryReportPostAsyncWithHttpInfo($call_direction = null, $scenario_id = null, $from = null, $to = null)
     {
         $returnType = '\Smartcalls\Model\ExportHistoryReportResponseType';
-        $request = $this->callsExportHistoryReportPostRequest($call_direction, $from, $to);
+        $request = $this->callsExportHistoryReportPostRequest($call_direction, $scenario_id, $from, $to);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -538,13 +532,14 @@ class CallsApi
      * Create request for operation 'callsExportHistoryReportPost'
      *
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method. (optional)
      * @param  string $from Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      * @param  string $to End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function callsExportHistoryReportPostRequest($call_direction = null, $from = null, $to = null)
+    protected function callsExportHistoryReportPostRequest($call_direction = null, $scenario_id = null, $from = null, $to = null)
     {
 
         $resourcePath = '/calls/exportHistoryReport';
@@ -557,6 +552,10 @@ class CallsApi
         // query params
         if ($call_direction !== null) {
             $queryParams['call_direction'] = ObjectSerializer::toQueryValue($call_direction);
+        }
+        // query params
+        if ($scenario_id !== null) {
+            $queryParams['scenario_id'] = ObjectSerializer::toQueryValue($scenario_id);
         }
         // query params
         if ($from !== null) {
@@ -611,16 +610,6 @@ class CallsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -645,7 +634,7 @@ class CallsApi
     /**
      * Operation callsGetHistoryReportStatusPost
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -660,7 +649,7 @@ class CallsApi
     /**
      * Operation callsGetHistoryReportStatusPostWithHttpInfo
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -743,7 +732,7 @@ class CallsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -763,7 +752,7 @@ class CallsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -813,7 +802,7 @@ class CallsApi
     /**
      * Create request for operation 'callsGetHistoryReportStatusPost'
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportHistoryReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportHistoryReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -883,16 +872,6 @@ class CallsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -917,39 +896,41 @@ class CallsApi
     /**
      * Operation callsSearchCallsGet
      *
+     * @param  int $id Call ID. (optional)
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
-     * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. The minimum number of digits is 3. (&lt;b&gt;example:&lt;/b&gt; phone&#x3D;15417543010) (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\SearchCallsResponseType
      */
-    public function callsSearchCallsGet($call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
+    public function callsSearchCallsGet($id = null, $call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
     {
-        list($response) = $this->callsSearchCallsGetWithHttpInfo($call_direction, $scenario_id, $phone, $datetime_start, $datetime_end);
+        list($response) = $this->callsSearchCallsGetWithHttpInfo($id, $call_direction, $scenario_id, $phone, $datetime_start, $datetime_end);
         return $response;
     }
 
     /**
      * Operation callsSearchCallsGetWithHttpInfo
      *
+     * @param  int $id Call ID. (optional)
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
-     * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. The minimum number of digits is 3. (&lt;b&gt;example:&lt;/b&gt; phone&#x3D;15417543010) (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\SearchCallsResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callsSearchCallsGetWithHttpInfo($call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
+    public function callsSearchCallsGetWithHttpInfo($id = null, $call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
     {
         $returnType = '\Smartcalls\Model\SearchCallsResponseType';
-        $request = $this->callsSearchCallsGetRequest($call_direction, $scenario_id, $phone, $datetime_start, $datetime_end);
+        $request = $this->callsSearchCallsGetRequest($id, $call_direction, $scenario_id, $phone, $datetime_start, $datetime_end);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1023,18 +1004,19 @@ class CallsApi
      *
      * 
      *
+     * @param  int $id Call ID. (optional)
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
-     * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. The minimum number of digits is 3. (&lt;b&gt;example:&lt;/b&gt; phone&#x3D;15417543010) (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callsSearchCallsGetAsync($call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
+    public function callsSearchCallsGetAsync($id = null, $call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
     {
-        return $this->callsSearchCallsGetAsyncWithHttpInfo($call_direction, $scenario_id, $phone, $datetime_start, $datetime_end)
+        return $this->callsSearchCallsGetAsyncWithHttpInfo($id, $call_direction, $scenario_id, $phone, $datetime_start, $datetime_end)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1047,19 +1029,20 @@ class CallsApi
      *
      * 
      *
+     * @param  int $id Call ID. (optional)
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
-     * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. The minimum number of digits is 3. (&lt;b&gt;example:&lt;/b&gt; phone&#x3D;15417543010) (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callsSearchCallsGetAsyncWithHttpInfo($call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
+    public function callsSearchCallsGetAsyncWithHttpInfo($id = null, $call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
     {
         $returnType = '\Smartcalls\Model\SearchCallsResponseType';
-        $request = $this->callsSearchCallsGetRequest($call_direction, $scenario_id, $phone, $datetime_start, $datetime_end);
+        $request = $this->callsSearchCallsGetRequest($id, $call_direction, $scenario_id, $phone, $datetime_start, $datetime_end);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1101,16 +1084,17 @@ class CallsApi
     /**
      * Create request for operation 'callsSearchCallsGet'
      *
+     * @param  int $id Call ID. (optional)
      * @param  string $call_direction Call direction (&lt;b&gt;example:&lt;/b&gt; ‘call_direction&#x3D;outgoing’ or ‘call_direction&#x3D;incoming’ or ‘call_direction&#x3D;all’) (optional)
-     * @param  int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method. (optional)
-     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. Minimum number of characters is 3. (&lt;b&gt;example:&lt;/b&gt; ‘phone&#x3D;15417543010) (optional)
-     * @param  string $datetime_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $datetime_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method (optional)
+     * @param  int $phone Phone number to filter. The response will include calls to the specified number only. The minimum number of digits is 3. (&lt;b&gt;example:&lt;/b&gt; phone&#x3D;15417543010) (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function callsSearchCallsGetRequest($call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
+    protected function callsSearchCallsGetRequest($id = null, $call_direction = null, $scenario_id = null, $phone = null, $datetime_start = null, $datetime_end = null)
     {
 
         $resourcePath = '/calls/searchCalls';
@@ -1120,6 +1104,10 @@ class CallsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($id !== null) {
+            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
         // query params
         if ($call_direction !== null) {
             $queryParams['call_direction'] = ObjectSerializer::toQueryValue($call_direction);
@@ -1185,16 +1173,6 @@ class CallsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

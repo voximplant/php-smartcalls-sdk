@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -59,7 +59,7 @@ class CallsType implements ModelInterface, ArrayAccess
         'id' => 'int',
 'domain_id' => 'int',
 'session_id' => 'int',
-'scenario_id' => 'string',
+'scenario_id' => 'int',
 'datetime_start' => 'string',
 'phone_a' => 'string',
 'phone_b' => 'string',
@@ -72,7 +72,10 @@ class CallsType implements ModelInterface, ArrayAccess
 'call_resources' => 'string',
 'call_calls' => 'string',
 'call_records' => 'string',
-'recalc' => 'bool'    ];
+'call_status' => 'int',
+'recalc' => 'bool',
+'campaign_id' => 'int',
+'processing' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -96,7 +99,10 @@ class CallsType implements ModelInterface, ArrayAccess
 'call_resources' => null,
 'call_calls' => null,
 'call_records' => null,
-'recalc' => null    ];
+'call_status' => null,
+'recalc' => null,
+'campaign_id' => null,
+'processing' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -141,7 +147,10 @@ class CallsType implements ModelInterface, ArrayAccess
 'call_resources' => 'call_resources',
 'call_calls' => 'call_calls',
 'call_records' => 'call_records',
-'recalc' => 'recalc'    ];
+'call_status' => 'call_status',
+'recalc' => 'recalc',
+'campaign_id' => 'campaign_id',
+'processing' => 'processing'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -165,7 +174,10 @@ class CallsType implements ModelInterface, ArrayAccess
 'call_resources' => 'setCallResources',
 'call_calls' => 'setCallCalls',
 'call_records' => 'setCallRecords',
-'recalc' => 'setRecalc'    ];
+'call_status' => 'setCallStatus',
+'recalc' => 'setRecalc',
+'campaign_id' => 'setCampaignId',
+'processing' => 'setProcessing'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -189,7 +201,10 @@ class CallsType implements ModelInterface, ArrayAccess
 'call_resources' => 'getCallResources',
 'call_calls' => 'getCallCalls',
 'call_records' => 'getCallRecords',
-'recalc' => 'getRecalc'    ];
+'call_status' => 'getCallStatus',
+'recalc' => 'getRecalc',
+'campaign_id' => 'getCampaignId',
+'processing' => 'getProcessing'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -265,7 +280,10 @@ class CallsType implements ModelInterface, ArrayAccess
         $this->container['call_resources'] = isset($data['call_resources']) ? $data['call_resources'] : null;
         $this->container['call_calls'] = isset($data['call_calls']) ? $data['call_calls'] : null;
         $this->container['call_records'] = isset($data['call_records']) ? $data['call_records'] : null;
+        $this->container['call_status'] = isset($data['call_status']) ? $data['call_status'] : null;
         $this->container['recalc'] = isset($data['recalc']) ? $data['recalc'] : null;
+        $this->container['campaign_id'] = isset($data['campaign_id']) ? $data['campaign_id'] : null;
+        $this->container['processing'] = isset($data['processing']) ? $data['processing'] : null;
     }
 
     /**
@@ -367,7 +385,7 @@ class CallsType implements ModelInterface, ArrayAccess
     /**
      * Gets scenario_id
      *
-     * @return string
+     * @return int
      */
     public function getScenarioId()
     {
@@ -377,7 +395,7 @@ class CallsType implements ModelInterface, ArrayAccess
     /**
      * Sets scenario_id
      *
-     * @param string $scenario_id scenario_id
+     * @param int $scenario_id scenario_id
      *
      * @return $this
      */
@@ -677,6 +695,30 @@ class CallsType implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets call_status
+     *
+     * @return int
+     */
+    public function getCallStatus()
+    {
+        return $this->container['call_status'];
+    }
+
+    /**
+     * Sets call_status
+     *
+     * @param int $call_status call_status
+     *
+     * @return $this
+     */
+    public function setCallStatus($call_status)
+    {
+        $this->container['call_status'] = $call_status;
+
+        return $this;
+    }
+
+    /**
      * Gets recalc
      *
      * @return bool
@@ -696,6 +738,54 @@ class CallsType implements ModelInterface, ArrayAccess
     public function setRecalc($recalc)
     {
         $this->container['recalc'] = $recalc;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_id
+     *
+     * @return int
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaign_id'];
+    }
+
+    /**
+     * Sets campaign_id
+     *
+     * @param int $campaign_id campaign_id
+     *
+     * @return $this
+     */
+    public function setCampaignId($campaign_id)
+    {
+        $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets processing
+     *
+     * @return bool
+     */
+    public function getProcessing()
+    {
+        return $this->container['processing'];
+    }
+
+    /**
+     * Sets processing
+     *
+     * @param bool $processing processing
+     *
+     * @return $this
+     */
+    public function setProcessing($processing)
+    {
+        $this->container['processing'] = $processing;
 
         return $this;
     }

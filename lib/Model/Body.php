@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -56,7 +56,8 @@ class Body implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'email' => 'string'    ];
+        'campaign_id' => 'int',
+'rows' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -64,7 +65,8 @@ class Body implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'email' => null    ];
+        'campaign_id' => null,
+'rows' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -93,7 +95,8 @@ class Body implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'email' => 'email'    ];
+        'campaign_id' => 'campaign_id',
+'rows' => 'rows'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,7 +104,8 @@ class Body implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'email' => 'setEmail'    ];
+        'campaign_id' => 'setCampaignId',
+'rows' => 'setRows'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -109,7 +113,8 @@ class Body implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'email' => 'getEmail'    ];
+        'campaign_id' => 'getCampaignId',
+'rows' => 'getRows'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -169,7 +174,8 @@ class Body implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['campaign_id'] = isset($data['campaign_id']) ? $data['campaign_id'] : null;
+        $this->container['rows'] = isset($data['rows']) ? $data['rows'] : null;
     }
 
     /**
@@ -197,25 +203,49 @@ class Body implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets email
+     * Gets campaign_id
      *
-     * @return string
+     * @return int
      */
-    public function getEmail()
+    public function getCampaignId()
     {
-        return $this->container['email'];
+        return $this->container['campaign_id'];
     }
 
     /**
-     * Sets email
+     * Sets campaign_id
      *
-     * @param string $email email
+     * @param int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method
      *
      * @return $this
      */
-    public function setEmail($email)
+    public function setCampaignId($campaign_id)
     {
-        $this->container['email'] = $email;
+        $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets rows
+     *
+     * @return string
+     */
+    public function getRows()
+    {
+        return $this->container['rows'];
+    }
+
+    /**
+     * Sets rows
+     *
+     * @param string $rows Data to append in JSON format. <br><b>Example:</b> <code>[{\"phone\": \"+79101234567\", \"UTC\": \"Europe/Moscow\", \"custom_field\": \"custom_value\"}]</code>
+     *
+     * @return $this
+     */
+    public function setRows($rows)
+    {
+        $this->container['rows'] = $rows;
 
         return $this;
     }

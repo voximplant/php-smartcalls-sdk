@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -59,7 +59,11 @@ class ScenarioType implements ModelInterface, ArrayAccess
         'id' => 'int',
 'title' => 'string',
 'date_create' => 'string',
-'date_update' => 'string'    ];
+'date_update' => 'string',
+'scenario_type' => 'int',
+'folder_id' => 'int',
+'phone_numbers' => '\Smartcalls\Model\ScenarioPhoneNumberType[]',
+'campaigns' => '\Smartcalls\Model\ScenarioCampaignType[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -70,7 +74,11 @@ class ScenarioType implements ModelInterface, ArrayAccess
         'id' => null,
 'title' => null,
 'date_create' => null,
-'date_update' => null    ];
+'date_update' => null,
+'scenario_type' => null,
+'folder_id' => null,
+'phone_numbers' => null,
+'campaigns' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -102,7 +110,11 @@ class ScenarioType implements ModelInterface, ArrayAccess
         'id' => 'id',
 'title' => 'title',
 'date_create' => 'date_create',
-'date_update' => 'date_update'    ];
+'date_update' => 'date_update',
+'scenario_type' => 'scenario_type',
+'folder_id' => 'folder_id',
+'phone_numbers' => 'phone_numbers',
+'campaigns' => 'campaigns'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -113,7 +125,11 @@ class ScenarioType implements ModelInterface, ArrayAccess
         'id' => 'setId',
 'title' => 'setTitle',
 'date_create' => 'setDateCreate',
-'date_update' => 'setDateUpdate'    ];
+'date_update' => 'setDateUpdate',
+'scenario_type' => 'setScenarioType',
+'folder_id' => 'setFolderId',
+'phone_numbers' => 'setPhoneNumbers',
+'campaigns' => 'setCampaigns'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -124,7 +140,11 @@ class ScenarioType implements ModelInterface, ArrayAccess
         'id' => 'getId',
 'title' => 'getTitle',
 'date_create' => 'getDateCreate',
-'date_update' => 'getDateUpdate'    ];
+'date_update' => 'getDateUpdate',
+'scenario_type' => 'getScenarioType',
+'folder_id' => 'getFolderId',
+'phone_numbers' => 'getPhoneNumbers',
+'campaigns' => 'getCampaigns'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -188,6 +208,10 @@ class ScenarioType implements ModelInterface, ArrayAccess
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['date_create'] = isset($data['date_create']) ? $data['date_create'] : null;
         $this->container['date_update'] = isset($data['date_update']) ? $data['date_update'] : null;
+        $this->container['scenario_type'] = isset($data['scenario_type']) ? $data['scenario_type'] : null;
+        $this->container['folder_id'] = isset($data['folder_id']) ? $data['folder_id'] : null;
+        $this->container['phone_numbers'] = isset($data['phone_numbers']) ? $data['phone_numbers'] : null;
+        $this->container['campaigns'] = isset($data['campaigns']) ? $data['campaigns'] : null;
     }
 
     /**
@@ -306,6 +330,102 @@ class ScenarioType implements ModelInterface, ArrayAccess
     public function setDateUpdate($date_update)
     {
         $this->container['date_update'] = $date_update;
+
+        return $this;
+    }
+
+    /**
+     * Gets scenario_type
+     *
+     * @return int
+     */
+    public function getScenarioType()
+    {
+        return $this->container['scenario_type'];
+    }
+
+    /**
+     * Sets scenario_type
+     *
+     * @param int $scenario_type scenario_type
+     *
+     * @return $this
+     */
+    public function setScenarioType($scenario_type)
+    {
+        $this->container['scenario_type'] = $scenario_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets folder_id
+     *
+     * @return int
+     */
+    public function getFolderId()
+    {
+        return $this->container['folder_id'];
+    }
+
+    /**
+     * Sets folder_id
+     *
+     * @param int $folder_id folder_id
+     *
+     * @return $this
+     */
+    public function setFolderId($folder_id)
+    {
+        $this->container['folder_id'] = $folder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_numbers
+     *
+     * @return \Smartcalls\Model\ScenarioPhoneNumberType[]
+     */
+    public function getPhoneNumbers()
+    {
+        return $this->container['phone_numbers'];
+    }
+
+    /**
+     * Sets phone_numbers
+     *
+     * @param \Smartcalls\Model\ScenarioPhoneNumberType[] $phone_numbers phone_numbers
+     *
+     * @return $this
+     */
+    public function setPhoneNumbers($phone_numbers)
+    {
+        $this->container['phone_numbers'] = $phone_numbers;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaigns
+     *
+     * @return \Smartcalls\Model\ScenarioCampaignType[]
+     */
+    public function getCampaigns()
+    {
+        return $this->container['campaigns'];
+    }
+
+    /**
+     * Sets campaigns
+     *
+     * @param \Smartcalls\Model\ScenarioCampaignType[] $campaigns campaigns
+     *
+     * @return $this
+     */
+    public function setCampaigns($campaigns)
+    {
+        $this->container['campaigns'] = $campaigns;
 
         return $this;
     }

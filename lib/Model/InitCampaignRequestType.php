@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -62,12 +62,13 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'int',
 'scenario_id' => 'int',
 'phone_number_id' => 'int',
-'callerid_id' => 'int',
+'caller_id' => 'int',
 'time_start' => 'string',
 'time_end' => 'string',
 'date_start' => 'string',
 'date_end' => 'string',
-'permanent' => 'bool'    ];
+'permanent' => 'bool',
+'description' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -81,12 +82,13 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => null,
 'scenario_id' => null,
 'phone_number_id' => null,
-'callerid_id' => null,
+'caller_id' => null,
 'time_start' => null,
 'time_end' => null,
 'date_start' => null,
 'date_end' => null,
-'permanent' => null    ];
+'permanent' => null,
+'description' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -121,12 +123,13 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'max_lines',
 'scenario_id' => 'scenario_id',
 'phone_number_id' => 'phone_number_id',
-'callerid_id' => 'callerid_id',
+'caller_id' => 'caller_id',
 'time_start' => 'time_start',
 'time_end' => 'time_end',
 'date_start' => 'date_start',
 'date_end' => 'date_end',
-'permanent' => 'permanent'    ];
+'permanent' => 'permanent',
+'description' => 'description'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -140,12 +143,13 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'setMaxLines',
 'scenario_id' => 'setScenarioId',
 'phone_number_id' => 'setPhoneNumberId',
-'callerid_id' => 'setCalleridId',
+'caller_id' => 'setCallerId',
 'time_start' => 'setTimeStart',
 'time_end' => 'setTimeEnd',
 'date_start' => 'setDateStart',
 'date_end' => 'setDateEnd',
-'permanent' => 'setPermanent'    ];
+'permanent' => 'setPermanent',
+'description' => 'setDescription'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -159,12 +163,13 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
 'max_lines' => 'getMaxLines',
 'scenario_id' => 'getScenarioId',
 'phone_number_id' => 'getPhoneNumberId',
-'callerid_id' => 'getCalleridId',
+'caller_id' => 'getCallerId',
 'time_start' => 'getTimeStart',
 'time_end' => 'getTimeEnd',
 'date_start' => 'getDateStart',
 'date_end' => 'getDateEnd',
-'permanent' => 'getPermanent'    ];
+'permanent' => 'getPermanent',
+'description' => 'getDescription'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -230,12 +235,13 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
         $this->container['max_lines'] = isset($data['max_lines']) ? $data['max_lines'] : null;
         $this->container['scenario_id'] = isset($data['scenario_id']) ? $data['scenario_id'] : null;
         $this->container['phone_number_id'] = isset($data['phone_number_id']) ? $data['phone_number_id'] : null;
-        $this->container['callerid_id'] = isset($data['callerid_id']) ? $data['callerid_id'] : null;
+        $this->container['caller_id'] = isset($data['caller_id']) ? $data['caller_id'] : null;
         $this->container['time_start'] = isset($data['time_start']) ? $data['time_start'] : null;
         $this->container['time_end'] = isset($data['time_end']) ? $data['time_end'] : null;
         $this->container['date_start'] = isset($data['date_start']) ? $data['date_start'] : null;
         $this->container['date_end'] = isset($data['date_end']) ? $data['date_end'] : null;
         $this->container['permanent'] = isset($data['permanent']) ? $data['permanent'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
     }
 
     /**
@@ -299,7 +305,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets max_attempts
      *
-     * @param int $max_attempts Maximum amount of calls on one phone number.
+     * @param int $max_attempts Maximum number of calls to one phone number.
      *
      * @return $this
      */
@@ -323,7 +329,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets interval
      *
-     * @param int $interval The time between attempts to call on one phone number.
+     * @param int $interval Time between attempts to call one phone number.
      *
      * @return $this
      */
@@ -347,7 +353,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets max_lines
      *
-     * @param int $max_lines Maximum simultaneously performing calls.
+     * @param int $max_lines Maximum number of calls performed simultaneously
      *
      * @return $this
      */
@@ -371,7 +377,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets scenario_id
      *
-     * @param int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method.
+     * @param int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method.
      *
      * @return $this
      */
@@ -395,7 +401,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets phone_number_id
      *
-     * @param int $phone_number_id Phone number ID. Can be retrieved via the **searchNumbers** method.
+     * @param int $phone_number_id Phone number ID. The ID сan be retrieved via the **searchNumbers** method.
      *
      * @return $this
      */
@@ -407,25 +413,25 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets callerid_id
+     * Gets caller_id
      *
      * @return int
      */
-    public function getCalleridId()
+    public function getCallerId()
     {
-        return $this->container['callerid_id'];
+        return $this->container['caller_id'];
     }
 
     /**
-     * Sets callerid_id
+     * Sets caller_id
      *
-     * @param int $callerid_id Caller ID. Can be retrieved via the **searchCallerIDs** method.
+     * @param int $caller_id Caller ID. The ID сan be retrieved via the **searchCallerIDs** method.
      *
      * @return $this
      */
-    public function setCalleridId($callerid_id)
+    public function setCallerId($caller_id)
     {
-        $this->container['callerid_id'] = $callerid_id;
+        $this->container['caller_id'] = $caller_id;
 
         return $this;
     }
@@ -443,7 +449,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets time_start
      *
-     * @param string $time_start Time when API will start calling customers. Specify it along with the date_start parameter.
+     * @param string $time_start Time when the API starts calling customers. Specify it along with the date_start parameter.
      *
      * @return $this
      */
@@ -467,7 +473,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets time_end
      *
-     * @param string $time_end Time when calling will end.Specify it along with the date_end parameter.
+     * @param string $time_end Time when the calls end. Specify it along with the date_end parameter.
      *
      * @return $this
      */
@@ -491,7 +497,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets date_start
      *
-     * @param string $date_start Date when API will start calling customers. Specify it along with the time_start parameter.
+     * @param string $date_start Date when the API starts calling customers. Specify it along with the time_start parameter.
      *
      * @return $this
      */
@@ -515,7 +521,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets date_end
      *
-     * @param string $date_end Date when calling will end. Specify it along with the time_end parameter.
+     * @param string $date_end Date when the calls end. Specify it along with the time_end parameter.
      *
      * @return $this
      */
@@ -539,13 +545,37 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets permanent
      *
-     * @param bool $permanent Date when calling will end. Specify it along with the time_end parameter. Allow adding contacts to the active campaign? If **true**, you can add contacts up to the date_end and time_end. If **false**, the campaign will stop when calling ends or at the specified date_end and time_end.
+     * @param bool $permanent Set 'true' to make the campaign permanent. Set 'false' to stop the campaign after the end of the calls.
      *
      * @return $this
      */
     public function setPermanent($permanent)
     {
         $this->container['permanent'] = $permanent;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string $description Campaign description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
 
         return $this;
     }

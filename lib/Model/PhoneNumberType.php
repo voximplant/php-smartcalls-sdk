@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -70,9 +70,15 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
 'canceled' => 'string',
 'phone_next_renewal' => 'string',
 'phone_number' => 'int',
-'phone_price' => 'int',
+'phone_price' => 'float',
 'phone_region_id' => 'int',
-'redirect_number' => 'string'    ];
+'redirect_number' => 'string',
+'deleted' => 'bool',
+'is_sms_enabled' => 'bool',
+'is_sms_supported' => 'bool',
+'allowed_callerids' => 'bool',
+'campaigns' => '\Smartcalls\Model\PhoneNumberCampaignType[]',
+'scenario' => '\Smartcalls\Model\PhoneNumberScenarioType[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -96,7 +102,13 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
 'phone_number' => null,
 'phone_price' => null,
 'phone_region_id' => null,
-'redirect_number' => null    ];
+'redirect_number' => null,
+'deleted' => null,
+'is_sms_enabled' => null,
+'is_sms_supported' => null,
+'allowed_callerids' => null,
+'campaigns' => null,
+'scenario' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -141,7 +153,13 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
 'phone_number' => 'phone_number',
 'phone_price' => 'phone_price',
 'phone_region_id' => 'phone_region_id',
-'redirect_number' => 'redirect_number'    ];
+'redirect_number' => 'redirect_number',
+'deleted' => 'deleted',
+'is_sms_enabled' => 'is_sms_enabled',
+'is_sms_supported' => 'is_sms_supported',
+'allowed_callerids' => 'allowed_callerids',
+'campaigns' => 'campaigns',
+'scenario' => 'scenario'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -165,7 +183,13 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
 'phone_number' => 'setPhoneNumber',
 'phone_price' => 'setPhonePrice',
 'phone_region_id' => 'setPhoneRegionId',
-'redirect_number' => 'setRedirectNumber'    ];
+'redirect_number' => 'setRedirectNumber',
+'deleted' => 'setDeleted',
+'is_sms_enabled' => 'setIsSmsEnabled',
+'is_sms_supported' => 'setIsSmsSupported',
+'allowed_callerids' => 'setAllowedCallerids',
+'campaigns' => 'setCampaigns',
+'scenario' => 'setScenario'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -189,7 +213,13 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
 'phone_number' => 'getPhoneNumber',
 'phone_price' => 'getPhonePrice',
 'phone_region_id' => 'getPhoneRegionId',
-'redirect_number' => 'getRedirectNumber'    ];
+'redirect_number' => 'getRedirectNumber',
+'deleted' => 'getDeleted',
+'is_sms_enabled' => 'getIsSmsEnabled',
+'is_sms_supported' => 'getIsSmsSupported',
+'allowed_callerids' => 'getAllowedCallerids',
+'campaigns' => 'getCampaigns',
+'scenario' => 'getScenario'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -266,6 +296,12 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
         $this->container['phone_price'] = isset($data['phone_price']) ? $data['phone_price'] : null;
         $this->container['phone_region_id'] = isset($data['phone_region_id']) ? $data['phone_region_id'] : null;
         $this->container['redirect_number'] = isset($data['redirect_number']) ? $data['redirect_number'] : null;
+        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
+        $this->container['is_sms_enabled'] = isset($data['is_sms_enabled']) ? $data['is_sms_enabled'] : null;
+        $this->container['is_sms_supported'] = isset($data['is_sms_supported']) ? $data['is_sms_supported'] : null;
+        $this->container['allowed_callerids'] = isset($data['allowed_callerids']) ? $data['allowed_callerids'] : null;
+        $this->container['campaigns'] = isset($data['campaigns']) ? $data['campaigns'] : null;
+        $this->container['scenario'] = isset($data['scenario']) ? $data['scenario'] : null;
     }
 
     /**
@@ -631,7 +667,7 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
     /**
      * Gets phone_price
      *
-     * @return int
+     * @return float
      */
     public function getPhonePrice()
     {
@@ -641,7 +677,7 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
     /**
      * Sets phone_price
      *
-     * @param int $phone_price phone_price
+     * @param float $phone_price phone_price
      *
      * @return $this
      */
@@ -696,6 +732,150 @@ class PhoneNumberType implements ModelInterface, ArrayAccess
     public function setRedirectNumber($redirect_number)
     {
         $this->container['redirect_number'] = $redirect_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted
+     *
+     * @return bool
+     */
+    public function getDeleted()
+    {
+        return $this->container['deleted'];
+    }
+
+    /**
+     * Sets deleted
+     *
+     * @param bool $deleted deleted
+     *
+     * @return $this
+     */
+    public function setDeleted($deleted)
+    {
+        $this->container['deleted'] = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_sms_enabled
+     *
+     * @return bool
+     */
+    public function getIsSmsEnabled()
+    {
+        return $this->container['is_sms_enabled'];
+    }
+
+    /**
+     * Sets is_sms_enabled
+     *
+     * @param bool $is_sms_enabled is_sms_enabled
+     *
+     * @return $this
+     */
+    public function setIsSmsEnabled($is_sms_enabled)
+    {
+        $this->container['is_sms_enabled'] = $is_sms_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_sms_supported
+     *
+     * @return bool
+     */
+    public function getIsSmsSupported()
+    {
+        return $this->container['is_sms_supported'];
+    }
+
+    /**
+     * Sets is_sms_supported
+     *
+     * @param bool $is_sms_supported is_sms_supported
+     *
+     * @return $this
+     */
+    public function setIsSmsSupported($is_sms_supported)
+    {
+        $this->container['is_sms_supported'] = $is_sms_supported;
+
+        return $this;
+    }
+
+    /**
+     * Gets allowed_callerids
+     *
+     * @return bool
+     */
+    public function getAllowedCallerids()
+    {
+        return $this->container['allowed_callerids'];
+    }
+
+    /**
+     * Sets allowed_callerids
+     *
+     * @param bool $allowed_callerids allowed_callerids
+     *
+     * @return $this
+     */
+    public function setAllowedCallerids($allowed_callerids)
+    {
+        $this->container['allowed_callerids'] = $allowed_callerids;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaigns
+     *
+     * @return \Smartcalls\Model\PhoneNumberCampaignType[]
+     */
+    public function getCampaigns()
+    {
+        return $this->container['campaigns'];
+    }
+
+    /**
+     * Sets campaigns
+     *
+     * @param \Smartcalls\Model\PhoneNumberCampaignType[] $campaigns campaigns
+     *
+     * @return $this
+     */
+    public function setCampaigns($campaigns)
+    {
+        $this->container['campaigns'] = $campaigns;
+
+        return $this;
+    }
+
+    /**
+     * Gets scenario
+     *
+     * @return \Smartcalls\Model\PhoneNumberScenarioType[]
+     */
+    public function getScenario()
+    {
+        return $this->container['scenario'];
+    }
+
+    /**
+     * Sets scenario
+     *
+     * @param \Smartcalls\Model\PhoneNumberScenarioType[] $scenario scenario
+     *
+     * @return $this
+     */
+    public function setScenario($scenario)
+    {
+        $this->container['scenario'] = $scenario;
 
         return $this;
     }

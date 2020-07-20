@@ -10,9 +10,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -89,11 +89,11 @@ class CampaignsApi
     /**
      * Operation attemptDownloadStatReportGet
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\DownloadStatReportResponseType
+     * @return string
      */
     public function attemptDownloadStatReportGet($report_id)
     {
@@ -104,15 +104,15 @@ class CampaignsApi
     /**
      * Operation attemptDownloadStatReportGetWithHttpInfo
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\DownloadStatReportResponseType, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function attemptDownloadStatReportGetWithHttpInfo($report_id)
     {
-        $returnType = '\Smartcalls\Model\DownloadStatReportResponseType';
+        $returnType = 'string';
         $request = $this->attemptDownloadStatReportGetRequest($report_id);
 
         try {
@@ -164,7 +164,7 @@ class CampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Smartcalls\Model\DownloadStatReportResponseType',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -187,7 +187,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -207,14 +207,14 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function attemptDownloadStatReportGetAsyncWithHttpInfo($report_id)
     {
-        $returnType = '\Smartcalls\Model\DownloadStatReportResponseType';
+        $returnType = 'string';
         $request = $this->attemptDownloadStatReportGetRequest($report_id);
 
         return $this->client
@@ -257,7 +257,7 @@ class CampaignsApi
     /**
      * Create request for operation 'attemptDownloadStatReportGet'
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -289,11 +289,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/json'],
                 []
             );
         }
@@ -327,16 +327,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -361,37 +351,39 @@ class CampaignsApi
     /**
      * Operation attemptExportStatReportPost
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      * @param  string $locale Document language (&lt;b&gt;example:&lt;/b&gt; &#x27;en&#x27; or &#x27;ru&#x27;) (required)
-     * @param  string $from Statistics start date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
-     * @param  string $to Statistics end date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
+     * @param  string $format Report format. The following values are possible: csv, xlsx (optional)
+     * @param  string $from Start date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
+     * @param  string $to End date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\ExportStatReportResponseType
      */
-    public function attemptExportStatReportPost($campaign_id, $locale, $from = null, $to = null)
+    public function attemptExportStatReportPost($campaign_id, $locale, $format = null, $from = null, $to = null)
     {
-        list($response) = $this->attemptExportStatReportPostWithHttpInfo($campaign_id, $locale, $from, $to);
+        list($response) = $this->attemptExportStatReportPostWithHttpInfo($campaign_id, $locale, $format, $from, $to);
         return $response;
     }
 
     /**
      * Operation attemptExportStatReportPostWithHttpInfo
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      * @param  string $locale Document language (&lt;b&gt;example:&lt;/b&gt; &#x27;en&#x27; or &#x27;ru&#x27;) (required)
-     * @param  string $from Statistics start date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
-     * @param  string $to Statistics end date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
+     * @param  string $format Report format. The following values are possible: csv, xlsx (optional)
+     * @param  string $from Start date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
+     * @param  string $to End date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\ExportStatReportResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function attemptExportStatReportPostWithHttpInfo($campaign_id, $locale, $from = null, $to = null)
+    public function attemptExportStatReportPostWithHttpInfo($campaign_id, $locale, $format = null, $from = null, $to = null)
     {
         $returnType = '\Smartcalls\Model\ExportStatReportResponseType';
-        $request = $this->attemptExportStatReportPostRequest($campaign_id, $locale, $from, $to);
+        $request = $this->attemptExportStatReportPostRequest($campaign_id, $locale, $format, $from, $to);
 
         try {
             $options = $this->createHttpClientOption();
@@ -465,17 +457,18 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      * @param  string $locale Document language (&lt;b&gt;example:&lt;/b&gt; &#x27;en&#x27; or &#x27;ru&#x27;) (required)
-     * @param  string $from Statistics start date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
-     * @param  string $to Statistics end date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
+     * @param  string $format Report format. The following values are possible: csv, xlsx (optional)
+     * @param  string $from Start date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
+     * @param  string $to End date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attemptExportStatReportPostAsync($campaign_id, $locale, $from = null, $to = null)
+    public function attemptExportStatReportPostAsync($campaign_id, $locale, $format = null, $from = null, $to = null)
     {
-        return $this->attemptExportStatReportPostAsyncWithHttpInfo($campaign_id, $locale, $from, $to)
+        return $this->attemptExportStatReportPostAsyncWithHttpInfo($campaign_id, $locale, $format, $from, $to)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -488,18 +481,19 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      * @param  string $locale Document language (&lt;b&gt;example:&lt;/b&gt; &#x27;en&#x27; or &#x27;ru&#x27;) (required)
-     * @param  string $from Statistics start date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
-     * @param  string $to Statistics end date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
+     * @param  string $format Report format. The following values are possible: csv, xlsx (optional)
+     * @param  string $from Start date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
+     * @param  string $to End date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attemptExportStatReportPostAsyncWithHttpInfo($campaign_id, $locale, $from = null, $to = null)
+    public function attemptExportStatReportPostAsyncWithHttpInfo($campaign_id, $locale, $format = null, $from = null, $to = null)
     {
         $returnType = '\Smartcalls\Model\ExportStatReportResponseType';
-        $request = $this->attemptExportStatReportPostRequest($campaign_id, $locale, $from, $to);
+        $request = $this->attemptExportStatReportPostRequest($campaign_id, $locale, $format, $from, $to);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -541,15 +535,16 @@ class CampaignsApi
     /**
      * Create request for operation 'attemptExportStatReportPost'
      *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      * @param  string $locale Document language (&lt;b&gt;example:&lt;/b&gt; &#x27;en&#x27; or &#x27;ru&#x27;) (required)
-     * @param  string $from Statistics start date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
-     * @param  string $to Statistics end date (&lt;b&gt;example:&lt;/b&gt; &#x27;DD.MM.YYYY&#x27;) (optional)
+     * @param  string $format Report format. The following values are possible: csv, xlsx (optional)
+     * @param  string $from Start date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
+     * @param  string $to End date (&lt;b&gt;example:&lt;/b&gt; &#x27;YYYY-MM-DD HH:mm:ss&#x27;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function attemptExportStatReportPostRequest($campaign_id, $locale, $from = null, $to = null)
+    protected function attemptExportStatReportPostRequest($campaign_id, $locale, $format = null, $from = null, $to = null)
     {
         // verify the required parameter 'campaign_id' is set
         if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
@@ -574,6 +569,10 @@ class CampaignsApi
         // query params
         if ($campaign_id !== null) {
             $queryParams['campaign_id'] = ObjectSerializer::toQueryValue($campaign_id);
+        }
+        // query params
+        if ($format !== null) {
+            $queryParams['format'] = ObjectSerializer::toQueryValue($format);
         }
         // query params
         if ($locale !== null) {
@@ -632,16 +631,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -666,7 +655,7 @@ class CampaignsApi
     /**
      * Operation attemptGetStatReportStatusPost
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -681,7 +670,7 @@ class CampaignsApi
     /**
      * Operation attemptGetStatReportStatusPostWithHttpInfo
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -764,7 +753,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -784,7 +773,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -834,7 +823,7 @@ class CampaignsApi
     /**
      * Create request for operation 'attemptGetStatReportStatusPost'
      *
-     * @param  int $report_id Report ID. ID can be retrieved via the **exportStatReport** method. (required)
+     * @param  int $report_id Report ID. The ID can be retrieved via the **exportStatReport** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -904,16 +893,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -938,41 +917,45 @@ class CampaignsApi
     /**
      * Operation attemptSearchAttemptsGet
      *
-     * @param  int $id Attempt ID. ID can be retrieved via the **searchAttempts** method. (optional)
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Attempt ID. The ID can be retrieved via the **searchAttempts** method (optional)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $fields List of the returned fields (comma separated). If it’s not specified, the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\SearchAttemptsResponseType
      */
-    public function attemptSearchAttemptsGet($id = null, $campaign_id = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function attemptSearchAttemptsGet($id = null, $campaign_id = null, $datetime_start = null, $datetime_end = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
-        list($response) = $this->attemptSearchAttemptsGetWithHttpInfo($id, $campaign_id, $fields, $sort, $page, $per_page);
+        list($response) = $this->attemptSearchAttemptsGetWithHttpInfo($id, $campaign_id, $datetime_start, $datetime_end, $fields, $sort, $page, $per_page);
         return $response;
     }
 
     /**
      * Operation attemptSearchAttemptsGetWithHttpInfo
      *
-     * @param  int $id Attempt ID. ID can be retrieved via the **searchAttempts** method. (optional)
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Attempt ID. The ID can be retrieved via the **searchAttempts** method (optional)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $fields List of the returned fields (comma separated). If it’s not specified, the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\SearchAttemptsResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function attemptSearchAttemptsGetWithHttpInfo($id = null, $campaign_id = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function attemptSearchAttemptsGetWithHttpInfo($id = null, $campaign_id = null, $datetime_start = null, $datetime_end = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
         $returnType = '\Smartcalls\Model\SearchAttemptsResponseType';
-        $request = $this->attemptSearchAttemptsGetRequest($id, $campaign_id, $fields, $sort, $page, $per_page);
+        $request = $this->attemptSearchAttemptsGetRequest($id, $campaign_id, $datetime_start, $datetime_end, $fields, $sort, $page, $per_page);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1046,19 +1029,21 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Attempt ID. ID can be retrieved via the **searchAttempts** method. (optional)
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Attempt ID. The ID can be retrieved via the **searchAttempts** method (optional)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $fields List of the returned fields (comma separated). If it’s not specified, the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attemptSearchAttemptsGetAsync($id = null, $campaign_id = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function attemptSearchAttemptsGetAsync($id = null, $campaign_id = null, $datetime_start = null, $datetime_end = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
-        return $this->attemptSearchAttemptsGetAsyncWithHttpInfo($id, $campaign_id, $fields, $sort, $page, $per_page)
+        return $this->attemptSearchAttemptsGetAsyncWithHttpInfo($id, $campaign_id, $datetime_start, $datetime_end, $fields, $sort, $page, $per_page)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1071,20 +1056,22 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Attempt ID. ID can be retrieved via the **searchAttempts** method. (optional)
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Attempt ID. The ID can be retrieved via the **searchAttempts** method (optional)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $fields List of the returned fields (comma separated). If it’s not specified, the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attemptSearchAttemptsGetAsyncWithHttpInfo($id = null, $campaign_id = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    public function attemptSearchAttemptsGetAsyncWithHttpInfo($id = null, $campaign_id = null, $datetime_start = null, $datetime_end = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
         $returnType = '\Smartcalls\Model\SearchAttemptsResponseType';
-        $request = $this->attemptSearchAttemptsGetRequest($id, $campaign_id, $fields, $sort, $page, $per_page);
+        $request = $this->attemptSearchAttemptsGetRequest($id, $campaign_id, $datetime_start, $datetime_end, $fields, $sort, $page, $per_page);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1126,17 +1113,19 @@ class CampaignsApi
     /**
      * Create request for operation 'attemptSearchAttemptsGet'
      *
-     * @param  int $id Attempt ID. ID can be retrieved via the **searchAttempts** method. (optional)
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Attempt ID. The ID can be retrieved via the **searchAttempts** method (optional)
+     * @param  int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $datetime_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $datetime_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $fields List of the returned fields (comma separated). If it’s not specified, the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-id’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function attemptSearchAttemptsGetRequest($id = null, $campaign_id = null, $fields = null, $sort = null, $page = null, $per_page = null)
+    protected function attemptSearchAttemptsGetRequest($id = null, $campaign_id = null, $datetime_start = null, $datetime_end = null, $fields = null, $sort = null, $page = null, $per_page = null)
     {
 
         $resourcePath = '/attempt/searchAttempts';
@@ -1153,6 +1142,14 @@ class CampaignsApi
         // query params
         if ($campaign_id !== null) {
             $queryParams['campaign_id'] = ObjectSerializer::toQueryValue($campaign_id);
+        }
+        // query params
+        if ($datetime_start !== null) {
+            $queryParams['datetime_start'] = ObjectSerializer::toQueryValue($datetime_start);
+        }
+        // query params
+        if ($datetime_end !== null) {
+            $queryParams['datetime_end'] = ObjectSerializer::toQueryValue($datetime_end);
         }
         // query params
         if ($fields !== null) {
@@ -1215,16 +1212,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1490,16 +1477,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1524,7 +1501,7 @@ class CampaignsApi
     /**
      * Operation outboundDeleteCampaignPost
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1539,7 +1516,7 @@ class CampaignsApi
     /**
      * Operation outboundDeleteCampaignPostWithHttpInfo
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1622,7 +1599,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1642,7 +1619,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1692,7 +1669,7 @@ class CampaignsApi
     /**
      * Create request for operation 'outboundDeleteCampaignPost'
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1762,288 +1739,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation outboundGetCallListTemplatePost
-     *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\GetCallListTemplateResponseType
-     */
-    public function outboundGetCallListTemplatePost($campaign_id)
-    {
-        list($response) = $this->outboundGetCallListTemplatePostWithHttpInfo($campaign_id);
-        return $response;
-    }
-
-    /**
-     * Operation outboundGetCallListTemplatePostWithHttpInfo
-     *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
-     *
-     * @throws \Smartcalls\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\GetCallListTemplateResponseType, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function outboundGetCallListTemplatePostWithHttpInfo($campaign_id)
-    {
-        $returnType = '\Smartcalls\Model\GetCallListTemplateResponseType';
-        $request = $this->outboundGetCallListTemplatePostRequest($campaign_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\GetCallListTemplateResponseType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 0:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Smartcalls\Model\ErrorType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation outboundGetCallListTemplatePostAsync
-     *
-     * 
-     *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function outboundGetCallListTemplatePostAsync($campaign_id)
-    {
-        return $this->outboundGetCallListTemplatePostAsyncWithHttpInfo($campaign_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation outboundGetCallListTemplatePostAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function outboundGetCallListTemplatePostAsyncWithHttpInfo($campaign_id)
-    {
-        $returnType = '\Smartcalls\Model\GetCallListTemplateResponseType';
-        $request = $this->outboundGetCallListTemplatePostRequest($campaign_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'outboundGetCallListTemplatePost'
-     *
-     * @param  int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function outboundGetCallListTemplatePostRequest($campaign_id)
-    {
-        // verify the required parameter 'campaign_id' is set
-        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign_id when calling outboundGetCallListTemplatePost'
-            );
-        }
-
-        $resourcePath = '/outbound/getCallListTemplate';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($campaign_id !== null) {
-            $queryParams['campaign_id'] = ObjectSerializer::toQueryValue($campaign_id);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2074,20 +1769,21 @@ class CampaignsApi
      * @param  int $max_lines max_lines (required)
      * @param  int $scenario_id scenario_id (required)
      * @param  int $phone_number_id phone_number_id (required)
-     * @param  int $callerid_id callerid_id (required)
+     * @param  int $caller_id caller_id (required)
      * @param  string $time_start time_start (required)
      * @param  string $time_end time_end (required)
      * @param  string $date_start date_start (required)
      * @param  string $date_end date_end (required)
      * @param  bool $permanent permanent (required)
+     * @param  string $description description (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Smartcalls\Model\InitCampaignResponseType
      */
-    public function outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPost($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description)
     {
-        list($response) = $this->outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent);
+        list($response) = $this->outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description);
         return $response;
     }
 
@@ -2100,21 +1796,22 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $callerid_id (required)
+     * @param  int $caller_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
      * @param  string $date_end (required)
      * @param  bool $permanent (required)
+     * @param  string $description (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Smartcalls\Model\InitCampaignResponseType, HTTP status code, HTTP response headers (array of strings)
      */
-    public function outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPostWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description)
     {
         $returnType = '\Smartcalls\Model\InitCampaignResponseType';
-        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent);
+        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2194,19 +1891,20 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $callerid_id (required)
+     * @param  int $caller_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
      * @param  string $date_end (required)
      * @param  bool $permanent (required)
+     * @param  string $description (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outboundInitCampaignPostAsync($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPostAsync($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description)
     {
-        return $this->outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+        return $this->outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2225,20 +1923,21 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $callerid_id (required)
+     * @param  int $caller_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
      * @param  string $date_end (required)
      * @param  bool $permanent (required)
+     * @param  string $description (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    public function outboundInitCampaignPostAsyncWithHttpInfo($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description)
     {
         $returnType = '\Smartcalls\Model\InitCampaignResponseType';
-        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent);
+        $request = $this->outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2286,17 +1985,18 @@ class CampaignsApi
      * @param  int $max_lines (required)
      * @param  int $scenario_id (required)
      * @param  int $phone_number_id (required)
-     * @param  int $callerid_id (required)
+     * @param  int $caller_id (required)
      * @param  string $time_start (required)
      * @param  string $time_end (required)
      * @param  string $date_start (required)
      * @param  string $date_end (required)
      * @param  bool $permanent (required)
+     * @param  string $description (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $callerid_id, $time_start, $time_end, $date_start, $date_end, $permanent)
+    protected function outboundInitCampaignPostRequest($title, $max_attempts, $interval, $max_lines, $scenario_id, $phone_number_id, $caller_id, $time_start, $time_end, $date_start, $date_end, $permanent, $description)
     {
         // verify the required parameter 'title' is set
         if ($title === null || (is_array($title) && count($title) === 0)) {
@@ -2334,10 +2034,10 @@ class CampaignsApi
                 'Missing the required parameter $phone_number_id when calling outboundInitCampaignPost'
             );
         }
-        // verify the required parameter 'callerid_id' is set
-        if ($callerid_id === null || (is_array($callerid_id) && count($callerid_id) === 0)) {
+        // verify the required parameter 'caller_id' is set
+        if ($caller_id === null || (is_array($caller_id) && count($caller_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $callerid_id when calling outboundInitCampaignPost'
+                'Missing the required parameter $caller_id when calling outboundInitCampaignPost'
             );
         }
         // verify the required parameter 'time_start' is set
@@ -2368,6 +2068,12 @@ class CampaignsApi
         if ($permanent === null || (is_array($permanent) && count($permanent) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $permanent when calling outboundInitCampaignPost'
+            );
+        }
+        // verify the required parameter 'description' is set
+        if ($description === null || (is_array($description) && count($description) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $description when calling outboundInitCampaignPost'
             );
         }
 
@@ -2405,8 +2111,8 @@ class CampaignsApi
             $formParams['phone_number_id'] = ObjectSerializer::toFormValue($phone_number_id);
         }
         // form params
-        if ($callerid_id !== null) {
-            $formParams['callerid_id'] = ObjectSerializer::toFormValue($callerid_id);
+        if ($caller_id !== null) {
+            $formParams['caller_id'] = ObjectSerializer::toFormValue($caller_id);
         }
         // form params
         if ($time_start !== null) {
@@ -2427,6 +2133,10 @@ class CampaignsApi
         // form params
         if ($permanent !== null) {
             $formParams['permanent'] = ObjectSerializer::toFormValue($permanent);
+        }
+        // form params
+        if ($description !== null) {
+            $formParams['description'] = ObjectSerializer::toFormValue($description);
         }
         // body params
         $_tempBody = null;
@@ -2471,16 +2181,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2505,7 +2205,7 @@ class CampaignsApi
     /**
      * Operation outboundPauseCampaignPost
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2520,7 +2220,7 @@ class CampaignsApi
     /**
      * Operation outboundPauseCampaignPostWithHttpInfo
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2603,7 +2303,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2623,7 +2323,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2673,7 +2373,7 @@ class CampaignsApi
     /**
      * Create request for operation 'outboundPauseCampaignPost'
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2737,16 +2437,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2771,7 +2461,7 @@ class CampaignsApi
     /**
      * Operation outboundResumeCampaignPost
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2786,7 +2476,7 @@ class CampaignsApi
     /**
      * Operation outboundResumeCampaignPostWithHttpInfo
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2869,7 +2559,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2889,7 +2579,7 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2939,7 +2629,7 @@ class CampaignsApi
     /**
      * Create request for operation 'outboundResumeCampaignPost'
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3003,16 +2693,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3037,16 +2717,16 @@ class CampaignsApi
     /**
      * Operation outboundSearchCampaignsGet
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
-     * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_create Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $title Title of the campaign. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $status Campaign status. The possible values are draft, error, processing, ready, canceled, completed, paused, started (optional)
+     * @param  string $date_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_create Date of the campaign creation. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $title Title of the campaign (optional)
+     * @param  string $fields List of the return fields (comma separated). If it’s not specified the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3061,16 +2741,16 @@ class CampaignsApi
     /**
      * Operation outboundSearchCampaignsGetWithHttpInfo
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
-     * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_create Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $title Title of the campaign. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $status Campaign status. The possible values are draft, error, processing, ready, canceled, completed, paused, started (optional)
+     * @param  string $date_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_create Date of the campaign creation. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $title Title of the campaign (optional)
+     * @param  string $fields List of the return fields (comma separated). If it’s not specified the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3153,16 +2833,16 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
-     * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_create Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $title Title of the campaign. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $status Campaign status. The possible values are draft, error, processing, ready, canceled, completed, paused, started (optional)
+     * @param  string $date_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_create Date of the campaign creation. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $title Title of the campaign (optional)
+     * @param  string $fields List of the return fields (comma separated). If it’s not specified the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3182,16 +2862,16 @@ class CampaignsApi
      *
      * 
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
-     * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_create Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $title Title of the campaign. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $status Campaign status. The possible values are draft, error, processing, ready, canceled, completed, paused, started (optional)
+     * @param  string $date_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_create Date of the campaign creation. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $title Title of the campaign (optional)
+     * @param  string $fields List of the return fields (comma separated). If it’s not specified the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3241,16 +2921,16 @@ class CampaignsApi
     /**
      * Create request for operation 'outboundSearchCampaignsGet'
      *
-     * @param  int $id Campaign ID. ID can be retrieved via the **searchCampaigns** method. (optional)
-     * @param  string $status Campaign status. Possible values are draft, error, processing, ready, canceled, completed, paused, started. (optional)
-     * @param  string $date_start Date start. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_end Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $date_create Date end. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
-     * @param  string $title Title of the campaign. (optional)
-     * @param  string $fields List of return fields(comma separated). If it’s not specified the response contains full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $page API methods return 20 records (one page) by default. The parameter specifies which page will be in a response: the first one, second, etc. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
-     * @param  int $per_page Sets the number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests.&lt;/b&gt; (optional)
+     * @param  int $id Campaign ID. The ID can be retrieved via the **searchCampaigns** method (optional)
+     * @param  string $status Campaign status. The possible values are draft, error, processing, ready, canceled, completed, paused, started (optional)
+     * @param  string $date_start Start date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_end End date. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $date_create Date of the campaign creation. The format is 24-h ‘YYYY-MM-DD HH:mm:ss’ (optional)
+     * @param  string $title Title of the campaign (optional)
+     * @param  string $fields List of the return fields (comma separated). If it’s not specified the response will contain the full list of fields. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  string $sort Sorting data by field(s), add &#x27;-&#x27; to DESC sort, (&lt;b&gt;example:&lt;/b&gt; ‘sort&#x3D;id’ or ‘sort&#x3D;-datetime_start’). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $page Page to show as a response: the first one, second, etc. API methods return 20 records (one page) by default. &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
+     * @param  int $per_page Number of records per page (default value is 20, min &#x3D; 1, max &#x3D; 50). &lt;br /&gt;&lt;b&gt;IMPORTANT: the parameter can be used only in GET requests&lt;/b&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3350,16 +3030,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3622,16 +3292,6 @@ class CampaignsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('access_token');
-        if ($apiKey !== null) {
-            $queryParams['access_token'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('domain');
-        if ($apiKey !== null) {
-            $queryParams['domain'] = $apiKey;
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

@@ -17,9 +17,15 @@ Name | Type | Description | Notes
 **canceled** | **string** |  | [optional] 
 **phone_next_renewal** | **string** |  | [optional] 
 **phone_number** | **int** |  | [optional] 
-**phone_price** | **int** |  | [optional] 
+**phone_price** | **float** |  | [optional] 
 **phone_region_id** | **int** |  | [optional] 
 **redirect_number** | **string** |  | [optional] 
+**deleted** | **bool** |  | [optional] 
+**is_sms_enabled** | **bool** |  | [optional] 
+**is_sms_supported** | **bool** |  | [optional] 
+**allowed_callerids** | **bool** |  | [optional] 
+**campaigns** | [**\Smartcalls\Model\PhoneNumberCampaignType[]**](PhoneNumberCampaignType.md) |  | [optional] 
+**scenario** | [**\Smartcalls\Model\PhoneNumberScenarioType[]**](PhoneNumberScenarioType.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

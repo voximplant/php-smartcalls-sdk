@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -233,7 +233,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets scenario_id
      *
-     * @param int $scenario_id Scenario ID. ID can be retrieved via the **searchScenarios** method.
+     * @param int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method.
      *
      * @return $this
      */
@@ -281,7 +281,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets variables
      *
-     * @param string $variables Format is JSON string. Example of JSON string to specify the data to  {\"custom_field_1\": \"custom_value_1\"}, {\"custom_field_2\": \"custom_value_2\", ...}
+     * @param string $variables Data in JSON format to be used in the scenario. {\"custom_field_1\": \"custom_value_1\"}, {\"custom_field_2\": \"custom_value_2\", ...}
      *
      * @return $this
      */
@@ -305,7 +305,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets phone_number_id
      *
-     * @param int $phone_number_id Phone number ID. Can be retrieved via the **searchNumbers** method.
+     * @param int $phone_number_id Phone number ID. The ID сan be retrieved via the **searchNumbers** method.
      *
      * @return $this
      */
@@ -329,7 +329,7 @@ class RunScenarioRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets caller_id
      *
-     * @param int $caller_id Phone number ID. Can be retrieved via the **searchCallerIDs** method.
+     * @param int $caller_id Caller ID. The ID сan be retrieved via the **searchCallerIDs** method.
      *
      * @return $this
      */
