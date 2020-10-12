@@ -60,7 +60,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **scenarioRunScenarioPost**
-> \Smartcalls\Model\RunScenarioResponseType scenarioRunScenarioPost($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+> \Smartcalls\Model\InlineResponse200 scenarioRunScenarioPost($scenario_id, $phone, $variables, $caller_id)
 
 
 
@@ -77,13 +77,12 @@ $apiInstance = new Smartcalls\client\ScenariosApi(
     new GuzzleHttp\Client()
 );
 $scenario_id = 56; // int | 
-$phone = 56; // int | 
+$phone = "phone_example"; // string | 
 $variables = "variables_example"; // string | 
-$phone_number_id = 56; // int | 
-$caller_id = 56; // int | 
+$caller_id = "caller_id_example"; // string | 
 
 try {
-    $result = $apiInstance->scenarioRunScenarioPost($scenario_id, $phone, $variables, $phone_number_id, $caller_id);
+    $result = $apiInstance->scenarioRunScenarioPost($scenario_id, $phone, $variables, $caller_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ScenariosApi->scenarioRunScenarioPost: ', $e->getMessage(), PHP_EOL;
@@ -96,14 +95,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scenario_id** | **int**|  |
- **phone** | **int**|  |
+ **phone** | **string**|  |
  **variables** | **string**|  |
- **phone_number_id** | **int**|  |
- **caller_id** | **int**|  |
+ **caller_id** | **string**|  |
 
 ### Return type
 
-[**\Smartcalls\Model\RunScenarioResponseType**](../Model/RunScenarioResponseType.md)
+[**\Smartcalls\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

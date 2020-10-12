@@ -355,18 +355,17 @@ class ScenariosApi
      * Operation scenarioRunScenarioPost
      *
      * @param  int $scenario_id scenario_id (required)
-     * @param  int $phone phone (required)
+     * @param  string $phone phone (required)
      * @param  string $variables variables (required)
-     * @param  int $phone_number_id phone_number_id (required)
-     * @param  int $caller_id caller_id (required)
+     * @param  string $caller_id caller_id (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Smartcalls\Model\RunScenarioResponseType
+     * @return \Smartcalls\Model\InlineResponse200
      */
-    public function scenarioRunScenarioPost($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+    public function scenarioRunScenarioPost($scenario_id, $phone, $variables, $caller_id)
     {
-        list($response) = $this->scenarioRunScenarioPostWithHttpInfo($scenario_id, $phone, $variables, $phone_number_id, $caller_id);
+        list($response) = $this->scenarioRunScenarioPostWithHttpInfo($scenario_id, $phone, $variables, $caller_id);
         return $response;
     }
 
@@ -374,19 +373,18 @@ class ScenariosApi
      * Operation scenarioRunScenarioPostWithHttpInfo
      *
      * @param  int $scenario_id (required)
-     * @param  int $phone (required)
+     * @param  string $phone (required)
      * @param  string $variables (required)
-     * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  string $caller_id (required)
      *
      * @throws \Smartcalls\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Smartcalls\Model\RunScenarioResponseType, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Smartcalls\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scenarioRunScenarioPostWithHttpInfo($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+    public function scenarioRunScenarioPostWithHttpInfo($scenario_id, $phone, $variables, $caller_id)
     {
-        $returnType = '\Smartcalls\Model\RunScenarioResponseType';
-        $request = $this->scenarioRunScenarioPostRequest($scenario_id, $phone, $variables, $phone_number_id, $caller_id);
+        $returnType = '\Smartcalls\Model\InlineResponse200';
+        $request = $this->scenarioRunScenarioPostRequest($scenario_id, $phone, $variables, $caller_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -437,7 +435,7 @@ class ScenariosApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Smartcalls\Model\RunScenarioResponseType',
+                        '\Smartcalls\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -461,17 +459,16 @@ class ScenariosApi
      * 
      *
      * @param  int $scenario_id (required)
-     * @param  int $phone (required)
+     * @param  string $phone (required)
      * @param  string $variables (required)
-     * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  string $caller_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scenarioRunScenarioPostAsync($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+    public function scenarioRunScenarioPostAsync($scenario_id, $phone, $variables, $caller_id)
     {
-        return $this->scenarioRunScenarioPostAsyncWithHttpInfo($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+        return $this->scenarioRunScenarioPostAsyncWithHttpInfo($scenario_id, $phone, $variables, $caller_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -485,18 +482,17 @@ class ScenariosApi
      * 
      *
      * @param  int $scenario_id (required)
-     * @param  int $phone (required)
+     * @param  string $phone (required)
      * @param  string $variables (required)
-     * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  string $caller_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scenarioRunScenarioPostAsyncWithHttpInfo($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+    public function scenarioRunScenarioPostAsyncWithHttpInfo($scenario_id, $phone, $variables, $caller_id)
     {
-        $returnType = '\Smartcalls\Model\RunScenarioResponseType';
-        $request = $this->scenarioRunScenarioPostRequest($scenario_id, $phone, $variables, $phone_number_id, $caller_id);
+        $returnType = '\Smartcalls\Model\InlineResponse200';
+        $request = $this->scenarioRunScenarioPostRequest($scenario_id, $phone, $variables, $caller_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -539,15 +535,14 @@ class ScenariosApi
      * Create request for operation 'scenarioRunScenarioPost'
      *
      * @param  int $scenario_id (required)
-     * @param  int $phone (required)
+     * @param  string $phone (required)
      * @param  string $variables (required)
-     * @param  int $phone_number_id (required)
-     * @param  int $caller_id (required)
+     * @param  string $caller_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function scenarioRunScenarioPostRequest($scenario_id, $phone, $variables, $phone_number_id, $caller_id)
+    protected function scenarioRunScenarioPostRequest($scenario_id, $phone, $variables, $caller_id)
     {
         // verify the required parameter 'scenario_id' is set
         if ($scenario_id === null || (is_array($scenario_id) && count($scenario_id) === 0)) {
@@ -565,12 +560,6 @@ class ScenariosApi
         if ($variables === null || (is_array($variables) && count($variables) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $variables when calling scenarioRunScenarioPost'
-            );
-        }
-        // verify the required parameter 'phone_number_id' is set
-        if ($phone_number_id === null || (is_array($phone_number_id) && count($phone_number_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $phone_number_id when calling scenarioRunScenarioPost'
             );
         }
         // verify the required parameter 'caller_id' is set
@@ -600,10 +589,6 @@ class ScenariosApi
         // form params
         if ($variables !== null) {
             $formParams['variables'] = ObjectSerializer::toFormValue($variables);
-        }
-        // form params
-        if ($phone_number_id !== null) {
-            $formParams['phone_number_id'] = ObjectSerializer::toFormValue($phone_number_id);
         }
         // form params
         if ($caller_id !== null) {

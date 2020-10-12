@@ -11,9 +11,9 @@
  */
 
 /**
- * SmartCalls IO API Documentation
+ * Voximplant Kit API Documentation
  *
- * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://smartcalls.io/api/v2/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
+ * <h1>Basic description</h1> <p>HTTP API is available via the <u>https://kit.voximplant.com/api/v3/<b>{method}</b></u> endpoint. To use the methods marked with the LOCK symbol, you need to generate an access_token via the <b>getAccessToken</b> method. Pass this access token to each HTTP API call.</p> <h1>Authentication</h1> <p>This API uses Custom Query Parameter for its authentication.</p> <p>The parameters that are needed to be sent for this type of authentication are as follows:</p> <ul>   <li><strong>access_token</strong></li>   <li><strong>domain</strong></li> </ul>
  *
  * OpenAPI spec version: 2.0
  * 
@@ -215,7 +215,7 @@ class Body1 implements ModelInterface, ArrayAccess
     /**
      * Sets campaign_id
      *
-     * @param int $campaign_id Campaign ID. ID can be retrieved via the **searchCampaigns** method.
+     * @param int $campaign_id Campaign ID. The ID can be retrieved via the **searchCampaigns** method
      *
      * @return $this
      */
@@ -239,7 +239,7 @@ class Body1 implements ModelInterface, ArrayAccess
     /**
      * Sets rows
      *
-     * @param string $rows Format is JSON string. Example of JSON string to specify the data to append. <br><b>Example:</b> <code>[{\"phone\": \"+79101234567\", \"UTC\": \"Europe/Moscow\", \"custom_field\": \"custom_value\"}]</code>
+     * @param string $rows Data to append in JSON format. <br><b>Example:</b> <code>[{\"phone\": \"+79101234567\", \"UTC\": \"Europe/Moscow\", \"custom_field\": \"custom_value\"}]</code>
      *
      * @return $this
      */

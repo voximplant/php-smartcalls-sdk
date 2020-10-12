@@ -1,6 +1,6 @@
 <?php
 /**
- * Body
+ * InlineResponse200
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Smartcalls\ObjectSerializer;
 
 /**
- * Body Class Doc Comment
+ * InlineResponse200 Class Doc Comment
  *
  * @category Class
  * @package  Smartcalls
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Body implements ModelInterface, ArrayAccess
+class InlineResponse200 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Body implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'body';
+    protected static $swaggerModelName = 'inline_response_200';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,8 @@ class Body implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'scenario_id' => 'int',
-'phone' => 'string',
-'variables' => 'string',
-'caller_id' => 'string'    ];
+        'success' => 'bool',
+'result' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -67,10 +65,8 @@ class Body implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'scenario_id' => 'int32',
-'phone' => null,
-'variables' => null,
-'caller_id' => null    ];
+        'success' => null,
+'result' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -99,10 +95,8 @@ class Body implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'scenario_id' => 'scenario_id',
-'phone' => 'phone',
-'variables' => 'variables',
-'caller_id' => 'caller_id'    ];
+        'success' => 'success',
+'result' => 'result'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -110,10 +104,8 @@ class Body implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'scenario_id' => 'setScenarioId',
-'phone' => 'setPhone',
-'variables' => 'setVariables',
-'caller_id' => 'setCallerId'    ];
+        'success' => 'setSuccess',
+'result' => 'setResult'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -121,10 +113,8 @@ class Body implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'scenario_id' => 'getScenarioId',
-'phone' => 'getPhone',
-'variables' => 'getVariables',
-'caller_id' => 'getCallerId'    ];
+        'success' => 'getSuccess',
+'result' => 'getResult'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -184,10 +174,8 @@ class Body implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['scenario_id'] = isset($data['scenario_id']) ? $data['scenario_id'] : null;
-        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
-        $this->container['variables'] = isset($data['variables']) ? $data['variables'] : null;
-        $this->container['caller_id'] = isset($data['caller_id']) ? $data['caller_id'] : null;
+        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
+        $this->container['result'] = isset($data['result']) ? $data['result'] : null;
     }
 
     /**
@@ -215,97 +203,49 @@ class Body implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets scenario_id
+     * Gets success
      *
-     * @return int
+     * @return bool
      */
-    public function getScenarioId()
+    public function getSuccess()
     {
-        return $this->container['scenario_id'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets scenario_id
+     * Sets success
      *
-     * @param int $scenario_id Scenario ID. The ID can be retrieved via the **searchScenarios** method.
+     * @param bool $success success
      *
      * @return $this
      */
-    public function setScenarioId($scenario_id)
+    public function setSuccess($success)
     {
-        $this->container['scenario_id'] = $scenario_id;
+        $this->container['success'] = $success;
 
         return $this;
     }
 
     /**
-     * Gets phone
+     * Gets result
      *
-     * @return string
+     * @return bool
      */
-    public function getPhone()
+    public function getResult()
     {
-        return $this->container['phone'];
+        return $this->container['result'];
     }
 
     /**
-     * Sets phone
+     * Sets result
      *
-     * @param string $phone Phone number to call.
+     * @param bool $result result
      *
      * @return $this
      */
-    public function setPhone($phone)
+    public function setResult($result)
     {
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets variables
-     *
-     * @return string
-     */
-    public function getVariables()
-    {
-        return $this->container['variables'];
-    }
-
-    /**
-     * Sets variables
-     *
-     * @param string $variables Data in JSON format to be used in the scenario. {\"custom_field_1\": \"custom_value_1\"}, {\"custom_field_2\": \"custom_value_2\", ...}
-     *
-     * @return $this
-     */
-    public function setVariables($variables)
-    {
-        $this->container['variables'] = $variables;
-
-        return $this;
-    }
-
-    /**
-     * Gets caller_id
-     *
-     * @return string
-     */
-    public function getCallerId()
-    {
-        return $this->container['caller_id'];
-    }
-
-    /**
-     * Sets caller_id
-     *
-     * @param string $caller_id Caller ID. The phone number from which the call will be made.
-     *
-     * @return $this
-     */
-    public function setCallerId($caller_id)
-    {
-        $this->container['caller_id'] = $caller_id;
+        $this->container['result'] = $result;
 
         return $this;
     }
