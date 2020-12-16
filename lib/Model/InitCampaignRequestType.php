@@ -449,7 +449,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets time_start
      *
-     * @param string $time_start Time when the API starts calling customers. Specify it along with the date_start parameter.
+     * @param string $time_start Time when the API starts calling customers.
      *
      * @return $this
      */
@@ -473,7 +473,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets time_end
      *
-     * @param string $time_end Time when the calls end. Specify it along with the date_end parameter.
+     * @param string $time_end Time when the calls end. Specify it along with the time_start parameter.
      *
      * @return $this
      */
@@ -497,7 +497,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets date_start
      *
-     * @param string $date_start Date when the API starts calling customers. Specify it along with the time_start parameter.
+     * @param string $date_start Date when the API starts calling customers.
      *
      * @return $this
      */
@@ -521,7 +521,7 @@ class InitCampaignRequestType implements ModelInterface, ArrayAccess
     /**
      * Sets date_end
      *
-     * @param string $date_end Date when the calls end. Specify it along with the time_end parameter.
+     * @param string $date_end Date when the calls end.
      *
      * @return $this
      */
